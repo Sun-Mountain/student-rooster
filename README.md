@@ -1,1 +1,1 @@
-# student-rooster
+# Student Rooster
