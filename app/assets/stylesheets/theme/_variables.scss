@@ -9,6 +9,7 @@ $color-parrot-green: #43AA8B;
 $color-cadet-blue: #4D908E;
 $color-queen-blue: #577590;
 $color-cg-blue: #277DA1;
+$color-blue-sapphire: #184C63;
 
 $color-white: #FFF;
 $color-gray-lightest: #F1F1F1;
@@ -24,7 +25,13 @@ $width-md-max: 1007px;
 $width-lg: 1008px;
 
 // Variables - Unviersal
+$border-color: $color-gray-dark;
 $font-body: Arial, Helvetica, sans-serif;
+$form-btn-color: $color-cg-blue;
+$form-btn-color-hover: $color-blue-sapphire;
+$header-2-color: $color-parrot-green;
+$link-color: $color-cg-blue;
+$link-hover-color: $color-gray-dark;
 $text-color: $color-gray-dark;
 
 $navbar-color: $color-cg-blue;
