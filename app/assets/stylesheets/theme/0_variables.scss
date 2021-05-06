@@ -17,11 +17,11 @@ $color-gray-light: #AEB0B5;
 $color-gray: #5B616B;
 $color-gray-dark: #323A45;
 
-// Variables - Unviersal
-$text-color: $color-gray-dark;
-
-// Screen Sizes
+// Responsive Screen Sizes
 $width-sm: 640px;
 $width-md-min: 641px;
 $width-md-max: 1007px;
 $width-lg: 1008px;
+
+// Variables - Unviersal
+$text-color: $color-gray-dark;
