@@ -2,4 +2,21 @@
 
 <nav class="navbar" id="navigation-bar">
   <%= link_to "Student Rooster", root_path %>
+
+  <ul>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to edit_registration_path(User), class: "topnav__dropdown__link",
+            data: { test: 'dpc-registrations-profile-link' } do %>
+          Edit Profile
+        <% end %>
+      </li>
+      <li>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>Login</li>
+      <li>Sign Up</li>
+    <% end %>
+  </ul>
 </nav>
