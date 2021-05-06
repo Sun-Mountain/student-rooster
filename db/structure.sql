@@ -40,7 +40,6 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.users (
     id bigint NOT NULL,
-    username character varying NOT NULL,
     first_name character varying NOT NULL,
     last_name character varying NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
