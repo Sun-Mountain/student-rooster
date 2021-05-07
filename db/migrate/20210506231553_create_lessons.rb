@@ -3,6 +3,7 @@ class CreateLessons < ActiveRecord::Migration[6.1]
     create_table :lessons do |t|
       t.string :name, null: false
       t.text :description
+      t.belongs_to :user
 
       t.timestamps
     end

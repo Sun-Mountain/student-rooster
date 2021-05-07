@@ -33,6 +33,7 @@ CREATE TABLE public.lessons (
     id bigint NOT NULL,
     name character varying NOT NULL,
     description text,
+    user_id bigint,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -152,6 +153,13 @@ ALTER TABLE ONLY public.schema_migrations
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_lessons_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_lessons_on_user_id ON public.lessons USING btree (user_id);
 
 
 --
