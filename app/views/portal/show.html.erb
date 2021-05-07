@@ -1,4 +1,4 @@
-<% if @user.teams.blank? %>
+<% if @user.no_team? %>
   <div class="portal-welcome">
     <h3>Welcome, <%= @user.name %></h3>
 
@@ -10,6 +10,16 @@
   </div>
 <% else %>
 
-  Hello, <%= @user.name %>.
+  <div class="portal-welcome">
+    Hello, <%= @user.name %>.
+
+    <h3><%= @user.team.name %> Lessons</h3>
+
+    <% if @user.team.no_lessons? %>
+      Create your first lesson!
+    <% else %>
+    <% end %>
+
+  </div>
 
 <% end %>

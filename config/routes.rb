@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     match '/portal', to: 'portal#show', via: :get
   end
 
+  resources :lessons
   resources :teams, only: [:create]
 
   root to: 'public#landing'
