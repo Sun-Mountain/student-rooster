@@ -1,17 +1,22 @@
-<div class="form-container">
+<div class="form-container-small">
   <h2>Create a Lesson</h2>
 
   <div class="form-wrapper">
-      <%= form_for Lesson.new, url: teams_path, html: { method: :create } do |f| %>
+      <%= form_for Lesson.new, url: lessons_path, html: { method: :post } do |f| %>
 
       <div class="field">
         <%= f.label :name %><br />
         <%= f.text_field :name, class: "field-text" %>
       </div>
 
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description, rows: 2, class: "field-text" %>
+      </div>
+
       <div class="actions">
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.submit "Create Team", class: "form-button" %>
+        <%= f.hidden_field :team_id, value: @team.id %>
+        <%= f.submit "+ Lesson", class: "form-button" %>
       </div>
     <% end %>
   </div>

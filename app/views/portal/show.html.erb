@@ -13,12 +13,19 @@
   <div class="portal-welcome">
     Hello, <%= @user.name %>.
 
-    <h3><%= @user.team.name %> Lessons</h3>
+    <h3><%= @team.name %> Lessons</h3>
 
     <% if @user.team.no_lessons? %>
       Create your first lesson!
     <% else %>
+      <ul>
+        <% @lessons.each do |lesson| %>
+          <li><%= lesson.name %></li>
+        <% end %>
+      </ul>
     <% end %>
+
+    <%= render partial: 'lessons/new' %>
 
   </div>
 

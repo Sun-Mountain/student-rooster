@@ -5,5 +5,7 @@ class PortalController < ApplicationController
 
   def show
     @user = current_user
+    @team = current_user.team
+    @lessons = @team.lessons
   end
 end

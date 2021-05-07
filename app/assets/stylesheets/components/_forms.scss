@@ -49,3 +49,26 @@
   border: 1px solid $form-btn-color-hover;
   cursor: pointer;
 }
+
+.form-container-small {
+  border: 1px $border-color solid;
+  padding: 0 10px;
+  width: 300px;
+
+  h2 {
+    color: $header-2-color;
+    font-size: 16px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  .field-text {
+    border: 1px solid $color-gray-dark;
+  }
+
+  .form-button {
+    font-size: 14px;
+  }
+}
