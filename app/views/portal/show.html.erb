@@ -1,0 +1,15 @@
+<% if @user.teams.blank? %>
+  <div class="portal-welcome">
+    <h3>Welcome, <%= @user.name %></h3>
+
+    <div class="portal-instructions">
+      Before you begin, create your team!
+    </div>
+
+    <%= render partial: 'teams/new' %>
+  </div>
+<% else %>
+
+  Hello, <%= @user.name %>.
+
+<% end %>
