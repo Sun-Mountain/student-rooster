@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
+  resources :users do
+    resources :lessons
+  end
+
   root to: 'public#landing'
 end
