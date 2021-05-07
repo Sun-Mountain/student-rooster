@@ -8,6 +8,8 @@
     <!-- nav -->
     <%= render partial: 'shared/navbar' %>
 
+    <%= render partial: 'shared/alerts', locals: { notice: flash[:notice], alert: flash[:alert] } %>
+
     <section id="main">
       <%= yield %>
     </section>

@@ -1,0 +1,11 @@
+<% if @user.teams.blank? %>
+
+  Before you begin, create your team!
+
+  <%= render partial: 'teams/new' %>
+
+<% else %>
+
+  Hello, <%= @user.name %>.
+
+<% end %>
