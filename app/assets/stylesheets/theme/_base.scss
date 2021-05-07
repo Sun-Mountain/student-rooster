@@ -18,5 +18,6 @@ a:hover {
 }
 
 #main {
-  margin: 1rem 2rem;
+  margin: 2rem auto;
+  max-width: $width-md-max;
 }
