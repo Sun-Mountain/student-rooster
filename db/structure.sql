@@ -40,7 +40,7 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.users (
     id bigint NOT NULL,
-    user_name character varying DEFAULT ''::character varying NOT NULL,
+    username character varying DEFAULT ''::character varying NOT NULL,
     full_name character varying DEFAULT ''::character varying NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
@@ -117,10 +117,10 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 
 
 --
--- Name: index_users_on_user_name; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_users_on_user_name ON public.users USING btree (user_name);
+CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (username);
 
 
 --

@@ -14,7 +14,13 @@ module StudentRooster
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # field_with_errors support, avoid that nasty line break on errors
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
+
     # Configuration for the application, engines, and railties goes here.
+    
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
