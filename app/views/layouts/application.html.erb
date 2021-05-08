@@ -6,8 +6,8 @@
     <!-- nav -->
     <%= render partial: 'shared/navbar' %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- alerts -->
+    <%= render partial: 'shared/alerts', locals: { notice: flash[:notice], alert: flash[:alert] } %>
 
     <section id="main">
       <%= yield %>

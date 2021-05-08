@@ -1,10 +1,11 @@
 // Basics
 $text-color: $color-gray-dark;
 
-// Nav Bar
-$navbar-color: $color-cg-blue;
-$navbar-link: $color-gray-lightest;
-$navbar-link-hover: $color-maize-crayola;
+// Alerts & Notices
+$alert-bar-color: $color-red-salsa;
+$alert-bg-color: $color-pale-pink;
+$notice-bar-color: $color-maximum-blue;
+$notice-bg-color: $color-colombia-blue;
 
 // Forms
 $border-color: $color-gray-dark;
@@ -13,3 +14,8 @@ $form-btn-color-hover: $color-blue-sapphire;
 $header-2-color: $color-parrot-green;
 $link-color: $color-cg-blue;
 $link-hover-color: $color-gray-dark;
+
+// Nav Bar
+$navbar-color: $color-cg-blue;
+$navbar-link: $color-gray-lightest;
+$navbar-link-hover: $color-maize-crayola;
