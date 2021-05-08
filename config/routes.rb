@@ -9,5 +9,10 @@ Rails.application.routes.draw do
     resources :teams
   end
 
+  authenticated :user do
+    root 'portal#show', as: :authenticated_root, via: :get
+    match '/portal', to: 'portal#show', via: :get
+  end
+
   root to: 'public#landing'
 end

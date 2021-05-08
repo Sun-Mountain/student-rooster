@@ -7,4 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, :full_name, :email, presence: true
+
+  def no_team?
+    teams.count.zero?
+  end
 end
