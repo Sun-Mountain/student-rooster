@@ -11,4 +11,9 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  def team
+    team = self.teams.first
+    return team.name
+  end
 end

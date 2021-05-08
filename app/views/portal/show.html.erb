@@ -9,7 +9,9 @@
     <%= render partial: 'teams/new' %>
   </div>
 <% else %>
+  <div class="portal-welcome">
+    Hello, <%= @user.name %>.
 
-  Hello, <%= @user.name %>.
-
+    <h2><%= @user.team %></h2>
+  </div>
 <% end %>
