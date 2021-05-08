@@ -1,0 +1,19 @@
+body {
+  margin: 0 auto;
+  color: $text-color;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: $link-color;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $link-hover-color;
+}
+
+#main {
+  margin: 1rem 2rem;
+} 

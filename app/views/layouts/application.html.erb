@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <%= render partial: 'shared/head' %>
+
+  <body>
+    <!-- nav -->
+    <%= render partial: 'shared/navbar' %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <section id="main">
+      <%= yield %>
+    </section>
+  </body>
+</html>

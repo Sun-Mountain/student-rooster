@@ -1,0 +1,51 @@
+.form-container {
+  min-width: 15rem;
+  max-width: 25rem;
+
+  border: 2px $border-color solid;
+  box-shadow: -5px -5px $color-maize-crayola, 5px 5px $color-mango-tango;
+  margin: 2rem auto;
+  padding: 2rem;
+
+  h2 {
+    color: $header-2-color;
+    margin: 0;
+  }
+}
+
+.form-wrapper {
+  margin: 1rem 0;
+
+  .field-text {
+    border: 2px solid $color-gray-dark;
+    box-sizing: border-box;
+    color: $color-gray-dark;
+    display: block;
+    margin: 4px 0;
+    max-width: 460px;
+    outline: none;
+    padding: 8px;
+    width: 100%;
+  }
+
+  label {
+    font-weight: 700;
+  }
+}
+
+.form-button {
+  background-color: $form-btn-color;
+  border: 1px solid $form-btn-color;
+  border-radius: 5px;
+  color: $color-white;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding: 5px 10px;
+}
+
+.form-button:hover {
+  background-color: $form-btn-color-hover;
+  border: 1px solid $form-btn-color-hover;
+  cursor: pointer;
+} 
