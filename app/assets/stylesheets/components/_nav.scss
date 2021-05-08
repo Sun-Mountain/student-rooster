@@ -3,9 +3,13 @@
   padding: 15px 25px;
 
   a, a:visited {
-    color: $navbar-text;
+    color: $navbar-link;
     font-weight: 700;
     text-decoration: none;
+  }
+
+  a:hover {
+    color: $navbar-link-hover
   }
 }
 

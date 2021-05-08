@@ -3,6 +3,11 @@
   <%= render partial: 'shared/head' %>
 
   <body>
-    <%= yield %>
+    <!-- nav -->
+    <%= render partial: 'shared/navbar' %>
+
+    <section id="main">
+      <%= yield %>
+    </section>
   </body>
 </html>
