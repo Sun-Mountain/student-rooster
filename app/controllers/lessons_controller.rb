@@ -6,6 +6,7 @@ class LessonsController < ApplicationController
   def create
     @team = team
     @lesson = @team.lessons.create(lesson_params)
+    binding.pry
 
     if @lesson.save
       flash[:notice] = 'Lesson created.'

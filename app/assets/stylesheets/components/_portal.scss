@@ -12,6 +12,11 @@
 
 .portal-welcome {
   padding: 0 32px;
+
+  a {
+    font-size: 12px;
+    font-weight: 400;
+  }
 }
 
 .portal-form {
@@ -24,7 +29,7 @@
 }
 
 .portal-content {
-  padding: 2rem;
+  padding: 1.5rem 2rem;
 
   .lesson-list {
     padding-bottom: 1rem;
