@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :users, path: 'lesson/' do
     resources :teams, path: '' do
-      resources :lessons, path: ''
+      resources :lessons, path: '' do
+        resources :rosters
+      end
     end
   end
 

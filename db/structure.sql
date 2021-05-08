@@ -59,12 +59,79 @@ ALTER SEQUENCE public.lessons_id_seq OWNED BY public.lessons.id;
 
 
 --
+-- Name: rosters; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.rosters (
+    id bigint NOT NULL,
+    begin_date timestamp without time zone,
+    end_date timestamp without time zone,
+    student_id bigint,
+    lesson_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: rosters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.rosters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rosters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.rosters_id_seq OWNED BY public.rosters.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.schema_migrations (
     version character varying NOT NULL
 );
+
+
+--
+-- Name: students; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.students (
+    id bigint NOT NULL,
+    name character varying,
+    email character varying,
+    phone character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.students_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
 
 
 --
@@ -144,6 +211,20 @@ ALTER TABLE ONLY public.lessons ALTER COLUMN id SET DEFAULT nextval('public.less
 
 
 --
+-- Name: rosters id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rosters ALTER COLUMN id SET DEFAULT nextval('public.rosters_id_seq'::regclass);
+
+
+--
+-- Name: students id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.students_id_seq'::regclass);
+
+
+--
 -- Name: teams id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -174,11 +255,27 @@ ALTER TABLE ONLY public.lessons
 
 
 --
+-- Name: rosters rosters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rosters
+    ADD CONSTRAINT rosters_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.students
+    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
 
 
 --
@@ -202,6 +299,20 @@ ALTER TABLE ONLY public.users
 --
 
 CREATE INDEX index_lessons_on_team_id ON public.lessons USING btree (team_id);
+
+
+--
+-- Name: index_rosters_on_lesson_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rosters_on_lesson_id ON public.rosters USING btree (lesson_id);
+
+
+--
+-- Name: index_rosters_on_student_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_rosters_on_student_id ON public.rosters USING btree (student_id);
 
 
 --
@@ -249,6 +360,22 @@ ALTER TABLE ONLY public.teams
 
 
 --
+-- Name: rosters fk_rails_4534302d18; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rosters
+    ADD CONSTRAINT fk_rails_4534302d18 FOREIGN KEY (lesson_id) REFERENCES public.lessons(id);
+
+
+--
+-- Name: rosters fk_rails_c6b1fc83ae; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rosters
+    ADD CONSTRAINT fk_rails_c6b1fc83ae FOREIGN KEY (student_id) REFERENCES public.students(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -257,6 +384,8 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210508153411'),
 ('20210508185918'),
-('20210508210411');
+('20210508210411'),
+('20210508224859'),
+('20210508224912');
 
 

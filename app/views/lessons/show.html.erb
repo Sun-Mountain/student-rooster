@@ -16,4 +16,25 @@
       <%= button_to "Delete Lesson", user_team_lesson_path, class: 'link-delete', method: :delete %>
     </div>
   </div>
+
+  <div>
+    <div class="form-wrapper">
+      <%= form_with model: [ @user, @team, @lesson, @lesson.rosters.build ] do |form| %>
+        <div class="field">
+          <%= form.label :name %><br>
+          <%= form.text_field :name, class: "field-text" %>
+        </div>
+
+        <div class="field">
+          <%= form.submit "Create Roster", class: "form-button"  %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if @lesson.no_rosters? %>
+      No rosters
+    <% else %>
+      Yay rosters!
+    <% end%>
+  </div>
 </div>
