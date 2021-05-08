@@ -11,14 +11,6 @@
   font-weight: 400;
 }
 
-.lesson-link + .link-delete {
-  color: $color-red-salsa;
-}
-
-.lesson-link + .link-delete:hover {
-  color: $color-rosewood;
-}
-
 .lesson-desc {
   margin: 1rem 0;
 }
@@ -27,4 +19,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.link-delete {
+  background-color: $color-rosewood;
+  border: 1px solid $color-rosewood;
+  border-radius: 3px;
+  color: $color-white;
+  cursor: pointer;
 }

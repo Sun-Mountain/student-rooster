@@ -25,7 +25,7 @@
 <div class="portal-content">
     <div class="lesson-list">
       <% if @team.no_lessons? %>
-        NO LESSONS
+        <%= @team.name %> currently has no lessons.
       <% else %>
         <ul>
           <% @team.lessons.each do |lesson| %>
