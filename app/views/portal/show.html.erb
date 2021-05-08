@@ -14,8 +14,40 @@
         <% end %>
       </div>
     </div>
+</div>
   <% else %>
-    <h2><%= @user.team.name %> Dashboard</h2>
-    <%= link_to "Edit Team", edit_user_team_path(@user.id, @user.team.id) %>
+    <h2>
+      <%= @team.name %> Dashboard
+      <%= link_to "Edit Team", edit_user_team_path(@user.id, @team.id) %>
+    </h2>
+</div>
+
+<div class="portal-content">
+    <div class="lesson-list">
+      <% if @team.no_lessons? %>
+        <%= @team.name %> currently has no lessons.
+      <% else %>
+        <ul>
+          <% @team.lessons.each do |lesson| %>
+            <li>
+              <%= link_to lesson.name, user_team_lesson_path(@team.user_id, @team.id, lesson.id) %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="form-wrapper">
+      <%= form_with model: [ @user, @team, @team.lessons.build ] do |form| %>
+        <div class="field">
+          <%= form.label :name %><br>
+          <%= form.text_field :name, class: "field-text" %>
+        </div>
+
+        <div class="field">
+          <%= form.submit "Create Lesson", class: "form-button"  %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

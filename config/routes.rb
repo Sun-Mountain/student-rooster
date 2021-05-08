@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  resources :users do
-    resources :teams
+  resources :users, path: 'lesson/' do
+    resources :teams, path: '' do
+      resources :lessons, path: ''
+    end
   end
 
   authenticated :user do

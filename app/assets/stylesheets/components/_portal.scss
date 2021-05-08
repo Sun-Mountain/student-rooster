@@ -12,6 +12,11 @@
 
 .portal-welcome {
   padding: 0 32px;
+
+  a {
+    font-size: 12px;
+    font-weight: 400;
+  }
 }
 
 .portal-form {
@@ -20,5 +25,31 @@
 
   h2 {
     color: $color-parrot-green;
+  }
+}
+
+.portal-content {
+  padding: 1.5rem 2rem;
+
+  .lesson-list {
+    padding-bottom: 1rem;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul > li {
+      margin: 15px 0;
+    }
+
+    ul > :first-child {
+      margin-top: 0;
+    }
+
+    ul > :last-child {
+      margin-bottom: 0;
+    }
   }
 }
