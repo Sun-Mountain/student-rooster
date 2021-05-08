@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class TeamsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @user = User.find(user_id)
     @team = @user.teams.create(team_params)

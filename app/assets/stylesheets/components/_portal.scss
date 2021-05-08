@@ -25,4 +25,26 @@
 
 .portal-content {
   padding: 2rem;
+
+  .lesson-list {
+    padding-bottom: 1rem;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul > li {
+      margin: 15px 0;
+    }
+
+    ul > :first-child {
+      margin-top: 0;
+    }
+
+    ul > :last-child {
+      margin-bottom: 0;
+    }
+  }
 }
