@@ -1,0 +1,21 @@
+<div class="portal-welcome">
+  <% if @user.no_team? %>
+    <div class="form-container">
+      <div class="form-wrapper">
+        <%= form_with model: [ @user, @user.teams.build ] do |form| %>
+          <div class="field">
+            <%= form.label :name %><br>
+            <%= form.text_field :name, class: "field-text" %>
+          </div>
+
+          <div class="field">
+            <%= form.submit "Create Team", class: "form-button"  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <h2><%= @user.team.name %> Dashboard</h2>
+    <%= link_to "Edit Team", edit_user_team_path(@user.id, @user.team.id) %>
+  <% end %>
+</div>

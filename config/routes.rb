@@ -5,5 +5,14 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
+  resources :users do
+    resources :teams
+  end
+
+  authenticated :user do
+    root 'portal#show', as: :authenticated_root, via: :get
+    match '/portal', to: 'portal#show', via: :get
+  end
+
   root to: 'public#landing'
 end
