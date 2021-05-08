@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
     if @team.save 
       flash[:notice] = 'Welcome to the team!'
     else
-      flash[:alert] = 'Team could not be created.'
+      flash[:alert] = "Team could not be created: #{model_error_string(@team)}"
     end
 
     redirect_to root_path
