@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module StudentRooster
   class Application < Rails::Application
+    # ump and read as sql
+    config.active_record.schema_format = :sql
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
