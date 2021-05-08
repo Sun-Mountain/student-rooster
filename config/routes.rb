@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :teams, only: [:create]
+  resources :lessons
 
   root to: 'public#landing'
 end
