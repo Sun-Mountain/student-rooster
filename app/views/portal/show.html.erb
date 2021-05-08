@@ -14,8 +14,19 @@
         <% end %>
       </div>
     </div>
+</div>
   <% else %>
-    <h2><%= @user.team.name %> Dashboard</h2>
-    <%= link_to "Edit Team", edit_user_team_path(@user.id, @user.team.id) %>
+    <h2><%= @team.name %> Dashboard</h2>
+    <%= link_to "Edit Team", edit_user_team_path(@user.id, @team.id) %>
+</div>
+
+<div class="portal-content">
+    <div>
+      <% if @team.no_lessons? %>
+        NO LESSONS
+      <% else %>
+        YAY LESSONS!
+      <% end %>
+    </div>
   <% end %>
 </div>

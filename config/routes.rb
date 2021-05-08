@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   }
 
   resources :users do
-    resources :teams
+    resources :teams do
+      resources :lessons
+    end
   end
 
   authenticated :user do
