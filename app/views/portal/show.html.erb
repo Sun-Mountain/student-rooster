@@ -1,0 +1,9 @@
+<% if @user.teams.blank? %>
+
+  Before you begin, create your team!
+
+<% else %>
+
+  Hello, <%= @user.full_name %>.
+
+<% end %>
