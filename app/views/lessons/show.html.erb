@@ -1,0 +1,19 @@
+<div class="lesson-dash">
+  <h2 class="lesson-header">
+    <%= @lesson.name%>
+  </h2>
+
+  <div class="lesson-desc">
+    <% if @lesson.description.nil? %>
+      <%= link_to "Add a description", edit_user_team_lesson_path(@user.id, @team.id, @lesson.id) %>
+    <% else %>
+      <%= @lesson.description %>
+    <% end %>
+
+    <div class="lesson-links">
+      <%= link_to "Edit Lesson", edit_user_team_lesson_path(@user.id, @team.id, @lesson.id), class: 'lesson-link' %>
+
+      <%= link_to "Delete Lesson", user_team_lesson_path, class: 'lesson-link link-delete', method: :delete %>
+    </div>
+  </div>
+</div>

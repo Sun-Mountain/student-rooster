@@ -1,0 +1,30 @@
+.lesson-dash {
+  padding: 0 2rem;
+}
+
+.lesson-header {
+  color: $color-parrot-green;
+}
+
+.lesson-link, .lesson-link:visited {
+  font-size: 12px !important;
+  font-weight: 400;
+}
+
+.lesson-link + .link-delete {
+  color: $color-red-salsa;
+}
+
+.lesson-link + .link-delete:hover {
+  color: $color-rosewood;
+}
+
+.lesson-desc {
+  margin: 1rem 0;
+}
+
+.lesson-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
