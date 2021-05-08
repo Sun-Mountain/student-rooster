@@ -26,4 +26,12 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     request.referrer || root_path
   end
+
+  def lesson_params
+    params.require(:lesson).permit(:name, :description, :team_id)
+  end
+
+  def team_params
+    params.require(:team).permit(:id, :name, :user_id)
+  end
 end

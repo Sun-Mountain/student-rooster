@@ -1,1 +1,20 @@
-New Lesson
+<%= render partial: 'shared/alerts', locals: { notice: flash[:notice], alert: flash[:alert] } %>
+
+<div class="form-container">
+  <h2>Create a Lesson</h2>
+
+  <div class="form-wrapper">
+      <%= form_for @lesson, url: lessons_path do |f| %>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, class: "field-text" %>
+      </div>
+
+      <div class="actions">
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.submit "Create Team", class: "form-button" %>
+      </div>
+    <% end %>
+  </div>
+</div>
