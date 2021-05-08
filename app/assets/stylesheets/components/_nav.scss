@@ -1,0 +1,18 @@
+.navbar {
+  background-color: $navbar-color;
+  padding: 15px 25px;
+
+  a, a:visited {
+    color: $navbar-text;
+    font-weight: 700;
+    text-decoration: none;
+  }
+}
+
+.skip-nav {
+  left: 0;
+  padding: 8px 16px;
+  position: absolute;
+  top: -96px;
+  z-index: 100;
+} 
