@@ -1,7 +1,24 @@
 .portal-dash {
   padding: 0 32px;
+
+  a {
+    font-size: 14px;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
 }
 
 .portal-welcome {
   padding: 0 32px;
-} 
+}
+
+.portal-form {
+  margin: 0 auto;
+  max-width: $width-md-min;
+
+  h2 {
+    color: $color-parrot-green;
+  }
+}
