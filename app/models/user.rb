@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :teams
+  has_many :teams, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,5 +10,9 @@ class User < ApplicationRecord
 
   def no_team?
     teams.count.zero?
+  end
+
+  def team
+    teams.first
   end
 end

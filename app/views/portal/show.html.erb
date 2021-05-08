@@ -1,4 +1,4 @@
-<div class="portal-dashboard">
+<div class="portal-welcome">
   <% if @user.no_team? %>
     <div class="form-container">
       <div class="form-wrapper">
@@ -6,7 +6,7 @@
           <div class="field">
             <%= form.label :name %><br>
             <%= form.text_field :name, class: "field-text" %>
-          </p>
+          </div>
 
           <div class="field">
             <%= form.submit "Create Team", class: "form-button"  %>
@@ -15,6 +15,7 @@
       </div>
     </div>
   <% else %>
-    YAY!
+    <h2><%= @user.team.name %> Dashboard</h2>
+    <%= link_to "Edit Team", edit_user_team_path(@user.id, @user.team.id) %>
   <% end %>
 </div>
