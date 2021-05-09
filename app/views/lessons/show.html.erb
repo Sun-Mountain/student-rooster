@@ -53,17 +53,15 @@
         <ul>
           <li>
             <div class="rosters-header">
-              <div class="roster-link">
-                <div class="roster-dates">
-                  <div class="date">
-                    Beginning Date
-                  </div>
-                  <div>
-                    -
-                  </div>
-                  <div class="date">
-                    Ending Date
-                  </div>
+              <div class="roster-dates">
+                <div class="date">
+                  Beginning Date
+                </div>
+                <div>
+                  -
+                </div>
+                <div class="date">
+                  Ending Date
                 </div>
               </div>
               <div class="roster-delete-container">
@@ -74,17 +72,27 @@
           <% @lesson.present_rosters.each do |roster| %>
             <li>
               <div class="roster-item">
-                <div class="roster-link">
-                  <div class="roster-dates">
-                    <div class="date">
-                      <%= roster.begin_date.try(:to_formatted_s, :rfc822) %>
-                    </div>
-                    <div>
-                      -
-                    </div>
-                    <div class="date">
-                      <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
-                    </div>
+                <div class="roster-dates">
+                  <div class="date">
+                    <%= roster.begin_date.try(:to_formatted_s, :rfc822) %>
+                  </div>
+                  <div>
+                    -
+                  </div>
+                  <div class="date">
+                    <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
+                  </div>
+                  <div>
+                    <%= link_to(user_team_lesson_roster_path(@user.id, @team.id, @lesson.id, roster.id)) do %>
+                      <div class="roster-link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                          <use xlink:href="/assets/solid.svg#clipboard-list"></use>
+                        </svg>
+                        <div>
+                          View Student List
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
                 <div class="roster-delete-container">
@@ -96,5 +104,8 @@
         </ul>
       </div>
     <% end %>
+  </div>
+  <div>
+    <%= link_to "Back", :back %>
   </div>
 </div>

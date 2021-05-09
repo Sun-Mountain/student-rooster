@@ -16,6 +16,13 @@
   ul > *:last-child {
     border-bottom: 0px;
   }
+
+  .icon {
+    max-width: 17px;
+    max-height: 15px;
+    display: inline;
+    fill: currentColor;
+  }
 }
 
 .rosters-header {
@@ -65,4 +72,17 @@
 
 .roster-delete:hover {
   background: $color-gray-dark;
+}
+
+.roster-link {
+  display: flex;
+  flex-direction: row;
+
+  div {
+    padding: 0;
+  }
+}
+
+.roster-link > *:first-child {
+  padding-right: 5px;
 }
