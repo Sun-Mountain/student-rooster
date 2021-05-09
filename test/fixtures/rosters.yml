@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  begin_date: 2021-05-09
+  end_date: 2021-05-09
+  lesson: one
+
+two:
+  begin_date: 2021-05-09
+  end_date: 2021-05-09
+  lesson: two
