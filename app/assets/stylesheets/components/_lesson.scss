@@ -22,9 +22,10 @@
 }
 
 .link-delete {
-  background-color: $color-rosewood;
-  border: 1px solid $color-rosewood;
+  background-color: $color-warn;
+  border: 1px solid $color-warn;
   border-radius: 3px;
   color: $color-white;
   cursor: pointer;
+  font-weight: 600;
 }

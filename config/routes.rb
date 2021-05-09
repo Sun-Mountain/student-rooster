@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   resources :users, path: 'lesson/' do
     resources :teams, path: '' do
-      resources :lessons, path: ''
+      resources :lessons, path: '' do
+        resources :rosters
+
+        match :delete_roster, via: [:delete]
+      end
     end
   end
 
