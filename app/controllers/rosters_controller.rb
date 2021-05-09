@@ -11,19 +11,23 @@ class RostersController < ApplicationController
     if params[:add_to_all]
       @roster = Roster.create roster_params
       @lessons = Lesson.all
-      @lessons.each do |lesson|
-        lesson.rosters << @roster
+
+      if add_to_all_lessons
+        flash[:notice] = "Roster added to all Lessons."
+      else
+        flash[:alert] = "Roster could not be created. (Check to make sure dates present.)"
       end
+
+      redirect_to root_path
     else
       @single_roster = @lesson.rosters.create(roster_params)
       if @single_roster.save
         flash[:notice] = "Roster added to #{@lesson.name}."
       else
-        flash[:alert] = "Roster could not be created. Beginning and end dates required."
+        flash[:alert] = "Roster could not be created. (Check to make sure dates present.)"
       end
+      redirect_to user_team_lesson_path(@team.user_id, @team.id, lesson.id)
     end
-
-    redirect_to user_team_lesson_path(@team.user_id, @team.id, lesson.id)
   end
 
   def destroy
@@ -35,13 +39,23 @@ class RostersController < ApplicationController
     if @roster.destroy
       flash[:notice] = 'Roster deleted.'
     else
-      flash[:alert] = "Roster could not be created: #{model_error_string(@roster)}"
+      flash[:alert] = "Roster could not be created. (Check to make sure dates present.)"
     end
 
     redirect_to user_team_lesson_path(@user.id, @team.id, lesson.id)
   end
 
   private
+
+  def add_to_all_lessons
+    if roster_valid?(@roster)
+      @lessons.each do |lesson|
+        lesson.rosters << @roster
+      end
+    else
+      return false
+    end
+  end
 
   def lesson
     Lesson.find(params[:lesson_id])
@@ -53,6 +67,10 @@ class RostersController < ApplicationController
 
   def roster_params
     params.require(:roster).permit(:id, :begin_date, :end_date, :lesson_id)
+  end
+
+  def roster_valid?(roster)
+    roster.begin_date.present? && roster.end_date.present?
   end
 
   def team

@@ -56,6 +56,15 @@
   }
 }
 
+.form-btn-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-btn-container > *:first-child {
+  margin-right: 1.5rem;
+}
+
 .form-button {
   background-color: $form-btn-color;
   border: 1px solid $form-btn-color;

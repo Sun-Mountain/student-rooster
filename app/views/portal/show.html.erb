@@ -49,5 +49,26 @@
         </div>
       <% end %>
     </div>
+
+
+    <div class="form-wrapper">
+      <%= form_with model: [ @user, @team, @team.lessons.first, @team.lessons.first.rosters.build ] do |form| %>
+        <div class="dates">
+          <div class="field date-field">
+            <%= form.label "Beginning Date" %><br>
+            <%= form.date_field :begin_date %>
+          </div>
+
+          <div class="field date-field">
+            <%= form.label "End Date" %><br>
+            <%= form.date_field :end_date %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= form.submit "Add to All Lessons", class: "form-button roster", name: 'add_to_all' %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
