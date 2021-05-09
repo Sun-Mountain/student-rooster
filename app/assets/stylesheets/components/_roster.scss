@@ -1,0 +1,19 @@
+.rosters-list {
+  padding: 0.5rem 0;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul > li {
+    margin: 10px 0;
+  }
+}
+
+.roster-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
