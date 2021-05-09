@@ -9,7 +9,7 @@ class RostersController < ApplicationController
     @lesson = lesson
     @roster = @lesson.rosters.create(roster_params)
 
-    if @roster.save(validate: false) && dates_present(@roster)
+    if @roster.save
       flash[:notice] = "Roster added to #{@lesson.name}."
     else
       flash[:alert] = "Roster could not be created. Beginning and end dates required."
@@ -19,6 +19,7 @@ class RostersController < ApplicationController
   end
 
   def destroy
+    binding.pry
     @user = user
     @team = team
     @lesson = lesson
@@ -35,10 +36,6 @@ class RostersController < ApplicationController
 
   private
 
-  def dates_present(roster)
-    roster.begin_date.present? && roster.end_date.present?
-  end
-
   def lesson
     Lesson.find(params[:lesson_id])
   end
@@ -48,7 +45,7 @@ class RostersController < ApplicationController
   end
 
   def roster_params
-    params.require(:roster).permit(:id, :begin_date, :end_date, :student_id, :lesson_id)
+    params.require(:roster).permit(:id, :begin_date, :end_date, :lesson_id)
   end
 
   def team

@@ -132,39 +132,6 @@ CREATE TABLE public.schema_migrations (
 
 
 --
--- Name: students; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.students (
-    id bigint NOT NULL,
-    name character varying,
-    email character varying,
-    phone character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.students_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
-
-
---
 -- Name: teams; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -255,16 +222,6 @@ ALTER TABLE ONLY public.rosters ALTER COLUMN id SET DEFAULT nextval('public.rost
 
 
 --
-<<<<<<< HEAD
-=======
--- Name: students id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.students_id_seq'::regclass);
-
-
---
->>>>>>> d4a38ecbb53db32fb922a32d1ffdec468f7dd30a
 -- Name: teams id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -319,14 +276,6 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
--- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.students
-    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
-
-
---
 -- Name: teams teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -361,20 +310,6 @@ CREATE INDEX index_lesson_roster_links_on_roster_id ON public.lesson_roster_link
 --
 
 CREATE INDEX index_lessons_on_team_id ON public.lessons USING btree (team_id);
-
-
---
--- Name: index_rosters_on_lesson_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rosters_on_lesson_id ON public.rosters USING btree (lesson_id);
-
-
---
--- Name: index_rosters_on_student_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rosters_on_student_id ON public.rosters USING btree (student_id);
 
 
 --
@@ -422,7 +357,6 @@ ALTER TABLE ONLY public.teams
 
 
 --
-<<<<<<< HEAD
 -- Name: lesson_roster_links fk_rails_75e37fbff0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -436,21 +370,6 @@ ALTER TABLE ONLY public.lesson_roster_links
 
 ALTER TABLE ONLY public.lesson_roster_links
     ADD CONSTRAINT fk_rails_bd65eb39d6 FOREIGN KEY (roster_id) REFERENCES public.rosters(id);
-=======
--- Name: rosters fk_rails_4534302d18; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rosters
-    ADD CONSTRAINT fk_rails_4534302d18 FOREIGN KEY (lesson_id) REFERENCES public.lessons(id);
-
-
---
--- Name: rosters fk_rails_c6b1fc83ae; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rosters
-    ADD CONSTRAINT fk_rails_c6b1fc83ae FOREIGN KEY (student_id) REFERENCES public.students(id);
->>>>>>> d4a38ecbb53db32fb922a32d1ffdec468f7dd30a
 
 
 --
@@ -463,12 +382,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210508153411'),
 ('20210508185918'),
 ('20210508210411'),
-<<<<<<< HEAD
 ('20210509155550'),
 ('20210509155627');
-=======
-('20210508224859'),
-('20210508224912');
->>>>>>> d4a38ecbb53db32fb922a32d1ffdec468f7dd30a
 
 
