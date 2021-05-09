@@ -38,6 +38,7 @@
     </div>
 
     <div class="form-wrapper">
+      <h3>Add a Lesson</h3>
       <%= form_with model: [ @user, @team, @team.lessons.build ] do |form| %>
         <div class="field">
           <%= form.label :name %><br>
@@ -45,7 +46,7 @@
         </div>
 
         <div class="field">
-          <%= form.submit "Create Lesson", class: "form-button"  %>
+          <%= form.submit "+ Lesson", class: "form-button portal-form-btn"  %>
         </div>
       <% end %>
     </div>

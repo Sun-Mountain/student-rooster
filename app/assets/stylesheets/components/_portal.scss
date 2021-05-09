@@ -8,6 +8,10 @@
   h2 {
     margin-bottom: 0;
   }
+
+  h3 {
+    color: $color-parrot-green;
+  }
 }
 
 .portal-welcome {
@@ -26,6 +30,10 @@
   h2 {
     color: $color-parrot-green;
   }
+}
+
+.portal-form-btn {
+  font-size: 14px !important;
 }
 
 .portal-content {
