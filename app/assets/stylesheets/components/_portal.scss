@@ -8,6 +8,11 @@
   h2 {
     margin-bottom: 0;
   }
+
+  h3 {
+    color: $color-parrot-green;
+    margin-bottom: 5px;
+  }
 }
 
 .portal-welcome {
@@ -51,5 +56,9 @@
     ul > :last-child {
       margin-bottom: 0;
     }
+  }
+
+  .portal-form-container > *:last-child {
+    margin-top: 2rem;
   }
 }
