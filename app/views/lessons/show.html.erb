@@ -32,33 +32,69 @@
           </div>
         </div>
 
-        <div class="field">
-          <%= form.submit "Add Roster", class: "form-button roster"  %>
+        <div class="form-btn-container">
+          <div class="field">
+            <%= form.submit "Add Roster", class: "form-button roster"  %>
+          </div>
+
+          <div class="field">
+            <%= form.submit "Add to All Lessons", class: "form-button roster", name: 'add_to_all' %>
+          </div>
         </div>
       <% end %>
     </div>
+  </div>
 
+  <div>
     <% if @lesson.no_rosters? %>
-      No rosters
+      There are currently no rosters for <%= @lesson.name %>.
     <% else %>
       <div class="rosters-list">
         <ul>
-          <% @lesson.rosters.each do |roster| %>
+          <li>
+            <div class="rosters-header">
+              <div class="roster-link">
+                <div class="roster-dates">
+                  <div class="date">
+                    Beginning Date
+                  </div>
+                  <div>
+                    -
+                  </div>
+                  <div class="date">
+                    Ending Date
+                  </div>
+                </div>
+              </div>
+              <div class="roster-delete-container">
+                Delete Roster
+              </div>
+            </div>
+          </li>
+          <% @lesson.present_rosters.each do |roster| %>
             <li>
               <div class="roster-item">
                 <div class="roster-link">
-                  <%= roster.begin_date.try(:to_formatted_s, :rfc822) %> - <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
-                </div>
-                <div>
-                  <div class="roster-delete-btn">
-                    <%= button_to "x", user_team_lesson_roster_path(lesson_id: roster.lesson_id, id: roster.id), method: :delete %>
+                  <div class="roster-dates">
+                    <div class="date">
+                      <%= roster.begin_date.try(:to_formatted_s, :rfc822) %>
+                    </div>
+                    <div>
+                      -
+                    </div>
+                    <div class="date">
+                      <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
+                    </div>
                   </div>
+                </div>
+                <div class="roster-delete-container">
+                  <%= button_to "x", user_team_lesson_roster_path(id: roster.id, lesson_id: @lesson.id), method: :delete, class: "roster-delete" %>
                 </div>
               </div>
             </li>
           <%end%>
         </ul>
       </div>
-    <% end%>
+    <% end %>
   </div>
 </div>

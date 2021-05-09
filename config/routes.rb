@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     resources :teams, path: '' do
       resources :lessons, path: '' do
         resources :rosters
-
-        match :delete_roster, via: [:delete]
       end
     end
   end
