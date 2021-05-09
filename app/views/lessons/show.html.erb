@@ -45,14 +45,44 @@
     <% else %>
       <div class="rosters-list">
         <ul>
+          <li>
+            <div class="rosters-header">
+              <div class="roster-link">
+                <div class="roster-dates">
+                  <div class="date">
+                    Beginning Date
+                  </div>
+                  <div>
+                    -
+                  </div>
+                  <div class="date">
+                    Ending Date
+                  </div>
+                </div>
+              </div>
+              <div class="roster-delete-container">
+                Delete Roster
+              </div>
+            </div>
+          </li>
           <% @lesson.present_rosters.each do |roster| %>
             <li>
               <div class="roster-item">
                 <div class="roster-link">
-                  <%= roster.begin_date.try(:to_formatted_s, :rfc822) %> - <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
+                  <div class="roster-dates">
+                    <div class="date">
+                      <%= roster.begin_date.try(:to_formatted_s, :rfc822) %>
+                    </div>
+                    <div>
+                      -
+                    </div>
+                    <div class="date">
+                      <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
+                    </div>
+                  </div>
                 </div>
-                <div class="roster-delete">
-                  <%= button_to "x", user_team_lesson_roster_path(id: roster.id, lesson_id: @lesson.id), method: :delete %>
+                <div class="roster-delete-container">
+                  <%= button_to "x", user_team_lesson_roster_path(id: roster.id, lesson_id: @lesson.id), method: :delete, class: "roster-delete" %>
                 </div>
               </div>
             </li>

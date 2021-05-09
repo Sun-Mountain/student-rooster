@@ -19,7 +19,6 @@ class RostersController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @user = user
     @team = team
     @lesson = lesson
