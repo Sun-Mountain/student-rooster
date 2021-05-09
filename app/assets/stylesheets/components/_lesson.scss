@@ -23,9 +23,13 @@
 
 .link-delete {
   background-color: $color-warn;
-  border: 1px solid $color-warn;
+  border: 0;
   border-radius: 3px;
   color: $color-white;
   cursor: pointer;
   font-weight: 600;
+}
+
+.link-delete:hover {
+  background-color: $color-gray-dark;
 }
