@@ -7,12 +7,20 @@ class RostersController < ApplicationController
     @user = user
     @team = team
     @lesson = lesson
-    @roster = @lesson.rosters.create(roster_params)
-
-    if @roster.save
-      flash[:notice] = "Roster added to #{@lesson.name}."
+    
+    if params[:add_to_all]
+      @roster = Roster.create roster_params
+      @lessons = Lesson.all
+      @lessons.each do |lesson|
+        lesson.rosters << @roster
+      end
     else
-      flash[:alert] = "Roster could not be created. Beginning and end dates required."
+      @single_roster = @lesson.rosters.create(roster_params)
+      if @single_roster.save
+        flash[:notice] = "Roster added to #{@lesson.name}."
+      else
+        flash[:alert] = "Roster could not be created. Beginning and end dates required."
+      end
     end
 
     redirect_to user_team_lesson_path(@team.user_id, @team.id, lesson.id)
