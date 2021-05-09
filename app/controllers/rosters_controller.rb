@@ -36,8 +36,10 @@ class RostersController < ApplicationController
     @lesson = lesson
     @roster = roster
 
-    if @roster.destroy
+    if delete_from_lesson && last_roster?
       flash[:notice] = 'Roster deleted.'
+    elsif delete_from_lesson
+      flash[:notice] = "Roster removed from #{@lesson.name}."
     else
       flash[:alert] = "Roster could not be created. (Check to make sure dates present.)"
     end
@@ -54,6 +56,16 @@ class RostersController < ApplicationController
       end
     else
       return false
+    end
+  end
+
+  def delete_from_lesson
+    @lesson.rosters.delete(@roster)
+  end
+
+  def last_roster?
+    if @roster.lessons.count.zero?
+      @roster.destroy
     end
   end
 
