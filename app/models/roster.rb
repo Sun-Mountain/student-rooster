@@ -1,3 +1,4 @@
 class Roster < ApplicationRecord
-  belongs_to :lesson
+  has_many :lesson_roster_links
+  has_many :lessons, through: :lesson_roster_links
 end

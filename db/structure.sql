@@ -26,6 +26,38 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: lesson_roster_links; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.lesson_roster_links (
+    id bigint NOT NULL,
+    lesson_id bigint NOT NULL,
+    roster_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: lesson_roster_links_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.lesson_roster_links_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lesson_roster_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.lesson_roster_links_id_seq OWNED BY public.lesson_roster_links.id;
+
+
+--
 -- Name: lessons; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -56,6 +88,38 @@ CREATE SEQUENCE public.lessons_id_seq
 --
 
 ALTER SEQUENCE public.lessons_id_seq OWNED BY public.lessons.id;
+
+
+--
+-- Name: rosters; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.rosters (
+    id bigint NOT NULL,
+    begin_date date,
+    end_date date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: rosters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.rosters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rosters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.rosters_id_seq OWNED BY public.rosters.id;
 
 
 --
@@ -137,10 +201,24 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: lesson_roster_links id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_roster_links ALTER COLUMN id SET DEFAULT nextval('public.lesson_roster_links_id_seq'::regclass);
+
+
+--
 -- Name: lessons id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.lessons ALTER COLUMN id SET DEFAULT nextval('public.lessons_id_seq'::regclass);
+
+
+--
+-- Name: rosters id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rosters ALTER COLUMN id SET DEFAULT nextval('public.rosters_id_seq'::regclass);
 
 
 --
@@ -166,11 +244,27 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: lesson_roster_links lesson_roster_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_roster_links
+    ADD CONSTRAINT lesson_roster_links_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: lessons lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.lessons
     ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: rosters rosters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.rosters
+    ADD CONSTRAINT rosters_pkey PRIMARY KEY (id);
 
 
 --
@@ -195,6 +289,20 @@ ALTER TABLE ONLY public.teams
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_lesson_roster_links_on_lesson_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_lesson_roster_links_on_lesson_id ON public.lesson_roster_links USING btree (lesson_id);
+
+
+--
+-- Name: index_lesson_roster_links_on_roster_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_lesson_roster_links_on_roster_id ON public.lesson_roster_links USING btree (roster_id);
 
 
 --
@@ -249,6 +357,22 @@ ALTER TABLE ONLY public.teams
 
 
 --
+-- Name: lesson_roster_links fk_rails_75e37fbff0; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_roster_links
+    ADD CONSTRAINT fk_rails_75e37fbff0 FOREIGN KEY (lesson_id) REFERENCES public.lessons(id);
+
+
+--
+-- Name: lesson_roster_links fk_rails_bd65eb39d6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_roster_links
+    ADD CONSTRAINT fk_rails_bd65eb39d6 FOREIGN KEY (roster_id) REFERENCES public.rosters(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -257,6 +381,8 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210508153411'),
 ('20210508185918'),
-('20210508210411');
+('20210508210411'),
+('20210509155550'),
+('20210509155627');
 
 
