@@ -16,4 +16,49 @@
       <%= button_to "Delete Lesson", user_team_lesson_path, class: 'link-delete', method: :delete %>
     </div>
   </div>
+
+  <div>
+    <div class="form-wrapper">
+      <%= form_with model: [ @user, @team, @lesson, @lesson.rosters.build ] do |form| %>
+        <div class="dates">
+          <div class="field date-field">
+            <%= form.label "Beginning Date" %><br>
+            <%= form.date_field :begin_date %>
+          </div>
+
+          <div class="field date-field">
+            <%= form.label "End Date" %><br>
+            <%= form.date_field :end_date %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= form.submit "Add Roster", class: "form-button roster"  %>
+        </div>
+      <% end %>
+    </div>
+
+    <% if @lesson.no_rosters? %>
+      No rosters
+    <% else %>
+      <div class="rosters-list">
+        <ul>
+          <% @lesson.rosters.each do |roster| %>
+            <li>
+              <div class="roster-item">
+                <div class="roster-link">
+                  <%= roster.begin_date.try(:to_formatted_s, :rfc822) %> - <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
+                </div>
+                <div>
+                  <div class="roster-delete-btn">
+                    <%= button_to "x", user_team_lesson_roster_path(lesson_id: roster.lesson_id, id: roster.id), method: :delete %>
+                  </div>
+                </div>
+              </div>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    <% end%>
+  </div>
 </div>

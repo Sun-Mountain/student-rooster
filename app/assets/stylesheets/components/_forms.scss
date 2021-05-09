@@ -41,6 +41,19 @@
   label {
     font-weight: 700;
   }
+
+  .dates {
+    display: flex;
+    flex-direction: row;
+
+    label {
+      font-size: 14px;
+    }
+  }
+
+  .dates > *:first-child {
+    margin-right: 3rem;
+  }
 }
 
 .form-button {
@@ -59,3 +72,7 @@
   border: 1px solid $form-btn-color-hover;
   cursor: pointer;
 } 
+
+.roster {
+  font-size: 14px;
+}
