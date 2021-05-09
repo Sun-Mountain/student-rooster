@@ -64,8 +64,8 @@ ALTER SEQUENCE public.lessons_id_seq OWNED BY public.lessons.id;
 
 CREATE TABLE public.rosters (
     id bigint NOT NULL,
-    begin_date timestamp without time zone,
-    end_date timestamp without time zone,
+    begin_date date,
+    end_date date,
     student_id bigint,
     lesson_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
