@@ -58,6 +58,38 @@ ALTER SEQUENCE public.lesson_roster_links_id_seq OWNED BY public.lesson_roster_l
 
 
 --
+-- Name: lesson_student_links; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.lesson_student_links (
+    id bigint NOT NULL,
+    lesson_id bigint NOT NULL,
+    student_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: lesson_student_links_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.lesson_student_links_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lesson_student_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.lesson_student_links_id_seq OWNED BY public.lesson_student_links.id;
+
+
+--
 -- Name: lessons; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -274,6 +306,13 @@ ALTER TABLE ONLY public.lesson_roster_links ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: lesson_student_links id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_student_links ALTER COLUMN id SET DEFAULT nextval('public.lesson_student_links_id_seq'::regclass);
+
+
+--
 -- Name: lessons id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -329,6 +368,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.lesson_roster_links
     ADD CONSTRAINT lesson_roster_links_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lesson_student_links lesson_student_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_student_links
+    ADD CONSTRAINT lesson_student_links_pkey PRIMARY KEY (id);
 
 
 --
@@ -402,6 +449,20 @@ CREATE INDEX index_lesson_roster_links_on_roster_id ON public.lesson_roster_link
 
 
 --
+-- Name: index_lesson_student_links_on_lesson_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_lesson_student_links_on_lesson_id ON public.lesson_student_links USING btree (lesson_id);
+
+
+--
+-- Name: index_lesson_student_links_on_student_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_lesson_student_links_on_student_id ON public.lesson_student_links USING btree (student_id);
+
+
+--
 -- Name: index_lessons_on_team_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -451,6 +512,14 @@ CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (usernam
 
 
 --
+-- Name: lesson_student_links fk_rails_2236026eb7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_student_links
+    ADD CONSTRAINT fk_rails_2236026eb7 FOREIGN KEY (student_id) REFERENCES public.students(id);
+
+
+--
 -- Name: lessons fk_rails_2846e8c48d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -483,6 +552,14 @@ ALTER TABLE ONLY public.lesson_roster_links
 
 
 --
+-- Name: lesson_student_links fk_rails_ab9cf0ccee; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.lesson_student_links
+    ADD CONSTRAINT fk_rails_ab9cf0ccee FOREIGN KEY (lesson_id) REFERENCES public.lessons(id);
+
+
+--
 -- Name: lesson_roster_links fk_rails_bd65eb39d6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -511,6 +588,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210509155550'),
 ('20210509155627'),
 ('20210510151726'),
-('20210510151819');
+('20210510151819'),
+('20210510163514');
 
 

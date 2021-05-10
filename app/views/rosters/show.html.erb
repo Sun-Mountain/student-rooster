@@ -38,7 +38,18 @@
       <% if @roster.no_students? %>
         No students
       <% else%>
-        Yay students
+        <ul>
+          <% @roster.present_students.each do |student| %>
+            <li>
+              <div>
+                <%= student.first_name %>
+              </div>
+              <div>
+                <%= student.last_name %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>

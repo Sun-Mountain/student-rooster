@@ -11,7 +11,15 @@ class Roster < ApplicationRecord
     "#{begin_date.try(:to_formatted_s, :rfc822)} - #{end_date.try(:to_formatted_s, :rfc822)}"
   end
 
+  scope :lesson_roster_students, -> do
+    
+  end
+
   def no_students?
     students.count.zero?
+  end
+
+  def present_students
+    students.where('first_name IS NOT NULL')
   end
 end
