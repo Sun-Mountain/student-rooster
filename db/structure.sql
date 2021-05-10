@@ -132,6 +132,39 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: students; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.students (
+    id bigint NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    email character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.students_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
+
+
+--
 -- Name: teams; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -222,6 +255,13 @@ ALTER TABLE ONLY public.rosters ALTER COLUMN id SET DEFAULT nextval('public.rost
 
 
 --
+-- Name: students id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.students_id_seq'::regclass);
+
+
+--
 -- Name: teams id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -273,6 +313,14 @@ ALTER TABLE ONLY public.rosters
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.students
+    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
 
 
 --
@@ -383,6 +431,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210508185918'),
 ('20210508210411'),
 ('20210509155550'),
-('20210509155627');
+('20210509155627'),
+('20210510213654');
 
 

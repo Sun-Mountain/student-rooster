@@ -6,12 +6,16 @@ Rails.application.routes.draw do
   }
 
   resources :users, path: 'u/' do
-    resources :teams, path: '' do
-      resources :lessons, path: '' do
+    resources :teams, path: 't/' do
+      resources :lessons, path: 'l/' do
         resources :rosters, path: 'r/'
+      end
+      resources :students, path: 'st/' do
       end
     end
   end
+
+  match '/students', to: 'students#index', via: :get
 
   authenticated :user do
     root 'portal#show', as: :authenticated_root, via: :get
