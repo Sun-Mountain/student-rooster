@@ -81,3 +81,10 @@
 .student-delete:hover {
   background: $color-gray-dark;
 }
+
+.student-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
