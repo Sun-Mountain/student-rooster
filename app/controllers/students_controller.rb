@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
 
     @student = @roster.students.create(student_params)
 
-    if @student.save && add_student_to_lesson
+    if @student.save
       flash[:notice] = "New student has been added to #{@lesson.name} Roster."
     else
       flash[:alert] = "Student could not be created: #{model_error_string(@student)}"
@@ -24,10 +24,6 @@ class StudentsController < ApplicationController
   end
 
   private
-
-  def add_student_to_lesson
-    @lesson.students << @student
-  end
 
   def lesson
     Lesson.find(params[:lesson_id])
