@@ -34,26 +34,32 @@
         <ul>
           <li>
             <div class="student-details header">
-              <div class="profile header">
+              <div class="id header item">
+                ID
               </div>
-              <div class="name header">
+              <div class="profile header item">
+              </div>
+              <div class="name header item">
                 First Name
               </div>
-              <div class="name header">
+              <div class="name header item">
                 Last Name
               </div>
-              <div class="header">
+              <div class="header item">
                 Email
               </div>
             </div>
-            <div class="student-delete-container header">
+            <div class="student-delete-container header item">
               Delete Student
             </div>
           </li>
           <% @students.each do |student| %>
             <li>
               <div class="student-details">
-                <div class="profile">
+                <div class="id item">
+                  <%= student.id %>
+                </div>
+                <div class="profile item">
                   <%= link_to user_team_student_path(@user.id, @team.id, student.id) do%>
                     <div class="student-link">
                       <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -65,17 +71,17 @@
                     </div>
                   <% end %>
                 </div>
-                <div class="name">
+                <div class="name item">
                   <%= student.first_name %>
                 </div>
-                <div class="name">
+                <div class="name item">
                   <%= student.last_name %>
                 </div>
                 <div>
                   <%= student.email %>
                 </div>
               </div>
-              <div class="student-delete-container">
+              <div class="student-delete-container item">
                 <%= button_to "x", user_team_student_path(id: student.id, user_id: @user.id, team_id: @team.id), method: :delete, class: "student-delete" %>
               </div>
             </li>
