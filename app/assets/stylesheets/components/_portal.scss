@@ -8,6 +8,11 @@
   h2 {
     margin-bottom: 0;
   }
+
+  h3 {
+    color: $color-parrot-green;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .portal-welcome {
@@ -16,6 +21,20 @@
   a {
     font-size: 12px;
     font-weight: 400;
+  }
+}
+
+.portal-forms-container {
+  label {
+    font-size: 14px;
+  }
+
+  .form-wrapper {
+    padding: 1rem 0;
+  }
+
+  .form-wrapper + .form-wrapper {
+    border-top: 1px solid $color-gray-light;
   }
 }
 
