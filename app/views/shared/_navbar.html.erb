@@ -7,10 +7,10 @@
     <ul>
       <% if user_signed_in? %>
         <li>
-          <%= button_to "Student Dash", "#", class: 'nav-btn', method: :get %>
+          <%= button_to "Student Dash", students_path(User, Team), class: 'nav-btn', method: :get %>
         </li>
         <li>
-          <%= button_to "Team Dash", portal_path(User), class: 'nav-btn', method: :get %>
+          <%= button_to "Team Dash", portal_path, class: 'nav-btn', method: :get %>
         </li>
         <li>
           <%= button_to "Edit Profile", edit_registration_path(User), class: 'nav-btn', method: :get %>
