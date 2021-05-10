@@ -3,6 +3,11 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @user = user
+    @team = team
+  end
+
   def create
     @team = team
     @lesson = @team.lessons.create(lesson_params)
