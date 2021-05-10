@@ -6,16 +6,15 @@
     </div>
 
     <div class="form-wrapper">
-      <h3>Add a New Student to Roster</h3>
-      <%= form_with model: [ @user, @team, @lesson, @roster, @roster.students.build ] do |form| %>
+      <h3>Create a New Lesson</h3>
+      <%= form_with model: [ @user, @team, @team.lessons.build ] do |form| %>
         <div class="field">
-          <%= form.label :first_name %><br>
-          <%= form.text_field :first_name, class: "field-text" %>
+          <%= form.label :name %><br>
+          <%= form.text_field :name, class: "field-text" %>
         </div>
 
         <div class="field">
-          <%= form.label :last_name %><br>
-          <%= form.text_field :last_name, class: "field-text" %>
+          <%= form.submit "Add Lesson", class: "form-button"  %>
         </div>
 
         <div class="field">
