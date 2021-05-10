@@ -31,6 +31,8 @@ class RostersController < ApplicationController
   end
 
   def show
+    @user = user
+    @team = team
     @lesson = lesson
     @roster = roster
   end

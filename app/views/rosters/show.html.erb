@@ -6,16 +6,39 @@
     </div>
 
     <div class="form-wrapper">
-      <h3>Create a New Lesson</h3>
-      <%= form_with model: [ @user, @team, @team.lessons.build ] do |form| %>
+      <h3>Add a New Student to Roster</h3>
+      <%= form_with model: [ @user, @team, @lesson, @roster, @roster.students.build ] do |form| %>
         <div class="field">
-          <%= form.label :name %><br>
-          <%= form.text_field :name, class: "field-text" %>
+          <%= form.label :first_name %><br>
+          <%= form.text_field :first_name, class: "field-text" %>
         </div>
 
         <div class="field">
-          <%= form.submit "Add Lesson", class: "form-button"  %>
+          <%= form.label :last_name %><br>
+          <%= form.text_field :last_name, class: "field-text" %>
         </div>
+
+        <div class="field">
+          <%= form.label :email %><br>
+          <%= form.text_field :email, class: "field-text" %>
+        </div>
+
+        <div class="field">
+          <%= form.label :phone %><br>
+          <%= form.text_field :phone, class: "field-text" %>
+        </div>
+
+        <div class="field">
+          <%= form.submit "Add New Student", class: "form-button"  %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="roster-student-list">
+      <% if @roster.no_students? %>
+        No students
+      <% else%>
+        Yay students
       <% end %>
     </div>
   </div>

@@ -10,4 +10,8 @@ class Roster < ApplicationRecord
   def dates
     "#{begin_date.try(:to_formatted_s, :rfc822)} - #{end_date.try(:to_formatted_s, :rfc822)}"
   end
+
+  def no_students?
+    students.count.zero?
+  end
 end
