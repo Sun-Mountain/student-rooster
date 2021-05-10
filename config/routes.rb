@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       resources :lessons, path: 'l/' do
         resources :rosters, path: 'r/'
       end
+
+      resources :students, path: 'st/'
     end
   end
 

@@ -32,7 +32,7 @@
     /* this fix is needed for IE7- */
   }
 
-  .btn_sign-out {
+  .nav-btn {
     background-color: $navbar-color;
     border: 0px;
     color: $navbar-link;
@@ -41,7 +41,7 @@
     padding: 15px 25px;
   }
 
-  .btn_sign-out:hover {
+  .nav-btn:hover {
     background-color: $color-blue-sapphire;
     color: $navbar-link-hover;
     cursor: pointer;
