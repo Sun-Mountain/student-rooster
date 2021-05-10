@@ -1,0 +1,74 @@
+.student-dash {
+  label {
+    font-size: 14px;
+  }
+
+  .form-button {
+    font-size: 14px;
+  }
+}
+
+.student-list {
+  margin: 2.5rem 0;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul > li {
+    border-bottom: $color-gray-lighter solid 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding-bottom: 15px;
+  }
+
+  ul > *:last-child {
+    border-bottom: 0px;
+  }
+
+  .header {
+    font-weight: 700;
+  }
+
+  .profile {
+    width: 75px;
+  }
+
+  .name {
+    width: 170px;
+  }
+}
+
+.student-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.student-details > * {
+  margin-right: 15px;
+}
+
+.student-link {
+  display: flex;
+  flex-direction: row;
+}
+
+.student-link > *:first-child {
+  margin-right: 5px;
+}
+
+.student-delete {
+  background-color: $color-warn;
+  border: 0;
+  border-radius: 3px;
+  color: $color-white;
+  cursor: pointer;
+}
+
+.student-delete:hover {
+  background: $color-gray-dark;
+}

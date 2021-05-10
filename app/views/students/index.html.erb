@@ -27,9 +27,61 @@
       </div>
     </div>
 
-    <% if @students.count.zero? %>
-      Add your first student!
-    <% else %>
-    <% end %>
+    <div class="student-list">
+      <% if @students.count.zero? %>
+        Add your first student!
+      <% else %>
+        <ul>
+          <li>
+            <div class="student-details header">
+              <div class="profile header">
+              </div>
+              <div class="name header">
+                First Name
+              </div>
+              <div class="name header">
+                Last Name
+              </div>
+              <div class="header">
+                Email
+              </div>
+            </div>
+            <div class="student-delete-container header">
+              Delete Student
+            </div>
+          </li>
+          <% @students.each do |student| %>
+            <li>
+              <div class="student-details">
+                <div class="profile">
+                  <%= link_to user_team_student_path(@user.id, @team.id, student.id) do%>
+                    <div class="student-link">
+                      <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <use xlink:href="/assets/solid.svg#address-card"></use>
+                      </svg>
+                      <div>
+                        Profile
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="name">
+                  <%= student.first_name %>
+                </div>
+                <div class="name">
+                  <%= student.last_name %>
+                </div>
+                <div>
+                  <%= student.email %>
+                </div>
+              </div>
+              <div class="student-delete-container">
+                <%= button_to "x", user_team_student_path(id: student.id, user_id: @user.id, team_id: @team.id), method: :delete, class: "student-delete" %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </div>

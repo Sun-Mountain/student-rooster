@@ -29,6 +29,15 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    @student = Student.find(student_id)
+    
+    if @student.destroy
+      flash[:notice] = 'Student deleted.'
+    else
+      flash[:alert] = "Student could not be updated: #{model_error_string(@student)}"
+    end
+
+    redirect_to students_path
   end
 
   private
@@ -37,8 +46,12 @@ class StudentsController < ApplicationController
     current_user
   end
 
+  def student_id
+    params[:id]
+  end
+
   def student_parms
-    params.require(:student).permit(:first_name, :last_name, :email)
+    params.require(:student).permit(:id, :first_name, :last_name, :email)
   end
 
   def team
