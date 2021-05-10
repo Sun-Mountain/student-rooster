@@ -38,6 +38,11 @@
   }
 }
 
+.portal-forms-container > *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
 .portal-form {
   margin: 0 auto;
   max-width: $width-md-min;
@@ -61,6 +66,10 @@
 
     ul > li {
       margin: 15px 0;
+
+      a {
+        font-size: 18px;
+      }
     }
 
     ul > :first-child {

@@ -52,7 +52,6 @@
         <% end %>
       </div>
 
-
       <div class="form-wrapper">
         <h3>Add Roster to all Lessons</h3>
         <%= form_with model: [ @user, @team, @team.lessons.first, @team.lessons.first.rosters.build ] do |form| %>
