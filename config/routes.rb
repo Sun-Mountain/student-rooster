@@ -9,9 +9,11 @@ Rails.application.routes.draw do
     resources :teams, path: '' do
       resources :lessons, path: '' do
         resources :rosters, path: 'r/' do
-          resources :students
+          resources :students, only: [:get, :new, :create, :destroy]
         end
       end
+
+      resources :students, path: 'st/', only: :show
     end
   end
 

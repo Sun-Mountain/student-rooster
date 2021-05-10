@@ -39,13 +39,43 @@
         No students
       <% else%>
         <ul>
-          <% @roster.present_students.each do |student| %>
-            <li>
+          <li>
+            <div class="students-header student-details">
               <div>
-                <%= student.first_name %>
+                First Name
               </div>
               <div>
-                <%= student.last_name %>
+                Last Name
+              </div>
+            </div>
+            <div class="students-header">
+              Delete Student from Roster
+            </div>
+          </li>
+          <% @roster.present_students.each do |student| %>
+            <li>
+              <div class="student-details">
+                <div>
+                  <%= student.first_name %>
+                </div>
+                <div>
+                  <%= student.last_name %>
+                </div>
+                <div>
+                  <%= link_to(user_team_student_path(@user.id, @team.id, student.id)) do %>
+                    <div class="student-link">
+                      <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                        <use xlink:href="/assets/solid.svg#address-card"></use>
+                      </svg>
+                      <div>
+                        Profile
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div>
+                x
               </div>
             </li>
           <% end %>

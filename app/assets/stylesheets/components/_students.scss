@@ -1,0 +1,40 @@
+.roster-student-list {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul > li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  li {
+    margin: 15px 0;
+  }
+}
+
+.students-header {
+  font-weight: 700;
+}
+
+.student-details {
+  display: flex;
+  flex-direction: row;
+
+  div {
+    margin-right: 15px;
+    width: 160px;
+  }
+}
+
+.student-link {
+  display: flex;
+  flex-direction: row;
+}
+
+.student-link > *:first-child {
+  margin-right: 10px;
+}
