@@ -66,3 +66,8 @@
 .roster-delete:hover {
   background: $color-gray-dark;
 }
+
+.roster-link {
+  display: flex;
+  flex-direction: row;
+}

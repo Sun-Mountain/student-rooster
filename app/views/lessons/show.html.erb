@@ -82,11 +82,17 @@
                   <div class="date">
                     <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
                   </div>
-                  <div class="roster-link">
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg">
-                      <use xlink:href="/assets/solid.svg#clipboard-list"></use>
-                    </svg>
-                    <%= link_to %>
+                  <div>
+                    <%= link_to(user_team_lesson_roster_path(@user.id, @team.id, @lesson.id, roster.id)) do %>
+                      <div class="roster-link">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg">
+                          <use xlink:href="/assets/solid.svg#clipboard-list"></use>
+                        </svg>
+                        <div>
+                          View Student List
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
                 <div class="roster-delete-container">
@@ -98,5 +104,8 @@
         </ul>
       </div>
     <% end %>
+  </div>
+  <div>
+    <%= link_to "Back", :back %>
   </div>
 </div>
