@@ -53,7 +53,7 @@
         <ul>
           <li>
             <div class="rosters-header">
-              <div class="roster-link">
+              <div>
                 <div class="roster-dates">
                   <div class="date">
                     Beginning Date
@@ -74,7 +74,7 @@
           <% @lesson.present_rosters.each do |roster| %>
             <li>
               <div class="roster-item">
-                <div class="roster-link">
+                <div>
                   <div class="roster-dates">
                     <div class="date">
                       <%= roster.begin_date.try(:to_formatted_s, :rfc822) %>
@@ -84,6 +84,18 @@
                     </div>
                     <div class="date">
                       <%= roster.end_date.try(:to_formatted_s, :rfc822) %>
+                    </div>
+                    <div>
+                      <%= link_to user_team_lesson_roster_path(@user.id, @team.id, roster.id) do%>
+                        <div class="roster-link">
+                          <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <use xlink:href="/assets/solid.svg#clipboard-list"></use>
+                          </svg>
+                          <div>
+                            Student Roster
+                          </div>
+                        </div>
+                      <% end %>
                     </div>
                   </div>
                 </div>
