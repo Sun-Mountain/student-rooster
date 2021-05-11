@@ -8,10 +8,10 @@ class UniqueRostersController < ApplicationController
     @team = team
     @student = student
 
-    if inputs_present?(params) && unique_class?(params)
+    if inputs_present? && unique_class?
       @lesson = lesson
       @roster = roster
-      @unique_roster = create_unique_roster(@student.id)
+      @unique_roster = create_unique_roster(student_id)
 
       @unique_roster_link = create_unique_roster_link(@lesson, @roster, @student, @unique_roster)
 
@@ -25,7 +25,7 @@ class UniqueRostersController < ApplicationController
         flash[:alert] = "Unique Roster could not be created: #{model_error_string(@unique_roster_link)}"
       end
     else
-      return_error(params)
+      return_errors
     end
 
     redirect_to user_team_student_path(id: @student.id, user_id: @user.id, team_id: @team.id)
@@ -45,29 +45,38 @@ class UniqueRostersController < ApplicationController
     params[:add_student]
   end
 
-  def inputs_present?(params)
-    params[:unique_roster][:lesson_id].present? && params[:unique_roster][:roster_id].present? && params[:student_id].present?
+  def inputs_present?
+    lesson_id.present? && roster_id.present? && student_id.present?
   end
 
   def lesson
-    Lesson.find(params[:unique_roster][:lesson_id])
+    Lesson.find(lesson_id)
   end
 
-  def return_error(params)
+  def lesson_id
+    params[:unique_roster][:lesson_id]
+  end
+
+  def return_errors
     errors = []
 
-      if params[:unique_roster][:lesson_id].blank?
+      if lesson_id.blank?
         string = "Select a lesson"
         errors.push(string)
       end
 
-      if params[:unique_roster][:lesson_id].present? && params[:unique_roster][:roster_id].blank?
+      if roster_id.blank?
         string = "Select a roster"
         errors.push(string)
       end
 
-      if params[:student_id].blank?
+      if student_id.blank?
         string = "Select a student"
+        errors.push(string)
+      end
+
+      unless unique_class?
+        string = "Student is already enrolled."
         errors.push(string)
       end
 
@@ -75,15 +84,28 @@ class UniqueRostersController < ApplicationController
   end
 
   def roster
-    Roster.find(params[:unique_roster][:roster_id])
+    Roster.find(roster_id)
+  end
+
+  def roster_id
+    params[:unique_roster][:roster_id]
   end
 
   def student
-    Student.find(params[:student_id])
+    Student.find(student_id)
+  end
+
+  def student_id
+    params[:student_id]
   end
 
   def team
     Team.find(params[:team_id])
+  end
+
+  def unique_class?
+    unique_r_l = UniqueRosterLink.where(student_id: student_id, lesson_id: lesson_id, student_id: student_id)
+    unique_r_l.blank?
   end
 
   def unique_roster_params
