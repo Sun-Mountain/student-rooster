@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
     @student = Student.find(student_id)
 
     if @student.update(student_params)
-      flash[:notice] = 'Team updated.'
+      flash[:notice] = 'Student updated.'
       redirect_to user_team_student_path(id: @student.id, user_id: @user.id, team_id: @team.id)
     else
       flash[:alert] = "Student could not be updated: #{model_error_string(@student)}"

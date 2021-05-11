@@ -13,7 +13,7 @@ Rails.application.routes.draw do
         end
       end
       resources :students, path: 'st/' do
-        resources :unique_rosters, path: 'ur/', only: [:new, :edit, :show, :update, :destroy]
+        resources :unique_rosters, path: 'ur/', only: [:new, :create, :edit, :show, :update, :destroy]
       end
     end
   end

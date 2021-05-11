@@ -3,6 +3,7 @@ class Roster < ApplicationRecord
   has_many :lesson_roster_links, dependent: :destroy
   has_many :lessons, through: :lesson_roster_links
   has_many :unique_rosters
+  has_many :students, through: :unique_rosters
 
   validates_presence_of :begin_date, :end_date
 
