@@ -43,9 +43,14 @@
         Not enrolled.
       <% else %>
         <ul>
-          <% @student.unique_rosters.each do |unique_class| %>
+          <% @student.unique_roster_links.each do |unique_class| %>
             <li>
-              <%= unique_class.id %>
+              <div>
+                <%= unique_class.lesson_name %>
+              </div>
+              <div>
+                <%= unique_class.roster_dates %>
+              </div>
             </li>
           <% end %>
         </ul>
