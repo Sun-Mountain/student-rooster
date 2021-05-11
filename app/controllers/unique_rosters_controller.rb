@@ -12,7 +12,6 @@ class UniqueRostersController < ApplicationController
     @student = student
 
     @unique_roster = @student.unique_rosters.create(roster_id: @roster.id, lesson_id: @lesson.id)
-    binding.pry
 
     if @unique_roster.save
       flash[:notice] = 'Student added to class.'

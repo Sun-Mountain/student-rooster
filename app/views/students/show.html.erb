@@ -40,5 +40,42 @@
         <% end %>
       </div>
     </div>
+
+    <div>
+      <% if @student.no_unique_rosters? %>
+        This student has not taken any classes at <%= @team.name %>.
+      <% else %>
+        <ul>
+          <li>
+            <div>
+              <div>
+                Lesson
+              </div>
+              <div>
+                Roster
+              </div>
+            </div>
+            <div>
+              Remove Student from Class
+            </div>
+          </li>
+          <% @student.student_unique_rosters.each do |ur| %>
+            <li>
+              <div>
+                <div>
+                  <%= ur.lesson %>
+                </div>
+                <div>
+                  <%= ur.roster %>
+                </div>
+              </div>
+              <div>
+                x
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </div>

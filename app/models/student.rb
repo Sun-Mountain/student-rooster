@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-  has_many :unique_rosters
+  has_many :unique_rosters, dependent: :destroy
   has_many :lessons, through: :unique_rosters
   has_many :rosters, through: :unique_rosters
 
@@ -10,7 +10,11 @@ class Student < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def no_students?
-    count.zero?
+  def no_unique_rosters?
+    unique_rosters.count.zero?
+  end
+
+  def student_unique_rosters
+    UniqueRoster.where(student_id: self.id)
   end
 end
