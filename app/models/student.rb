@@ -12,4 +12,8 @@ class Student < ApplicationRecord
   def no_students?
     count.zero?
   end
+
+  def no_unique_rosters?
+    unique_rosters.count.zero?
+  end
 end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         resources :rosters, path: 'r/'
       end
       resources :students, path: 'st/' do
+        resources :unique_rosters
       end
     end
   end

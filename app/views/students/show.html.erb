@@ -18,6 +18,38 @@
   </div>
 
   <div>
-    <h2><%= @student.name %>'s History</h2>
+    <div>
+      <h2><%= @student.name %>'s History</h2>
+    </div>
+    <div>
+      <%= form_with model: [ @user, @team, @student, @student.unique_rosters.build ] do |form| %>
+        <div class="field">
+          <%= form.select :lesson_id, Lesson.all.collect { |lesson| [lesson.name, lesson.id] }, include_blank: 'Select a Lesson' %>
+        </div>
+
+        <div class="field">
+          <%= form.select :roster_id, Roster.all.collect { |roster| [roster.dates, roster.id] }, include_blank: 'Select a Roster' %>
+        </div>
+
+        <div class="form-btn-container">
+          <div class="field">
+            <%= form.submit "Add Unique Roster", class: "form-button roster"  %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <% if @student.no_unique_rosters? %>
+        Not enrolled.
+      <% else %>
+        <ul>
+          <% @student.unique_rosters.each do |unique_class| %>
+            <li>
+              <%= unique_class.id %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </div>
