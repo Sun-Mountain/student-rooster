@@ -236,6 +236,7 @@ ALTER SEQUENCE public.unique_roster_links_id_seq OWNED BY public.unique_roster_l
 
 CREATE TABLE public.unique_rosters (
     id bigint NOT NULL,
+    student_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -490,6 +491,13 @@ CREATE INDEX index_unique_roster_links_on_unique_roster_id ON public.unique_rost
 
 
 --
+-- Name: index_unique_rosters_on_student_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_unique_rosters_on_student_id ON public.unique_rosters USING btree (student_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -564,6 +572,14 @@ ALTER TABLE ONLY public.unique_roster_links
 
 ALTER TABLE ONLY public.unique_roster_links
     ADD CONSTRAINT fk_rails_b274fbf8ce FOREIGN KEY (unique_roster_id) REFERENCES public.unique_rosters(id);
+
+
+--
+-- Name: unique_rosters fk_rails_b3d0aa5400; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.unique_rosters
+    ADD CONSTRAINT fk_rails_b3d0aa5400 FOREIGN KEY (student_id) REFERENCES public.students(id);
 
 
 --
