@@ -3,8 +3,18 @@
     font-size: 14px;
   }
 
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
   .form-button {
     font-size: 14px;
+  }
+
+  .header {
+    font-weight: 700;
   }
 }
 
@@ -14,7 +24,6 @@
 
   ul {
     list-style-type: none;
-    margin: 0;
     padding: 0;
   }
 
@@ -87,4 +96,25 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 1rem 0;
+}
+
+.class-list-container {
+  margin: 2rem 0 0 0;
+}
+
+.class-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+
+  .class-id {
+    text-align: center;
+    width: 50px;
+  }
+}
+
+.class-info {
+  display: flex;
+  flex-direction: row;
 }

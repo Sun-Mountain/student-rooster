@@ -33,23 +33,48 @@
 
         <div class="form-btn-container">
           <div class="field">
-            <%= form.submit "Add Unique Roster", class: "form-button roster"  %>
+            <%= hidden_field_tag :student_id, value: @student.id %>
+            <%= form.submit "Add Unique Roster", class: "form-button roster", name: 'add_student'  %>
           </div>
         </div>
       <% end %>
     </div>
-    <div>
+    <div class="class-list-container">
       <% if @student.no_unique_rosters? %>
         Not enrolled.
       <% else %>
         <ul>
-          <% @student.unique_roster_links.each do |unique_class| %>
-            <li>
-              <div>
-                <%= unique_class.lesson_name %>
+          <li class="header class-list-item">
+            <div class="class-info">
+              <div class="class-id">
+                ID
               </div>
-              <div>
-                <%= unique_class.roster_dates %>
+              <div class="class-lesson">
+                Lesson
+              </div>
+              <div class="class-roster">
+                Roster
+              </div>
+            </div>
+            <div class="class-delete-btn-cont">
+              Remove Student from Class
+            </div>
+          </li>
+          <% @student.unique_roster_links.each do |unique_class| %>
+            <li class="class-list-item">
+              <div class="class-info">
+                <div class="class-id">
+                  <%= unique_class.unique_roster_id %>
+                </div>
+                <div class="class-lesson">
+                  <%= unique_class.lesson_name %>
+                </div>
+                <div class="class-roster">
+                  <%= unique_class.roster_dates %>
+                </div>
+              </div>
+              <div class="class-delete-btn-cont">
+                x
               </div>
             </li>
           <% end %>
