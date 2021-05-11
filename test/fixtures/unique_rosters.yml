@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  lesson: one
+  roster: one
+
+two:
+  student: two
+  lesson: two
+  roster: two

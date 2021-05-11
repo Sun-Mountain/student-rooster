@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   resources :users, path: 'u/' do
     resources :teams, path: 't/' do
       resources :lessons, path: 'l/' do
-        resources :rosters, path: 'r/'
+        resources :rosters, path: 'r/' do
+          resources :unique_rosters, path: 'ur/', only: [:new, :edit, :show, :update, :destroy]
+        end
       end
       resources :students, path: 'st/' do
+        resources :unique_rosters, path: 'ur/', only: [:new, :edit, :show, :update, :destroy]
       end
     end
   end
