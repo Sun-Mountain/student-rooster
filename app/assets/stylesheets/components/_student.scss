@@ -112,9 +112,24 @@
     text-align: center;
     width: 50px;
   }
+
+  .class-lesson {
+    width: 250px;
+  }
 }
 
 .class-info {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+
+  div {
+    margin-right: 25px;
+  }
+}
+
+.class-delete-btn-cont {
+  margin-left: 50px;
+  text-align: left;
+  width: 140px;
 }

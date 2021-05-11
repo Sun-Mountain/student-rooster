@@ -12,8 +12,6 @@ class UniqueRostersController < ApplicationController
     @student = student
     @unique_roster = create_unique_roster
 
-    binding.pry
-
     @unique_roster_link = create_unique_roster_link(@lesson, @roster, @student, @unique_roster)
 
     if @unique_roster_link.save
