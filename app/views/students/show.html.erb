@@ -75,7 +75,7 @@
               </div>
               <div class="class-delete-btn-cont">
                 <div>
-                  x
+                  <%= button_to "x", user_team_student_remove_unique_roster_path(student_id: @student.id, user_id: @user.id, team_id: @team.id, unique_roster_id: unique_class.unique_roster_id), method: :delete, class: "student-delete" %>
                 </div>
               </div>
             </li>

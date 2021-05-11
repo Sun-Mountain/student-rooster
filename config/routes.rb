@@ -12,9 +12,12 @@ Rails.application.routes.draw do
       end
       resources :students, path: 'st/' do
         resources :unique_rosters
+        
+        match :remove_unique_roster, via: [:delete]
       end
     end
   end
+
 
   match '/students', to: 'students#index', via: :get
 

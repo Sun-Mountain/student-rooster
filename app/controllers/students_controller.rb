@@ -60,10 +60,33 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
+  def remove_unique_roster
+    @user = user
+    @team = team
+    @student = student
+
+    if @student.unique_rosters.delete(unique_roster_id)
+      delete_unique_roster(unique_roster_id)
+      flash[:notice] = "Student removed from class."
+    else
+      flash[:alert] = "Student could not be removed from class."
+    end
+
+    redirect_to user_team_student_path(id: @student.id, user_id: @user.id, team_id: @team.id)
+  end
+
   private
+
+  def delete_unique_roster(unique_roster_id)
+    UniqueRoster.find(unique_roster_id).destroy
+  end
 
   def user
     current_user
+  end
+
+  def student
+    Student.find(params[:student_id])
   end
 
   def student_id
@@ -76,5 +99,9 @@ class StudentsController < ApplicationController
 
   def team
     user.teams.first
+  end
+
+  def unique_roster_id
+    params[:unique_roster_id]
   end
 end
