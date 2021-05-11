@@ -60,7 +60,7 @@
                   <%= student.id %>
                 </div>
                 <div class="profile item">
-                  <%= link_to user_team_student_path(@user.id, @team.id, student.id) do%>
+                  <%= link_to user_team_student_path(user_id: @user.id, team_id: @team.id, id: student.id) do%>
                     <div class="student-link">
                       <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <use xlink:href="/assets/solid.svg#address-card"></use>
