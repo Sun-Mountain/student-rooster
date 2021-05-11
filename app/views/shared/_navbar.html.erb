@@ -7,23 +7,17 @@
     <ul>
       <% if user_signed_in? %>
         <li>
-          <%= button_to "Student Dash", students_path, class: 'nav-btn', method: :get %>
+          <%= button_to "Edit Profile", edit_registration_path(User), class: 'btn_sign-out', method: :get %>
         </li>
         <li>
-          <%= button_to "Team Dash", portal_path, class: 'nav-btn', method: :get %>
-        </li>
-        <li>
-          <%= button_to "Edit Profile", edit_registration_path(User), class: 'nav-btn', method: :get %>
-        </li>
-        <li>
-          <%= button_to "Sign Out", destroy_user_session_path, class: 'nav-btn', method: :delete %>
+          <%= button_to "Sign Out", destroy_user_session_path, class: 'btn_sign-out', method: :delete %>
         </li>
       <% else %>
         <li>
-          <%= button_to "Login", new_session_path(User), class: 'nav-btn', method: :get %>
+          <%= button_to "Login", new_session_path(User), class: 'btn_sign-out', method: :get %>
         </li>
         <li>
-          <%= button_to "Sign Up", new_user_registration_path, class: 'nav-btn', method: :get %>
+          <%= button_to "Sign Up", new_user_registration_path, class: 'btn_sign-out', method: :get %>
         </li>
       <% end %>
     </ul>
