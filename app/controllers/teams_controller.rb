@@ -18,13 +18,11 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @user = User.find(user_id)
-    @team = @user.teams.find(team_id)
+    @team = Team.find(team_id)
   end
 
   def update
-    @user = User.find(user_id)
-    @team = @user.teams.find(team_id)
+    @team = Team.find(team_id)
 
     if @team.update(team_params)
       flash[:notice] = 'Team updated.'

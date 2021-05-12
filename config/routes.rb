@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :teams, path: 'team/', only: [:edit, :update]
 
   match '/students', to: 'students#index', via: :get
 

@@ -11,7 +11,7 @@ RSpec.feature 'create and edit teams' do
   end
 
   context 'success' do
-    scenario 'new user creates first team' do
+    scenario 'new user creates and edits first team' do
       expect(page).to have_content('Create Your Team')
 
       fill_in :team_name, with: 'Enterprise'
@@ -19,6 +19,12 @@ RSpec.feature 'create and edit teams' do
       find('[data-test="create-new-team"]').click
 
       expect(page).to have_content('Create your first Lesson!')
+
+      team = user.teams.first
+
+      visit edit_team_path(team)
+
+      expect(page).to have_content('Edit team')
     end
   end
 end
