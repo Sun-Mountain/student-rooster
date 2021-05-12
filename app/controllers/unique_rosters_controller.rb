@@ -104,7 +104,7 @@ class UniqueRostersController < ApplicationController
   end
 
   def unique_class?
-    unique_r_l = UniqueRosterLink.where(student_id: student_id, lesson_id: lesson_id, student_id: student_id)
+    unique_r_l = UniqueRosterLink.where(student_id: student_id, lesson_id: lesson_id, roster_id: roster_id)
     unique_r_l.blank?
   end
 

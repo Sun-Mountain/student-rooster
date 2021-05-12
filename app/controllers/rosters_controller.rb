@@ -33,6 +33,8 @@ class RostersController < ApplicationController
   def show
     @lesson = lesson
     @roster = roster
+
+    @roster_student_list = Roster.roster_student_list
   end
 
   def destroy

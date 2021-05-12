@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.new student_params
+    @student = Student.new student_parms
 
     if @student.save
       flash[:notice] = 'Student added.'
@@ -22,30 +22,10 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
-  def show
-    @user = user
-    @team = team
-    @student = Student.find(student_id)
-  end
-
   def edit
-    @user = user
-    @team = team
-    @student = Student.find(student_id)
   end
 
   def update
-    @user = user
-    @team = team
-    @student = Student.find(student_id)
-
-    if @student.update(student_params)
-      flash[:notice] = 'Team updated.'
-      redirect_to user_team_student_path(id: @student.id, user_id: @user.id, team_id: @team.id)
-    else
-      flash[:alert] = "Student could not be updated: #{model_error_string(@student)}"
-      render :edit
-    end
   end
 
   def destroy
@@ -101,7 +81,7 @@ class StudentsController < ApplicationController
     params[:id]
   end
 
-  def student_params
+  def student_parms
     params.require(:student).permit(:id, :first_name, :last_name, :email)
   end
 
