@@ -13,8 +13,9 @@
     font-size: 14px;
   }
 
-  .header {
+  .student-header {
     font-weight: 700;
+    padding-bottom: 0;
   }
 }
 
@@ -36,10 +37,6 @@
 
   ul > *:last-child {
     border-bottom: 0px;
-  }
-
-  .header {
-    font-weight: 700;
   }
 
   .profile {
@@ -120,10 +117,6 @@
 
 .class-list-item + .class-list-item {
   border-top: solid 1px $color-gray-lighter
-}
-
-.header {
-  padding-bottom: 0;
 }
 
 .class-info {

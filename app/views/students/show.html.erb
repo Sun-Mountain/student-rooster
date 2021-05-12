@@ -22,6 +22,7 @@
       <h2><%= @student.name %>'s History</h2>
     </div>
     <div class="form-wrapper">
+      <h3>Add a Unique Roster</h3>
       <%= form_with model: [ @user, @team, @student, @student.unique_rosters.build ] do |form| %>
         <div class="field">
           <%= form.select :lesson_id, Lesson.all.collect { |lesson| [lesson.name, lesson.id] }, { include_blank: 'Select a Lesson' }, class: "field-text" %>
@@ -44,7 +45,7 @@
         Not enrolled.
       <% else %>
         <ul>
-          <li class="header class-list-item">
+          <li class="student-header class-list-item">
             <div class="class-info">
               <div class="class-id">
                 ID
