@@ -21,14 +21,14 @@
     <div>
       <h2><%= @student.name %>'s History</h2>
     </div>
-    <div>
+    <div class="form-wrapper">
       <%= form_with model: [ @user, @team, @student, @student.unique_rosters.build ] do |form| %>
         <div class="field">
-          <%= form.select :lesson_id, Lesson.all.collect { |lesson| [lesson.name, lesson.id] }, include_blank: 'Select a Lesson' %>
+          <%= form.select :lesson_id, Lesson.all.collect { |lesson| [lesson.name, lesson.id] }, { include_blank: 'Select a Lesson' }, class: "field-text" %>
         </div>
 
         <div class="field">
-          <%= form.select :roster_id, Roster.all.collect { |roster| [roster.dates, roster.id] }, include_blank: 'Select a Roster' %>
+          <%= form.select :roster_id, Roster.all.collect { |roster| [roster.dates, roster.id] }, { include_blank: 'Select a Roster' }, class: "field-text" %>
         </div>
 
         <div class="form-btn-container">

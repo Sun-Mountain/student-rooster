@@ -106,7 +106,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
 
   .class-id {
     text-align: center;
@@ -116,6 +116,14 @@
   .class-lesson {
     width: 250px;
   }
+}
+
+.class-list-item + .class-list-item {
+  border-top: solid 1px $color-gray-lighter
+}
+
+.header {
+  padding-bottom: 0;
 }
 
 .class-info {
