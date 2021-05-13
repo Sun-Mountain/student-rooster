@@ -16,6 +16,10 @@ class LessonsController < ApplicationController
     redirect_to portal_path
   end
 
+  def show
+    @lesson = Lesson.find(params[:id])
+  end
+
   private
 
   def add_lesson_to_team(lesson)

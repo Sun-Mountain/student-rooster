@@ -16,4 +16,16 @@ class User < ApplicationRecord
   def team
     teams.first
   end
+
+  def team_id
+    teams.first.id
+  end
+
+  def team_lessons
+    teams.first.lessons
+  end
+
+  def team_name
+    teams.first.name
+  end
 end
