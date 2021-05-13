@@ -4,4 +4,16 @@
 
 .portal-welcome {
   padding: 1rem 2rem;
-} 
+}
+
+.dash-title {
+  .dash-title-link {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+
+  .dash-title-link:hover {
+    text-decoration: none;
+  }
+}

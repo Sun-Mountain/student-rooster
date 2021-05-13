@@ -8,11 +8,11 @@
 
     <% else %>
 
-      <div>
-        <h2><%= @user.team.name %> Dashboard</h2>
-        <div>
-          <%= link_to "Edit Team", edit_team_path(@user.team.id) %>
-        </div>
+      <div class="dash-title">
+        <h2>
+          <%= @user.team.name %> Dashboard
+          <%= link_to "Edit Team", edit_team_path(@user.team.id), class: "dash-title-link", data: {test: "edit-team"} %>
+        </h2>
       </div>
 
       <h3>Lessons</h3>
