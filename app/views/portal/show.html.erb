@@ -14,27 +14,29 @@
           <%= link_to "Edit Team", edit_team_path(@user.team_id), class: "dash-title-link", data: {test: "edit-team"} %>
         </h2>
       </div>
+</div>
 
-      <div>
+
+    <div class="portal-content">
+      <div class="team-lesson-list-container">
         <h3>Lessons</h3>
-
-        <div>
-          <% if @user.team.no_lessons? %>
-            No lessons exist for <%= @user.team.name %>.
-          <% else %>
-            <ul>
-              <% @user.team_lessons.each do |lesson| %>
-                <li>
-                  <%= link_to lesson.name, team_lesson_path(@user.team_id, lesson.id) %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
-
-        <%= render partial: 'lessons/new' %>
+        <% if @user.team.no_lessons? %>
+          No lessons exist for <%= @user.team.name %>.
+        <% else %>
+          <ul class="team-lesson-list">
+            <li class="header">
+              Name
+            </li>
+            <% @user.team_lessons.each do |lesson| %>
+              <li>
+                <%= link_to lesson.name, team_lesson_path(@user.team_id, lesson.id) %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
-    <% end %>
-  </div>
 
+      <%= render partial: 'lessons/new' %>
+    </div>
+  <% end %>
 </div>

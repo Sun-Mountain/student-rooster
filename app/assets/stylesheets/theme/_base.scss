@@ -17,4 +17,9 @@ a:hover {
 #main {
   margin: 0 auto;
   width: $width-md-max;
-} 
+}
+
+.header {
+  color: $color-gray;
+  font-weight: 700;
+}
