@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Team, type: :model do
   subject { create :team }
 
   describe 'factory' do

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, path: 'u/'
 
-  resources :teams, path: 'team/', only: [:create, :edit, :update]
+  resources :teams, path: 'team/', only: [:new, :create, :edit, :update]
 
   authenticated :user do
     root 'portal#show', as: :authenticated_root, via: :get

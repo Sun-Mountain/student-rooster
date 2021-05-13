@@ -1,3 +1,23 @@
 <div class="portal-welcome">
   Welcome <%= @user.username %>.
+
+  <div>
+    <% if @user.no_teams? %>
+
+      <%= render partial: 'teams/new' %>
+
+    <% else %>
+
+      <div>
+        <h2><%= @user.team.name %> Dashboard</h2>
+        <div>
+          <%= link_to "Edit Team", edit_team_path(@user.team.id) %>
+        </div>
+      </div>
+
+      <h3>Lessons</h3>
+
+    <% end %>
+  </div>
+
 </div>
