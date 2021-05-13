@@ -5,4 +5,8 @@ class Team < ApplicationRecord
   has_many :users, through: :user_teams
 
   validates_presence_of :name
+
+  def no_lessons?
+    lessons.count.zero?
+  end
 end

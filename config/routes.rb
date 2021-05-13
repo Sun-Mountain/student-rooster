@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, path: 'u/'
 
-  resources :teams, path: 'team/', only: [:new, :create, :edit, :update] do
-    resources :lessons
+  resources :teams, path: 't/', only: [:create, :edit, :update] do
+    resources :lessons, only: [:create, :edit, :update, :show, :destroy]
   end
 
   authenticated :user do

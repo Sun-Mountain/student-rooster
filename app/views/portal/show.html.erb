@@ -15,8 +15,19 @@
         </h2>
       </div>
 
-      <h3>Lessons</h3>
+      <div>
+        <h3>Lessons</h3>
 
+        <div>
+          <% if @user.team.no_lessons? %>
+            No lessons exist for <%= @user.team.name %>.
+          <% else %>
+            Let's learn!
+          <% end %>
+        </div>
+
+        <%= render partial: 'lessons/new' %>
+      </div>
     <% end %>
   </div>
 
