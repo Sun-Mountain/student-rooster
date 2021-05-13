@@ -11,7 +11,6 @@ RSpec.feature 'user creates account' do
   context 'success:' do
     scenario 'user creates an account' do
       fill_in :user_username, with: 'CapPicard'
-      fill_in :user_full_name, with: 'Jean Luc Picard'
       fill_in :user_email, with: 'picard@gmail.com'
       fill_in :user_password, with: 'password'
       fill_in :user_password_confirmation, with: 'password'
@@ -30,7 +29,6 @@ RSpec.feature 'user creates account' do
       expect(page).to have_content("Email can't be blank")
       expect(page).to have_content("Password can't be blank")
       expect(page).to have_content("Username can't be blank")
-      expect(page).to have_content("Full name can't be blank")
     end
   end
 end

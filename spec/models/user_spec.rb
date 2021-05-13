@@ -15,11 +15,4 @@ RSpec.describe User, type: :model do
       expect(subject).to_not be_valid
     end
   end
-
-  describe '#full_name' do
-    it 'requires a full name' do
-      subject.full_name = nil
-      expect(subject).to_not be_valid
-    end
-  end
 end

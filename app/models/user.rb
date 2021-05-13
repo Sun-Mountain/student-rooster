@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, :full_name, :email, presence: true
+  validates :username, :email, presence: true
 
   def no_team?
     teams.count.zero?

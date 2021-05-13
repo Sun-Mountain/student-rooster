@@ -13,7 +13,6 @@ RSpec.feature 'user edits profile' do
   context 'success' do
     scenario 'change username and name' do
       fill_in :user_username, with: 'CapPicard'
-      fill_in :user_full_name, with: 'Jean Luc Picard'
       fill_in :user_current_password, with: '12345ABCDEfghi!'
 
       find('[data-test="update-user-account"]').click

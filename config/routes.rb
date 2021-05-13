@@ -5,18 +5,9 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  resources :users, path: 'u/' do
-    resources :teams, path: 't/' do
-      resources :lessons, path: 'l/' do
-        resources :rosters, path: 'r/'
-      end
-      resources :students, path: 'st/'
-    end
-  end
+  resources :users, path: 'u/'
 
-  resources :teams, path: 'team/', only: [:edit, :update]
-
-  match '/students', to: 'students#index', via: :get
+  resources :teams, path: 'team/', only: [:create, :edit, :update]
 
   authenticated :user do
     root 'portal#show', as: :authenticated_root, via: :get
