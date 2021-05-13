@@ -41,7 +41,6 @@ CREATE TABLE public.schema_migrations (
 CREATE TABLE public.teams (
     id bigint NOT NULL,
     name character varying,
-    user_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -64,6 +63,38 @@ CREATE SEQUENCE public.teams_id_seq
 --
 
 ALTER SEQUENCE public.teams_id_seq OWNED BY public.teams.id;
+
+
+--
+-- Name: user_teams; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.user_teams (
+    id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    team_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: user_teams_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.user_teams_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: user_teams_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.user_teams_id_seq OWNED BY public.user_teams.id;
 
 
 --
@@ -110,6 +141,13 @@ ALTER TABLE ONLY public.teams ALTER COLUMN id SET DEFAULT nextval('public.teams_
 
 
 --
+-- Name: user_teams id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_teams ALTER COLUMN id SET DEFAULT nextval('public.user_teams_id_seq'::regclass);
+
+
+--
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -141,6 +179,14 @@ ALTER TABLE ONLY public.teams
 
 
 --
+-- Name: user_teams user_teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_teams
+    ADD CONSTRAINT user_teams_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -149,10 +195,17 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: index_teams_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_user_teams_on_team_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_teams_on_user_id ON public.teams USING btree (user_id);
+CREATE INDEX index_user_teams_on_team_id ON public.user_teams USING btree (team_id);
+
+
+--
+-- Name: index_user_teams_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_teams_on_user_id ON public.user_teams USING btree (user_id);
 
 
 --
@@ -177,11 +230,19 @@ CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (usernam
 
 
 --
--- Name: teams fk_rails_45096701b6; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: user_teams fk_rails_64c25f3fe6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.teams
-    ADD CONSTRAINT fk_rails_45096701b6 FOREIGN KEY (user_id) REFERENCES public.users(id);
+ALTER TABLE ONLY public.user_teams
+    ADD CONSTRAINT fk_rails_64c25f3fe6 FOREIGN KEY (team_id) REFERENCES public.teams(id);
+
+
+--
+-- Name: user_teams fk_rails_978858c8ea; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.user_teams
+    ADD CONSTRAINT fk_rails_978858c8ea FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -192,6 +253,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210508153411'),
-('20210508185918');
+('20210508185918'),
+('20210513130638');
 
 

@@ -17,8 +17,7 @@ RSpec.feature 'user creates account' do
 
       click_on('Sign up')
 
-      expect(page).to have_content('Welcome! You have signed up successfully.')
-      expect(page).to have_content('Create Your Team')
+      expect(page).to have_content('Welcome CapPicard')
     end
   end
 

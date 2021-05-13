@@ -1,6 +1,6 @@
 class Team < ApplicationRecord
-  belongs_to :user
-  has_many :lessons, dependent: :destroy
+  has_many :user_teams, dependent: :destroy
+  has_many :users, through: :user_teams
 
   validates_presence_of :name
 
