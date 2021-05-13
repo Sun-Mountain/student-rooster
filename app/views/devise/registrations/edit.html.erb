@@ -11,11 +11,6 @@
       </div>
 
       <div class="field">
-        <%= f.label :full_name %><br />
-        <%= f.text_field :full_name, class: "field-text" %>
-      </div>
-
-      <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autocomplete: "email", class: "field-text" %>
       </div>
@@ -39,7 +34,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Update", class: "form-button" %>
+        <%= f.submit "Update", class: "form-button", data: { test: "update-user-account" } %>
       </div>
     <% end %>
   </div>

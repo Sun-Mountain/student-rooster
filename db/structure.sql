@@ -26,103 +26,6 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: lesson_roster_links; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.lesson_roster_links (
-    id bigint NOT NULL,
-    lesson_id bigint NOT NULL,
-    roster_id bigint NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: lesson_roster_links_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.lesson_roster_links_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: lesson_roster_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.lesson_roster_links_id_seq OWNED BY public.lesson_roster_links.id;
-
-
---
--- Name: lessons; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.lessons (
-    id bigint NOT NULL,
-    name character varying,
-    description text,
-    team_id bigint NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: lessons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.lessons_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: lessons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.lessons_id_seq OWNED BY public.lessons.id;
-
-
---
--- Name: rosters; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.rosters (
-    id bigint NOT NULL,
-    begin_date date,
-    end_date date,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: rosters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.rosters_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: rosters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.rosters_id_seq OWNED BY public.rosters.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -132,46 +35,12 @@ CREATE TABLE public.schema_migrations (
 
 
 --
--- Name: students; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.students (
-    id bigint NOT NULL,
-    first_name character varying,
-    last_name character varying,
-    email character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.students_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
-
-
---
 -- Name: teams; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.teams (
     id bigint NOT NULL,
     name character varying,
-    user_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -197,25 +66,23 @@ ALTER SEQUENCE public.teams_id_seq OWNED BY public.teams.id;
 
 
 --
--- Name: unique_roster_links; Type: TABLE; Schema: public; Owner: -
+-- Name: user_teams; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.unique_roster_links (
+CREATE TABLE public.user_teams (
     id bigint NOT NULL,
-    student_id bigint NOT NULL,
-    lesson_id bigint NOT NULL,
-    roster_id bigint NOT NULL,
-    unique_roster_id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    team_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
 
 
 --
--- Name: unique_roster_links_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: user_teams_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.unique_roster_links_id_seq
+CREATE SEQUENCE public.user_teams_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -224,41 +91,10 @@ CREATE SEQUENCE public.unique_roster_links_id_seq
 
 
 --
--- Name: unique_roster_links_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: user_teams_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.unique_roster_links_id_seq OWNED BY public.unique_roster_links.id;
-
-
---
--- Name: unique_rosters; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.unique_rosters (
-    id bigint NOT NULL,
-    student_id bigint NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: unique_rosters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.unique_rosters_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: unique_rosters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.unique_rosters_id_seq OWNED BY public.unique_rosters.id;
+ALTER SEQUENCE public.user_teams_id_seq OWNED BY public.user_teams.id;
 
 
 --
@@ -268,7 +104,6 @@ ALTER SEQUENCE public.unique_rosters_id_seq OWNED BY public.unique_rosters.id;
 CREATE TABLE public.users (
     id bigint NOT NULL,
     username character varying DEFAULT ''::character varying NOT NULL,
-    full_name character varying DEFAULT ''::character varying NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying,
@@ -299,34 +134,6 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
--- Name: lesson_roster_links id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.lesson_roster_links ALTER COLUMN id SET DEFAULT nextval('public.lesson_roster_links_id_seq'::regclass);
-
-
---
--- Name: lessons id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.lessons ALTER COLUMN id SET DEFAULT nextval('public.lessons_id_seq'::regclass);
-
-
---
--- Name: rosters id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rosters ALTER COLUMN id SET DEFAULT nextval('public.rosters_id_seq'::regclass);
-
-
---
--- Name: students id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.students_id_seq'::regclass);
-
-
---
 -- Name: teams id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -334,17 +141,10 @@ ALTER TABLE ONLY public.teams ALTER COLUMN id SET DEFAULT nextval('public.teams_
 
 
 --
--- Name: unique_roster_links id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: user_teams id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.unique_roster_links ALTER COLUMN id SET DEFAULT nextval('public.unique_roster_links_id_seq'::regclass);
-
-
---
--- Name: unique_rosters id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.unique_rosters ALTER COLUMN id SET DEFAULT nextval('public.unique_rosters_id_seq'::regclass);
+ALTER TABLE ONLY public.user_teams ALTER COLUMN id SET DEFAULT nextval('public.user_teams_id_seq'::regclass);
 
 
 --
@@ -363,43 +163,11 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: lesson_roster_links lesson_roster_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.lesson_roster_links
-    ADD CONSTRAINT lesson_roster_links_pkey PRIMARY KEY (id);
-
-
---
--- Name: lessons lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.lessons
-    ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
-
-
---
--- Name: rosters rosters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rosters
-    ADD CONSTRAINT rosters_pkey PRIMARY KEY (id);
-
-
---
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
-
-
---
--- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.students
-    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
 
 
 --
@@ -411,19 +179,11 @@ ALTER TABLE ONLY public.teams
 
 
 --
--- Name: unique_roster_links unique_roster_links_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: user_teams user_teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.unique_roster_links
-    ADD CONSTRAINT unique_roster_links_pkey PRIMARY KEY (id);
-
-
---
--- Name: unique_rosters unique_rosters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.unique_rosters
-    ADD CONSTRAINT unique_rosters_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.user_teams
+    ADD CONSTRAINT user_teams_pkey PRIMARY KEY (id);
 
 
 --
@@ -435,66 +195,17 @@ ALTER TABLE ONLY public.users
 
 
 --
--- Name: index_lesson_roster_links_on_lesson_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_user_teams_on_team_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_lesson_roster_links_on_lesson_id ON public.lesson_roster_links USING btree (lesson_id);
-
-
---
--- Name: index_lesson_roster_links_on_roster_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_lesson_roster_links_on_roster_id ON public.lesson_roster_links USING btree (roster_id);
+CREATE INDEX index_user_teams_on_team_id ON public.user_teams USING btree (team_id);
 
 
 --
--- Name: index_lessons_on_team_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_user_teams_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_lessons_on_team_id ON public.lessons USING btree (team_id);
-
-
---
--- Name: index_teams_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_teams_on_user_id ON public.teams USING btree (user_id);
-
-
---
--- Name: index_unique_roster_links_on_lesson_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_unique_roster_links_on_lesson_id ON public.unique_roster_links USING btree (lesson_id);
-
-
---
--- Name: index_unique_roster_links_on_roster_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_unique_roster_links_on_roster_id ON public.unique_roster_links USING btree (roster_id);
-
-
---
--- Name: index_unique_roster_links_on_student_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_unique_roster_links_on_student_id ON public.unique_roster_links USING btree (student_id);
-
-
---
--- Name: index_unique_roster_links_on_unique_roster_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_unique_roster_links_on_unique_roster_id ON public.unique_roster_links USING btree (unique_roster_id);
-
-
---
--- Name: index_unique_rosters_on_student_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_unique_rosters_on_student_id ON public.unique_rosters USING btree (student_id);
+CREATE INDEX index_user_teams_on_user_id ON public.user_teams USING btree (user_id);
 
 
 --
@@ -519,75 +230,19 @@ CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (usernam
 
 
 --
--- Name: unique_roster_links fk_rails_0ba61981d1; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: user_teams fk_rails_64c25f3fe6; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.unique_roster_links
-    ADD CONSTRAINT fk_rails_0ba61981d1 FOREIGN KEY (lesson_id) REFERENCES public.lessons(id);
-
-
---
--- Name: lessons fk_rails_2846e8c48d; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.lessons
-    ADD CONSTRAINT fk_rails_2846e8c48d FOREIGN KEY (team_id) REFERENCES public.teams(id);
+ALTER TABLE ONLY public.user_teams
+    ADD CONSTRAINT fk_rails_64c25f3fe6 FOREIGN KEY (team_id) REFERENCES public.teams(id);
 
 
 --
--- Name: unique_roster_links fk_rails_2a887f7958; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: user_teams fk_rails_978858c8ea; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.unique_roster_links
-    ADD CONSTRAINT fk_rails_2a887f7958 FOREIGN KEY (student_id) REFERENCES public.students(id);
-
-
---
--- Name: teams fk_rails_45096701b6; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.teams
-    ADD CONSTRAINT fk_rails_45096701b6 FOREIGN KEY (user_id) REFERENCES public.users(id);
-
-
---
--- Name: lesson_roster_links fk_rails_75e37fbff0; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.lesson_roster_links
-    ADD CONSTRAINT fk_rails_75e37fbff0 FOREIGN KEY (lesson_id) REFERENCES public.lessons(id);
-
-
---
--- Name: unique_roster_links fk_rails_ab45baa25e; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.unique_roster_links
-    ADD CONSTRAINT fk_rails_ab45baa25e FOREIGN KEY (roster_id) REFERENCES public.rosters(id);
-
-
---
--- Name: unique_roster_links fk_rails_b274fbf8ce; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.unique_roster_links
-    ADD CONSTRAINT fk_rails_b274fbf8ce FOREIGN KEY (unique_roster_id) REFERENCES public.unique_rosters(id);
-
-
---
--- Name: unique_rosters fk_rails_b3d0aa5400; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.unique_rosters
-    ADD CONSTRAINT fk_rails_b3d0aa5400 FOREIGN KEY (student_id) REFERENCES public.students(id);
-
-
---
--- Name: lesson_roster_links fk_rails_bd65eb39d6; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.lesson_roster_links
-    ADD CONSTRAINT fk_rails_bd65eb39d6 FOREIGN KEY (roster_id) REFERENCES public.rosters(id);
+ALTER TABLE ONLY public.user_teams
+    ADD CONSTRAINT fk_rails_978858c8ea FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -599,11 +254,6 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20210508153411'),
 ('20210508185918'),
-('20210508210411'),
-('20210509155550'),
-('20210509155627'),
-('20210510213654'),
-('20210511122004'),
-('20210511122055');
+('20210513130638');
 
 

@@ -4,27 +4,25 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @user = User.find(user_id)
-    @team = @user.teams.create(team_params)
+    @team = Team.new team_params
 
     if @team.save 
+      add_team_to_user_teams(@team)
       flash[:notice] = 'Welcome to the team!'
-      redirect_to new_user_team_lesson_path(@user.id, @team.id)
+      redirect_to portal_path
     else
       flash[:alert] = "Team could not be created: #{model_error_string(@team)}"
-      redirect_to root_path
+      redirect_to portal_path
     end
 
   end
 
   def edit
-    @user = User.find(user_id)
-    @team = @user.teams.find(team_id)
+    @team = Team.find(team_id)
   end
 
   def update
-    @user = User.find(user_id)
-    @team = @user.teams.find(team_id)
+    @team = Team.find(team_id)
 
     if @team.update(team_params)
       flash[:notice] = 'Team updated.'
@@ -37,15 +35,19 @@ class TeamsController < ApplicationController
 
   private
 
+  def add_team_to_user_teams(team)
+    current_user.teams << team
+  end
+
   def team_id
     params[:id]
   end
 
   def team_params
-    params.require(:team).permit(:id, :name, :user_id)
+    params.require(:team).permit(:name)
   end
 
   def user_id
-    params[:user_id]
+    current_user.id
   end
 end

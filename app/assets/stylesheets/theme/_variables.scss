@@ -20,3 +20,10 @@ $link-hover-color: $color-gray-dark;
 $navbar-color: $color-cg-blue;
 $navbar-link: $color-gray-lightest;
 $navbar-link-hover: $color-maize-crayola;
+
+// Flex
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
