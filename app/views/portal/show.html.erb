@@ -10,8 +10,8 @@
 
       <div class="dash-title">
         <h2>
-          <%= @user.team_name %> Dashboard
-          <%= link_to "Edit Team", edit_team_path(@user.team_id), class: "dash-title-link", data: {test: "edit-team"} %>
+          <%= @user.team_name %> DashboardΩ
+          <%= link_to "Edit Team", edit_team_path(@user.team_id), class: "dash-title-link" %>
         </h2>
       </div>
 </div>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div>
-                  <%= button_to "X", team_lesson_path(team_id: @user.team_id, id: lesson.id), data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: "delete-btn", data: {test: "delete-lesson-#{lesson.id}"} %>
+                  <%= button_to "X", team_lesson_path(team_id: @user.team_id, id: lesson.id), data: { confirm: 'Are you sure you want to delete this lesson?', test: "delete-lesson-#{lesson.id}" }, method: :delete, class: "delete-btn" %>
                 </div>
               </li>
             <% end %>

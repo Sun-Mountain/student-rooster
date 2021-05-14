@@ -2,6 +2,7 @@
 
 class LessonsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_permission
 
   def create
     @lesson = Lesson.new lesson_params
@@ -13,7 +14,7 @@ class LessonsController < ApplicationController
       flash[:alert] = "Lesson could not be created: #{model_error_string(@lesson)}"
     end
 
-    redirect_to portal_path
+    redirect_to root_path
   end
 
   def show
@@ -41,7 +42,7 @@ class LessonsController < ApplicationController
 
     if @lesson.destroy
       flash[:notice] = 'Lesson deleted.'
-      redirect_to portal_path
+      redirect_to root_path
     else
       flash[:alert] = "Lesson could not be updated: #{model_error_string(@lesson)}"
       render :show
@@ -60,6 +61,19 @@ class LessonsController < ApplicationController
 
   def lesson_params
     params.require(:lesson).permit(:name, :description)
+  end
+
+  def require_permission
+    return if params[:action] == 'create'
+
+    lesson_teams = lesson.teams
+    user_teams = current_user.teams
+
+    find_teams = lesson_teams & user_teams
+
+    if find_teams.blank?
+      redirect_to root_path, alert: "You are not a part of that team."
+    end
   end
 
   def team

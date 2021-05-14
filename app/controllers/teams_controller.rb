@@ -2,6 +2,7 @@
 
 class TeamsController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_permission
 
   def create
     @team = Team.new team_params
@@ -13,15 +14,15 @@ class TeamsController < ApplicationController
       flash[:alert] = "Team could not be created: #{model_error_string(@team)}"
     end
 
-    redirect_to portal_path
+    redirect_to root_path
   end
 
   def edit
-    @team = Team.find(team_id)
+    @team = team
   end
 
   def update
-    @team = Team.find(team_id)
+    @team = team
 
     if @team.update(team_params)
       flash[:notice] = 'Team updated.'
@@ -36,6 +37,16 @@ class TeamsController < ApplicationController
 
   def add_team_to_user(team)
     current_user.teams << team
+  end
+
+  def require_permission
+    unless params[:action] == "create" || team.users.include?(current_user)
+      redirect_to root_path, alert: "You are not a part of that team."
+    end
+  end
+
+  def team
+    Team.find(team_id)
   end
 
   def team_id

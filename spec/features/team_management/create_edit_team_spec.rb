@@ -20,7 +20,7 @@ RSpec.feature 'creating and updating teams' do
       expect(page).to have_content('Welcome to the team!')
       expect(page).to have_content('Enterprise Dashboard')
 
-      find('[data-test="edit-team"]').click
+      click_on('Edit Team')
 
       expect(page).to have_content('Edit Team')
 
@@ -44,7 +44,10 @@ RSpec.feature 'creating and updating teams' do
     end
 
     scenario 'cannot edit team' do
-      visit edit_team_path(team)
+      user.teams << team
+      sign_in user
+
+      visit edit_team_path(id: team.id)
 
       fill_in :team_name, with: ''
 
