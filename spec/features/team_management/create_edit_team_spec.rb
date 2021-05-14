@@ -44,7 +44,10 @@ RSpec.feature 'creating and updating teams' do
     end
 
     scenario 'cannot edit team' do
-      visit edit_team_path(team)
+      user.teams << team
+      sign_in user
+
+      visit edit_team_path(id: team.id)
 
       fill_in :team_name, with: ''
 
