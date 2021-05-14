@@ -63,8 +63,6 @@ class LessonsController < ApplicationController
     params.require(:lesson).permit(:name, :description)
   end
 
-
-
   def require_permission
     return if params[:action] == 'create'
 
