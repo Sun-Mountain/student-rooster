@@ -14,4 +14,8 @@ class Team < ApplicationRecord
   def no_students?
     students.count.zero?
   end
+
+  def student_list
+    Student.where("id IS NOT NULL")
+  end
 end

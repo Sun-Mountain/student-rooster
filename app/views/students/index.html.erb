@@ -12,16 +12,16 @@
       There are no students enrolled in <%= @user.team_name %>.
     <% else %>
 
-      <ul>
-        <li>
-          <div>
-            <div>
+      <ul class="student-list list">
+        <li class="flex-row-sp-btwn header">
+          <div class="flex-row">
+            <div class="id">
               ID
             </div>
-            <div>
+            <div class="name">
               First Name
             </div>
-            <div>
+            <div class="name">
               Last Name
             </div>
           </div>
@@ -29,18 +29,28 @@
             Delete Student
           </div>
         </li>
-        <% @team.students.each do |student| %>
-          <li>
-            <div>
-              <div>
+        <% @team.student_list.each do |student| %>
+          <li class="flex-row-sp-btwn">
+            <div class="flex-row">
+              <div class="id">
                 <%= student.id %>
               </div>
-              <div>
+              <div class="name">
                 <%= student.first_name %>
               </div>
-              <div>
+              <div class="name">
                 <%= student.last_name %>
               </div>
+              <%= link_to team_student_path(@user.team_id, student.id) do %>
+                <div class="flex-row profile-link">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <use xlink:href="/assets/solid.svg#address-card"></use>
+                  </svg> 
+                  <div>
+                    Student Profile
+                  </div>
+                </div>
+              <% end %>
             </div>
             <div>
               X
