@@ -19,9 +19,9 @@
 
     <div class="portal-content">
       <div class="team-lesson-list-container">
-        <h3>Lessons</h3>
+        <h2>Lessons</h2>
         <% if @user.team.no_lessons? %>
-          No lessons exist for <%= @user.team.name %>.
+          No lessons exist for <%= @user.team_name %>.
         <% else %>
           <ul class="team-lesson-list">
             <li class="header">

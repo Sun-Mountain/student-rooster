@@ -16,7 +16,7 @@ a:hover {
 
 #main {
   margin: 0 auto;
-  width: $width-md-max;
+  max-width: $width-md-max;
 }
 
 .header {

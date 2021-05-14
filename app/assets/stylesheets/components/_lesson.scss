@@ -1,0 +1,20 @@
+.lesson-dash {
+  max-width: $width-md-min;
+  margin: 1rem auto;
+}
+
+.lesson-welcome {
+  color: $color-gray;
+}
+
+.lesson-description {
+  a:last-of-type {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
