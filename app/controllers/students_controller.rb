@@ -26,6 +26,22 @@ class StudentsController < ApplicationController
     @student = student
   end
 
+  def edit
+    @student = student
+  end
+
+  def update
+    @student = student
+
+    if @student.update(student_params)
+      flash[:notice] = 'Student updated.'
+      redirect_to team_student_path(team_id: team_id, id: student.id)
+    else
+      flash[:alert] = "Student could not be updated: #{model_error_string(@student)}"
+      render :edit
+    end
+  end
+
   def destroy
     @student = student
 
