@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
-  # include RequirePermissionHelper
+  include RequirePermissionHelper
   before_action :authenticate_user!
 
   def index

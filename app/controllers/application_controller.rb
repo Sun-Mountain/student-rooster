@@ -31,7 +31,15 @@ class ApplicationController < ActionController::Base
     params[:controller] == 'lessons'
   end
 
+  def students_controller?
+    params[:controller] == 'students'
+  end
+
   def teams_controller?
     params[:controller] == 'teams'
+  end
+
+  def team_id
+    Team.find(params[:team_id])
   end
 end
