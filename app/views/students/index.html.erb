@@ -1,1 +1,18 @@
-Student list
+<div class="student-dashboard">
+  <div>
+    <h1><%= @user.team_name %> Student Dashboard</h1>
+  </div>
+
+  <div>
+    <%= render partial: 'students/new' %>
+  </div>
+
+  <div>
+    <% if @team.no_students? %>
+      No students :C
+    <% else %>
+      Students!
+    <% end %>
+  </div>
+
+</div>

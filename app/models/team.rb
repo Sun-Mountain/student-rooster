@@ -10,4 +10,8 @@ class Team < ApplicationRecord
   def no_lessons?
     lessons.count.zero?
   end
+
+  def no_students?
+    students.count.zero?
+  end
 end

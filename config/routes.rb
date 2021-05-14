@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :teams, path: 't/', only: [:create, :edit, :update] do
     resources :lessons, path: 'L', only: [:create, :edit, :update, :show, :destroy]
+    resources :students, only: [:index, :create, :edit, :show, :update, :destroy]
   end
 
-  resources :students, only: [:index, :create, :edit, :show, :update, :destroy]
 
   authenticated :user do
     root 'portal#show', as: :authenticated_root, via: :get
