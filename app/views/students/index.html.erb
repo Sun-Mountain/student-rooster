@@ -9,9 +9,46 @@
 
   <div>
     <% if @team.no_students? %>
-      No students :C
+      There are no students enrolled in <%= @user.team_name %>.
     <% else %>
-      Students!
+
+      <ul>
+        <li>
+          <div>
+            <div>
+              ID
+            </div>
+            <div>
+              First Name
+            </div>
+            <div>
+              Last Name
+            </div>
+          </div>
+          <div>
+            Delete Student
+          </div>
+        </li>
+        <% @team.students.each do |student| %>
+          <li>
+            <div>
+              <div>
+                <%= student.id %>
+              </div>
+              <div>
+                <%= student.first_name %>
+              </div>
+              <div>
+                <%= student.last_name %>
+              </div>
+            </div>
+            <div>
+              X
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
     <% end %>
   </div>
 
