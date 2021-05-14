@@ -14,14 +14,10 @@ module RequirePermissionHelper
         redirect_to root_path, alert: "You are not a part of that team."
       end
     elsif lessons_controller?
-      return if params[:action] == 'create'
-
-      lesson_teams = lesson.teams
       user_teams = current_user.teams
+      team = Team.find(params[:team_id])
 
-      find_teams = lesson_teams & user_teams
-
-      if find_teams.blank?
+      unless user_teams.include?(team)
         redirect_to root_path, alert: "You are not a part of that team."
       end
     end
