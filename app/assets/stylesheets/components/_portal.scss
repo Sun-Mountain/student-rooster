@@ -17,3 +17,37 @@
     text-decoration: none;
   }
 }
+
+.team-lesson-list-container {
+  h3 {
+    color: $color-parrot-green;
+    margin-bottom: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul > li {
+    padding: 0.75rem;
+  }
+
+  li + li {
+    border-top: 1px $color-gray-lighter solid;
+  }
+
+  li:nth-child(2n) {
+    background-color: $color-gray-lightest;
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}

@@ -10,14 +10,44 @@
 
       <div class="dash-title">
         <h2>
-          <%= @user.team.name %> Dashboard
-          <%= link_to "Edit Team", edit_team_path(@user.team.id), class: "dash-title-link", data: {test: "edit-team"} %>
+          <%= @user.team_name %> Dashboard
+          <%= link_to "Edit Team", edit_team_path(@user.team_id), class: "dash-title-link", data: {test: "edit-team"} %>
         </h2>
       </div>
+</div>
 
-      <h3>Lessons</h3>
 
-    <% end %>
-  </div>
+    <div class="portal-content">
+      <div class="team-lesson-list-container">
+        <h2>Lessons</h2>
+        <% if @user.team.no_lessons? %>
+          No lessons exist for <%= @user.team_name %>.
+        <% else %>
+          <ul class="team-lesson-list">
+            <li class="header flex-row-sp-btwn">
+              <div>
+                Name
+              </div>
+              <div>
+                Delete Lesson
+              </div>
+            </li>
+            <% @user.team_lessons.each do |lesson| %>
+              <li class="flex-row-sp-btwn">
+                <div>
+                  <%= link_to lesson.name, team_lesson_path(@user.team_id, lesson.id), id: "#{lesson.name}-link" %>
+                </div>
 
+                <div>
+                  <%= button_to "X", team_lesson_path(team_id: @user.team_id, id: lesson.id), data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: "delete-btn", data: {test: "delete-lesson-#{lesson.id}"} %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
+      <%= render partial: 'lessons/new' %>
+    </div>
+  <% end %>
 </div>

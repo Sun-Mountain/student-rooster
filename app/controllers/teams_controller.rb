@@ -7,14 +7,13 @@ class TeamsController < ApplicationController
     @team = Team.new team_params
 
     if @team.save 
-      add_team_to_user_teams(@team)
+      add_team_to_user(@team)
       flash[:notice] = 'Welcome to the team!'
-      redirect_to portal_path
     else
       flash[:alert] = "Team could not be created: #{model_error_string(@team)}"
-      redirect_to portal_path
     end
 
+    redirect_to portal_path
   end
 
   def edit
@@ -35,7 +34,7 @@ class TeamsController < ApplicationController
 
   private
 
-  def add_team_to_user_teams(team)
+  def add_team_to_user(team)
     current_user.teams << team
   end
 
