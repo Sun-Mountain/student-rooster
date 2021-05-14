@@ -6,11 +6,13 @@
   <div>
     <ul>
       <% if user_signed_in? %>
+        <% unless current_user.no_teams? %>
         <li>
           <%= button_to "Students", team_students_url(current_user.team_id), class: 'nav-btn', method: :get %>
         </li>
+      <% end %>
         <li>
-          <%= button_to "Teams", root_path, class: 'nav-btn', method: :get %>
+          <%= button_to "Team Dash", root_path, class: 'nav-btn', method: :get %>
         </li>
         <li>
           <%= button_to "Edit Profile", edit_registration_path(User), class: 'nav-btn', method: :get %>

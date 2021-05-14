@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :student do
-    first_name { "MyString" }
-    last_name { "MyString" }
-    email { "MyString" }
+    association :team
+    sequence(:first_name) { |n| "first_name_#{n}" }
+    sequence(:last_name) { |n| "last_name_#{n}" }
+    sequence(:contact) { |n| "contact_#{n}@gmail.com" }
   end
 end
