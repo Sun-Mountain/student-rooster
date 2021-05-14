@@ -21,9 +21,30 @@ $navbar-color: $color-cg-blue;
 $navbar-link: $color-gray-lightest;
 $navbar-link-hover: $color-maize-crayola;
 
+// Buttons
+
+.delete-btn {
+  background-color: $color-rufous;
+  border: 0;
+  border-radius: 3px;
+  color: $color-white;
+  font-weight: 700;
+  padding: 3px 8px;
+}
+
+.delete-btn:hover {
+  background-color: $color-gray-dark;
+}
+
 // Flex
 
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+.flex-row-sp-btwn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

@@ -24,12 +24,23 @@
           No lessons exist for <%= @user.team_name %>.
         <% else %>
           <ul class="team-lesson-list">
-            <li class="header">
-              Name
+            <li class="header flex-row-sp-btwn">
+              <div>
+                Name
+              </div>
+              <div>
+                Delete Lesson
+              </div>
             </li>
             <% @user.team_lessons.each do |lesson| %>
-              <li>
-                <%= link_to lesson.name, team_lesson_path(@user.team_id, lesson.id) %>
+              <li class="flex-row-sp-btwn">
+                <div>
+                  <%= link_to lesson.name, team_lesson_path(@user.team_id, lesson.id) %>
+                </div>
+
+                <div>
+                  <%= button_to "X", team_lesson_path(team_id: @user.team_id, id: lesson.id), data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: "delete-btn" %>
+                </div>
               </li>
             <% end %>
           </ul>
