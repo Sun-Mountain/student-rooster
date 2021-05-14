@@ -20,7 +20,7 @@ RSpec.feature 'creating and updating teams' do
       expect(page).to have_content('Welcome to the team!')
       expect(page).to have_content('Enterprise Dashboard')
 
-      find('[data-test="edit-team"]').click
+      click_on('Edit Team')
 
       expect(page).to have_content('Edit Team')
 
