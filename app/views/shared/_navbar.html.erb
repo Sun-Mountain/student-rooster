@@ -7,6 +7,12 @@
     <ul>
       <% if user_signed_in? %>
         <li>
+          <%= button_to "Students", students_url, class: 'nav-btn', method: :get %>
+        </li>
+        <li>
+          <%= button_to "Teams", root_path, class: 'nav-btn', method: :get %>
+        </li>
+        <li>
           <%= button_to "Edit Profile", edit_registration_path(User), class: 'nav-btn', method: :get %>
         </li>
         <li>
