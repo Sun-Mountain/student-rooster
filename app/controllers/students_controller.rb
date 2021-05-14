@@ -22,7 +22,27 @@ class StudentsController < ApplicationController
     redirect_to team_students_path(team_id)
   end
 
+  def show
+    @student = student
+  end
+
+  def destroy
+    @student = student
+
+    if @student.destroy
+      flash[:notice] = 'Student deleted.'
+      redirect_to team_students_path(team_id)
+    else
+      flash[:alert] = "Student could not be updated: #{model_error_string(@student)}"
+      render :show
+    end
+  end
+
   private
+
+  def student
+    Student.find(params[:id])
+  end
 
   def student_params
     params.require(:student).permit(:first_name, :last_name, :contact, :team_id)

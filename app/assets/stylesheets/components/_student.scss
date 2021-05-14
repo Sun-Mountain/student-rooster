@@ -1,4 +1,4 @@
-.student-list {
+.student-dashboard {
   a {
     font-weight: 400;
     text-decoration: underline;
@@ -7,7 +7,9 @@
   a:hover {
     text-decoration: none;
   }
+}
 
+.student-list {
   li {
     padding: 1rem 15px;
   }
