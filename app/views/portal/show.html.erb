@@ -35,7 +35,7 @@
             <% @user.team_lessons.each do |lesson| %>
               <li class="flex-row-sp-btwn">
                 <div>
-                  <%= link_to lesson.name, team_lesson_path(@user.team_id, lesson.id) %>
+                  <%= link_to lesson.name, team_lesson_path(@user.team_id, lesson.id), id: "#{lesson.name}-link" %>
                 </div>
 
                 <div>

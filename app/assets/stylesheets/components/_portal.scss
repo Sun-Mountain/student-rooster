@@ -38,6 +38,10 @@
     border-top: 1px $color-gray-lighter solid;
   }
 
+  li:nth-child(2n) {
+    background-color: $color-gray-lightest;
+  }
+
   a {
     text-decoration: underline;
     text-decoration-thickness: 2px;

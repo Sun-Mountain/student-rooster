@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :lesson do
-    name { "MyString" }
-    description { "MyText" }
+    sequence(:name) { |n| "lesson_#{n}" }
   end
 end
