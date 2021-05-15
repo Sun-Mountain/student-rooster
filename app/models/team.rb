@@ -6,6 +6,10 @@ class Team < ApplicationRecord
 
   validates_presence_of :name
 
+  def first_lesson
+    lessons.first
+  end
+
   def no_lessons?
     lessons.count.zero?
   end

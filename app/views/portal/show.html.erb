@@ -52,7 +52,7 @@
 
       <div class="form-wrapper">
         <h3>Add Roster to All Lessons</h3>
-        <%= form_for Roster.new, url: team_lesson_rosters_path(@user.team_id, @user.team.lessons.first.id) do |form| %>
+        <%= form_for Roster.new, url: team_lesson_rosters_path(@user.team_id, @user.team.first_lesson.id) do |form| %>
 
           <%= render 'rosters/fields', form: form %>
 
