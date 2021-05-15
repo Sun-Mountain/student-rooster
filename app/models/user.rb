@@ -18,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def team_id
-    teams.first.id
+    return teams.first.id if team.present?
   end
 
   def team_lessons

@@ -14,6 +14,12 @@ a:hover {
   color: $link-hover-color;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 #main {
   margin: 0 auto;
   max-width: $width-md-max;
@@ -22,4 +28,10 @@ a:hover {
 .header {
   color: $color-gray;
   font-weight: 700;
+}
+
+.list {
+  li + li {
+    border-top: 1px $color-gray-lighter solid;
+  }
 }

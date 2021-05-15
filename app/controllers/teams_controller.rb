@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class TeamsController < ApplicationController
+  include RequirePermissionHelper
   before_action :authenticate_user!
-  before_action :require_permission
 
   def create
     @team = Team.new team_params
@@ -37,12 +37,6 @@ class TeamsController < ApplicationController
 
   def add_team_to_user(team)
     current_user.teams << team
-  end
-
-  def require_permission
-    unless params[:action] == "create" || team.users.include?(current_user)
-      redirect_to root_path, alert: "You are not a part of that team."
-    end
   end
 
   def team

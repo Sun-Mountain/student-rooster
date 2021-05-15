@@ -67,6 +67,40 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: students; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.students (
+    id bigint NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    contact character varying,
+    team_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.students_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
+
+
+--
 -- Name: team_lessons; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -205,6 +239,13 @@ ALTER TABLE ONLY public.lessons ALTER COLUMN id SET DEFAULT nextval('public.less
 
 
 --
+-- Name: students id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.students_id_seq'::regclass);
+
+
+--
 -- Name: team_lessons id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -257,6 +298,14 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.students
+    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: team_lessons team_lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -286,6 +335,13 @@ ALTER TABLE ONLY public.user_teams
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_students_on_team_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_students_on_team_id ON public.students USING btree (team_id);
 
 
 --
@@ -362,6 +418,14 @@ ALTER TABLE ONLY public.user_teams
 
 
 --
+-- Name: students fk_rails_7c84fa8e55; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.students
+    ADD CONSTRAINT fk_rails_7c84fa8e55 FOREIGN KEY (team_id) REFERENCES public.teams(id);
+
+
+--
 -- Name: user_teams fk_rails_978858c8ea; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -380,6 +444,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210508185918'),
 ('20210513130638'),
 ('20210513191923'),
-('20210513191953');
+('20210513191953'),
+('20210514022151');
 
 

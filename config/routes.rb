@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   resources :teams, path: 't/', only: [:create, :edit, :update] do
     resources :lessons, path: 'L', only: [:create, :edit, :update, :show, :destroy]
+    resources :students, path: 'st/', only: [:index, :create, :edit, :show, :update, :destroy]
   end
+
 
   authenticated :user do
     root 'portal#show', as: :authenticated_root, via: :get
-    match '/portal', to: 'portal#show', via: :get
   end
 
   root to: 'public#landing'
