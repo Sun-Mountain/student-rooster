@@ -18,3 +18,27 @@
     text-decoration: none;
   }
 }
+
+.lesson_roster_list {
+  padding-right: 4px;
+
+  .id {
+    width: 30px;
+  }
+
+  .name {
+    width: 150px;
+  }
+
+  .date {
+    width: 120px;
+  }
+
+  li {
+    padding: 10px 0;
+  }
+
+  li + li {
+    border-top: 1px solid $color-gray-lighter;
+  }
+}

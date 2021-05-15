@@ -48,3 +48,17 @@ $navbar-link-hover: $color-maize-crayola;
   flex-direction: row;
   justify-content: space-between;
 }
+
+// Links
+.profile-link {
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.profile-link:hover {
+  text-decoration: none;
+}
+
+.profile-link > *:first-child {
+  padding-right: 5px;
+}

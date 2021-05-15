@@ -30,6 +30,22 @@ class RostersController < ApplicationController
     end
   end
 
+  def destroy
+    @team = team
+    @lesson = lesson
+    @roster = roster
+
+    if delete_from_lesson && last_roster?
+      flash[:notice] = 'Roster deleted.'
+    elsif delete_from_lesson
+      flash[:notice] = "Roster removed from #{@lesson.name}."
+    else
+      flash[:alert] = "Roster could not be created. (Check to make sure dates present.)"
+    end
+
+    redirect_to team_lesson_path(@team.id, lesson.id)
+  end
+
   private
 
   def add_to_all_lessons
@@ -37,6 +53,16 @@ class RostersController < ApplicationController
       @lessons.each do |lesson|
         lesson.rosters << @roster
       end
+    end
+  end
+
+  def delete_from_lesson
+    @lesson.rosters.delete(@roster)
+  end
+
+  def last_roster?
+    if @roster.lessons.count.zero?
+      @roster.destroy
     end
   end
 
@@ -49,7 +75,7 @@ class RostersController < ApplicationController
   end
 
   def roster_params
-    params.require(:roster).permit(:id, :begin_date, :end_date, :lesson_id)
+    params.require(:roster).permit(:id, :name, :begin_date, :end_date, :lesson_id)
   end
 
   def roster_valid?(roster)
