@@ -15,4 +15,16 @@
       </div>
     </div>
   </div>
+
+  <div>
+    <%= render partial: 'rosters/new' %>
+  </div>
+
+  <div>
+    <% if @lesson.no_rosters? %>
+      There are currently no rosters for <%= @lesson.name %>
+    <% else %>
+      Rosters!
+    <% end %>
+  </div>
 </div>

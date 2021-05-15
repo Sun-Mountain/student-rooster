@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :users, path: 'u/'
 
   resources :teams, path: 't/', only: [:create, :edit, :update] do
-    resources :lessons, path: 'L', only: [:create, :edit, :update, :show, :destroy]
+    resources :lessons, path: 'L/', only: [:create, :edit, :update, :show, :destroy] do
+      resources :rosters, path: 'r/', only: [:create, :edit, :update, :show, :destroy]
+    end
     resources :students, path: 'st/', only: [:index, :create, :edit, :show, :update, :destroy]
   end
 

@@ -9,6 +9,10 @@ class Lesson < ApplicationRecord
     description.blank?
   end
 
+  def no_rosters?
+    rosters.count.zero?
+  end
+
   def team_id
     team.id
   end

@@ -16,6 +16,10 @@
 .form-wrapper {
   margin: 1rem 0;
 
+  h3 {
+    color: $color-parrot-green;
+  }
+
   .field-text {
     border: 2px solid $color-gray-dark;
     box-sizing: border-box;
