@@ -33,6 +33,7 @@ CREATE TABLE public.lessons (
     id bigint NOT NULL,
     name character varying,
     description text,
+    team_id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -98,38 +99,6 @@ CREATE SEQUENCE public.students_id_seq
 --
 
 ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
-
-
---
--- Name: team_lessons; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.team_lessons (
-    id bigint NOT NULL,
-    lesson_id bigint NOT NULL,
-    team_id bigint NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: team_lessons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.team_lessons_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: team_lessons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.team_lessons_id_seq OWNED BY public.team_lessons.id;
 
 
 --
@@ -246,13 +215,6 @@ ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.stu
 
 
 --
--- Name: team_lessons id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.team_lessons ALTER COLUMN id SET DEFAULT nextval('public.team_lessons_id_seq'::regclass);
-
-
---
 -- Name: teams id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -306,14 +268,6 @@ ALTER TABLE ONLY public.students
 
 
 --
--- Name: team_lessons team_lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.team_lessons
-    ADD CONSTRAINT team_lessons_pkey PRIMARY KEY (id);
-
-
---
 -- Name: teams teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -338,24 +292,17 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: index_lessons_on_team_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_lessons_on_team_id ON public.lessons USING btree (team_id);
+
+
+--
 -- Name: index_students_on_team_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_students_on_team_id ON public.students USING btree (team_id);
-
-
---
--- Name: index_team_lessons_on_lesson_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_team_lessons_on_lesson_id ON public.team_lessons USING btree (lesson_id);
-
-
---
--- Name: index_team_lessons_on_team_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_team_lessons_on_team_id ON public.team_lessons USING btree (team_id);
 
 
 --
@@ -394,19 +341,11 @@ CREATE UNIQUE INDEX index_users_on_username ON public.users USING btree (usernam
 
 
 --
--- Name: team_lessons fk_rails_1a590ffb88; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: lessons fk_rails_2846e8c48d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.team_lessons
-    ADD CONSTRAINT fk_rails_1a590ffb88 FOREIGN KEY (lesson_id) REFERENCES public.lessons(id);
-
-
---
--- Name: team_lessons fk_rails_283a855a51; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.team_lessons
-    ADD CONSTRAINT fk_rails_283a855a51 FOREIGN KEY (team_id) REFERENCES public.teams(id);
+ALTER TABLE ONLY public.lessons
+    ADD CONSTRAINT fk_rails_2846e8c48d FOREIGN KEY (team_id) REFERENCES public.teams(id);
 
 
 --
@@ -444,7 +383,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210508185918'),
 ('20210513130638'),
 ('20210513191923'),
-('20210513191953'),
 ('20210514022151');
 
 

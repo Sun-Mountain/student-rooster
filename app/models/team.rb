@@ -1,6 +1,5 @@
 class Team < ApplicationRecord
-  has_many :team_lessons, dependent: :destroy
-  has_many :lessons, through: :team_lessons
+  has_many :lessons, dependent: :destroy
   has_many :students, dependent: :destroy
   has_many :user_teams, dependent: :destroy
   has_many :users, through: :user_teams

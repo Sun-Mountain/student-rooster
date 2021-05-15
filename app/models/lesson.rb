@@ -1,6 +1,5 @@
 class Lesson < ApplicationRecord
-  belongs_to team
-  has
+  belongs_to :team
 
   validates_presence_of :name
 
@@ -9,6 +8,6 @@ class Lesson < ApplicationRecord
   end
 
   def team_id
-    teams.first.id
+    team.id
   end
 end
