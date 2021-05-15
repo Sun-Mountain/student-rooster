@@ -8,6 +8,6 @@ class Lesson < ApplicationRecord
   end
 
   def team_id
-    teams.first.id
+    team.id
   end
 end
