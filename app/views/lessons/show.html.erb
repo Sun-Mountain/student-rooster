@@ -25,11 +25,11 @@
 
         <div class="form-btn-container">
           <div class="field">
-            <%= form.submit "Add Roster", class: "form-button roster"  %>
+            <%= form.submit "Add Roster", class: "form-button roster", data: { test: "add-roster-lesson" }  %>
           </div>
 
           <div class="field">
-            <%= form.submit "Add to All Lessons", class: "form-button roster", name: 'add_to_all' %>
+            <%= form.submit "Add to All Lessons", class: "form-button roster", name: 'add_to_all', data: { test: "add-roster-all-lessons" } %>
           </div>
         </div>
       <% end %>
