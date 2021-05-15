@@ -70,8 +70,8 @@
                 </div>
               <% end %>
             </div>
-            <div>
-              x
+            <div class="roster-delete-container">
+              <%= button_to "x", team_lesson_roster_path(id: roster.id, lesson_id: @lesson.id), method: :delete, class: "delete-btn" %>
             </div>
           </li>
         <%end%>
