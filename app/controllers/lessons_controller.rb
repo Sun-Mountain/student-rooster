@@ -5,10 +5,10 @@ class LessonsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @lesson = Lesson.new lesson_params
+    @team = Team.find(team_id)
+    @lesson = @team.lessons.build(lesson_params)
 
     if @lesson.save
-      add_lesson_to_team(@lesson)
       flash[:notice] = 'Lesson created!'
     else
       flash[:alert] = "Lesson could not be created: #{model_error_string(@lesson)}"
@@ -50,10 +50,6 @@ class LessonsController < ApplicationController
   end
 
   private
-
-  def add_lesson_to_team(lesson)
-    team.lessons << lesson
-  end
 
   def lesson
     Lesson.find(params[:id])
