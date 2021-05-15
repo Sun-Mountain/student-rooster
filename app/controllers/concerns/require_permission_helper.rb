@@ -17,7 +17,7 @@ module RequirePermissionHelper
         end
       elsif team_id.present?
         user_teams = current_user.teams
-        team = Team.find(team_id)
+        team = Team.find(params[:team_id])
         session[:return_to] ||= request.referer
 
         unless user_teams.include?(team)

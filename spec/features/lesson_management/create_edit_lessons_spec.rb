@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.feature 'creating and updating teams' do
+RSpec.feature 'creating and updating lessons' do
   let!(:user) { create :user }
   let!(:team) { create :team }
   let!(:lesson) { create :lesson }
