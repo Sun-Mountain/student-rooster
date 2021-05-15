@@ -15,10 +15,10 @@
           <%= button_to "Team Dash", root_path, class: 'nav-btn', method: :get %>
         </li>
         <li>
-          <%= button_to "Edit Profile", edit_registration_path(User), class: 'nav-btn', method: :get %>
+          <%= button_to "Edit Profile", edit_registration_path(User), class: 'nav-btn', method: :get, name: 'user_edit' %>
         </li>
         <li>
-          <%= button_to "Sign Out", destroy_user_session_path, class: 'nav-btn', method: :delete %>
+          <%= button_to "Sign Out", destroy_user_session_path, class: 'nav-btn', method: :delete, name: 'user_sign_out' %>
         </li>
       <% else %>
         <li>

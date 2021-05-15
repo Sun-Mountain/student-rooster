@@ -16,6 +16,6 @@ class Team < ApplicationRecord
   end
 
   def student_list
-    Student.where("id IS NOT NULL")
+    Student.where("id IS NOT NULL AND team_id = :id", id: self.id)
   end
 end

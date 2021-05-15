@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
   def index
     @user = current_user
     @team = team
+    @students = team.student_list
   end
 
   def create

@@ -9,24 +9,20 @@ module RequirePermissionHelper
   protected
 
   def require_permissions
-    if teams_controller?
-      user_teams = current_user.teams
-      unless params[:action] == "create" || team.users.include?(current_user)
-        redirect_to root_path, alert: "You are not a part of that team."
-      end
-    elsif lessons_controller?
-      user_teams = current_user.teams
-      team = Team.find(team_id)
+    unless current_user.nil?
+      if teams_controller?
+        user_teams = current_user.teams
+        unless params[:action] == "create" || team.users.include?(current_user)
+          redirect_to root_path, alert: "You are not a part of that team."
+        end
+      elsif team_id.present?
+        user_teams = current_user.teams
+        team = Team.find(team_id)
+        session[:return_to] ||= request.referer
 
-      unless user_teams.include?(team)
-        redirect_to root_path, alert: "You are not a part of that team."
-      end
-    elsif students_controller?
-      user_teams = current_user.teams
-      team = Team.find(team_id)
-
-      unless user_teams.include?(team)
-        redirect_to root_path, alert: "You are not a part of that team."
+        unless user_teams.include?(team)
+          redirect_to root_path, alert: "You are not a part of that team."
+        end
       end
     end
   end
