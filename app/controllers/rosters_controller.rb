@@ -40,7 +40,7 @@ class RostersController < ApplicationController
     elsif delete_from_lesson
       flash[:notice] = "Roster removed from #{@lesson.name}."
     else
-      flash[:alert] = "Roster could not be created. (Check to make sure dates present.)"
+      flash[:alert] = "Roster could not be deleted."
     end
 
     redirect_to team_lesson_path(@team.id, lesson.id)

@@ -1,0 +1,16 @@
+<div class="field">
+  <%= form.label :name %><br />
+  <%= form.text_field :name, class: "field-text" %>
+</div>
+
+<div class="dates">
+  <div class="field date-field">
+    <%= form.label "Beginning Date" %><br>
+    <%= form.date_field :begin_date, class: "field-text" %>
+  </div>
+
+  <div class="field date-field">
+    <%= form.label "End Date" %><br>
+    <%= form.date_field :end_date, class: "field-text" %>
+  </div>
+</div>

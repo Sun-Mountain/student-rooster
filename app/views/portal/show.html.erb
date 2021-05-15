@@ -48,6 +48,21 @@
       </div>
 
       <%= render partial: 'lessons/new' %>
+
+
+      <div class="form-wrapper">
+        <h3>Add Roster to All Lessons</h3>
+        <%= form_for Roster.new, url: team_lesson_rosters_path(@user.team_id, @user.team.lessons.first.id) do |form| %>
+
+          <%= render 'rosters/fields', form: form %>
+
+          <div class="form-btn-container">
+            <div class="field">
+              <%= form.submit "Add to All Lessons", class: "form-button roster", name: 'add_to_all' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
