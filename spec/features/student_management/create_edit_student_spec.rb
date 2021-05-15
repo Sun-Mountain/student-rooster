@@ -32,9 +32,12 @@ RSpec.feature 'creating and updating students' do
       expect(page).to have_content(last_student.contact)
       expect(page).to have_content("Edit Student Name or Contact")
 
-      click_on("Edit Student Name or Contact")
+      find('[data-test="edit-student"]').click
 
-      
+      fill_in :student_first_name, with: 'Bill'
+      find('[data-test="update-student"]').click
+
+      expect(page).to have_content('Bill Riker')
     end
   end
 end
