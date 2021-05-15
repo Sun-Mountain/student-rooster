@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :roster do
-    begin_date { "2021-05-15" }
-    end_date { "2021-05-15" }
+    sequence(:name) { |n| "roster_#{n}" }
+    sequence(:begin_date) { DateTime.now }
+    sequence(:end_date) { DateTime.now + 30.days }
   end
 end

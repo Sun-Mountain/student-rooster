@@ -49,20 +49,21 @@
 
       <%= render partial: 'lessons/new' %>
 
+      <% if @user.team.lessons.present? %>
+        <div class="form-wrapper">
+          <h3>Add Roster to All Lessons</h3>
+          <%= form_for Roster.new, url: team_lesson_rosters_path(@user.team_id, @user.team.first_lesson.id) do |form| %>
 
-      <div class="form-wrapper">
-        <h3>Add Roster to All Lessons</h3>
-        <%= form_for Roster.new, url: team_lesson_rosters_path(@user.team_id, @user.team.first_lesson.id) do |form| %>
+            <%= render 'rosters/fields', form: form %>
 
-          <%= render 'rosters/fields', form: form %>
-
-          <div class="form-btn-container">
-            <div class="field">
-              <%= form.submit "Add to All Lessons", class: "form-button roster", name: 'add_to_all' %>
+            <div class="form-btn-container">
+              <div class="field">
+                <%= form.submit "Add to All Lessons", class: "form-button roster", name: 'add_to_all' %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
