@@ -87,7 +87,7 @@
               <% end %>
             </div>
             <div class="roster-delete-container">
-              <%= button_to "x", team_lesson_roster_path(id: roster.id, lesson_id: @lesson.id), method: :delete, class: "delete-btn" %>
+              <%= button_to "x", team_lesson_roster_path(id: roster.id, lesson_id: @lesson.id), method: :delete, class: "delete-btn", data: { test: "delete-roster-#{roster.id}" } %>
             </div>
           </li>
         <%end%>
