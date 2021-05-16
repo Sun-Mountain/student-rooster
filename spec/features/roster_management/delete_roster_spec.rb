@@ -15,19 +15,30 @@ RSpec.feature 'deleting lessons' do
     scenario 'delete from lesson dashboard' do
       team = create(:team)
       user.teams << team
-      lesson = create(:lesson, team_id: team.id)
-      roster = create(:roster)
-      lesson.rosters << roster
+      lesson1 = create(:lesson, team_id: team.id)
+      lesson2 = create(:lesson, team_id: team.id)
+      new_roster = create(:roster)
+      lesson1.rosters << new_roster
+      lesson2.rosters << new_roster
 
-      visit team_lesson_path(team.id, lesson.id)
+      visit team_lesson_path(team.id, lesson1.id)
 
-      expect(page).to have_content(roster.begin_date.try(:to_formatted_s, :rfc822))
-      expect(page).to have_content(roster.end_date.try(:to_formatted_s, :rfc822))
+      expect(page).to have_content(new_roster.begin_date.try(:to_formatted_s, :rfc822))
+      expect(page).to have_content(new_roster.end_date.try(:to_formatted_s, :rfc822))
 
-      find("[data-test=\"delete-roster-#{roster.id}\"]").click
+      expect(lesson1.rosters).to include(new_roster)
+      expect(lesson2.rosters).to include(new_roster)
 
-      expect(page).not_to have_content(roster.begin_date.try(:to_formatted_s, :rfc822))
-      expect(page).not_to have_content(roster.end_date.try(:to_formatted_s, :rfc822))
+      find("[data-test=\"delete-roster-#{new_roster.id}\"]").click
+
+      expect(page).not_to have_content(new_roster.begin_date.try(:to_formatted_s, :rfc822))
+      expect(page).not_to have_content(new_roster.end_date.try(:to_formatted_s, :rfc822))
+
+      visit team_lesson_path(team.id, lesson2.id)
+
+      expect(page).to have_content(new_roster.begin_date.try(:to_formatted_s, :rfc822))
+      expect(page).to have_content(new_roster.end_date.try(:to_formatted_s, :rfc822))
+
     end
   end
 end
