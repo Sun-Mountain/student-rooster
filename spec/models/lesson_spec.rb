@@ -15,4 +15,11 @@ RSpec.describe Lesson, type: :model do
       expect(subject).to_not be_valid
     end
   end
+
+  describe 'team' do
+    it 'requires a team' do
+      subject.team = nil
+      expect(subject).to_not be_valid
+    end
+  end
 end
