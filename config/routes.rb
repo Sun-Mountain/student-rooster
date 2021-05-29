@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :students, path: 'st/', only: [:index, :create, :edit, :show, :update, :destroy]
   end
 
+  resources :unique_rosters, only: [:create, :destroy]
+
 
   authenticated :user do
     root 'portal#show', as: :authenticated_root, via: :get

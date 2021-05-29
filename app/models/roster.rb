@@ -8,4 +8,8 @@ class Roster < ApplicationRecord
   def dates
     "#{begin_date.try(:to_formatted_s, :rfc822)} - #{end_date.try(:to_formatted_s, :rfc822)}"
   end
+
+  def label
+    "#{name} : #{begin_date.try(:to_formatted_s, :rfc822)} - #{end_date.try(:to_formatted_s, :rfc822)}"
+  end
 end
