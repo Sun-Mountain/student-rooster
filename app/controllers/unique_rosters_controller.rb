@@ -25,7 +25,7 @@ class UniqueRostersController < ApplicationController
       flash[:alert] = "#{model_error_string(@lesson)}"
     end
 
-    redirect_to :back
+    redirect_to root_path
   end
 
   private
