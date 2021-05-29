@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class UniqueRostersController < ApplicationController
+  include RequirePermissionHelper
   before_action :authenticate_user!
 
   def create
@@ -13,6 +14,18 @@ class UniqueRostersController < ApplicationController
     end
 
     redirect_to team_student_path(student.team_id, student.id)
+  end
+
+  def destroy
+    @unique_roster = unique_roster
+
+    if @unique_roster.destroy
+      flash[:alert] = "Deleted"
+    else
+      flash[:alert] = "#{model_error_string(@lesson)}"
+    end
+
+    redirect_to :back
   end
 
   private
@@ -31,5 +44,9 @@ class UniqueRostersController < ApplicationController
 
   def unique_roster_params
     params.require(:unique_roster).permit(:lesson_id, :roster_id, :student_id)
+  end
+
+  def unique_roster
+    UniqueRoster.find(params[:id])
   end
 end

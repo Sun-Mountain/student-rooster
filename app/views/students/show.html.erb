@@ -36,7 +36,7 @@
     <% else %>
       <ul class="roster-list">
         <li class="header flex-row">
-          <div class="lesson">
+          <div class="name">
             Lesson
           </div>
           <div>
@@ -44,12 +44,18 @@
           </div>
         </li>
         <% @student.unique_rosters.each do |ur| %>
-          <li class="flex-row">
-            <div class="lesson">
-              <%= ur.lesson.name %>
+          <li class="flex-row-sp-btwn">
+            <div class="flex-row">
+              <div class="name">
+                <%= ur.lesson.name %>
+              </div>
+              <div>
+                <%= ur.roster.label %>
+              </div>
             </div>
+
             <div>
-              <%= ur.roster.label %>
+              <%= button_to "X", unique_roster_path(ur.id), data: { confirm: 'Are you sure you want to delete this student?', test: "delete-student-from-ur-#{ur.id}" }, method: :delete, class: "delete-btn" %>
             </div>
           </li>
         <% end %>

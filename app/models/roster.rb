@@ -12,4 +12,8 @@ class Roster < ApplicationRecord
   def label
     "#{name} : #{begin_date.try(:to_formatted_s, :rfc822)} - #{end_date.try(:to_formatted_s, :rfc822)}"
   end
+
+  def no_unique_rosters?
+    unique_rosters.count.zero?
+  end
 end
