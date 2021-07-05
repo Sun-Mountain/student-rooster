@@ -7,13 +7,35 @@
   <% if @roster.no_unique_rosters? %>
     No students have been enrolled.
   <% else %>
-    <ul>
+    <ul class="list">
+      <li class="flex-row-sp-btwn header">
+        <div class="flex-row">
+          <div>
+            First Name
+          </div>
+          <div>
+            Last Name
+          </div>
+          <div>
+            Contact
+          </div>
+        </div>
+        <div>
+          Remove Student from Roster
+        </div>
+      </li>
       <% @roster.unique_rosters.each do |ur| %>
         <li class="flex-row-sp-btwn">
-          <div>
-            <%= ur.student.first_name %>
-            <%= ur.student.last_name %>
-            <%= ur.student.contact %>
+          <div class="flex-row">
+            <div>
+              <%= ur.student.first_name %>
+            </div>
+            <div>
+              <%= ur.student.last_name %>
+            </div>
+            <div>
+              <%= ur.student.contact %>
+            </div>
           </div>
           <div>
             <%= button_to "X", unique_roster_path(ur.id), data: { confirm: 'Are you sure you want to delete this student?', test: "delete-student-from-ur-#{ur.id}" }, method: :delete, class: "delete-btn" %>

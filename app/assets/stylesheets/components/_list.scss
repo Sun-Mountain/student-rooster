@@ -1,0 +1,5 @@
+.list {
+  li + li {
+    border-top: 1px $color-gray-light solid;
+  }
+}

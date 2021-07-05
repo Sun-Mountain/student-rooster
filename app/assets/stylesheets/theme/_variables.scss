@@ -29,6 +29,7 @@ $navbar-link-hover: $color-maize-crayola;
   border-radius: 3px;
   color: $color-white;
   font-weight: 700;
+  margin: 10px 0;
   padding: 3px 8px;
 }
 
@@ -41,6 +42,11 @@ $navbar-link-hover: $color-maize-crayola;
 .flex-row {
   display: flex;
   flex-direction: row;
+
+  div {
+    margin: 10px 0;
+    min-width: 130px;
+  }
 }
 
 .flex-row-sp-btwn {
