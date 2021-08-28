@@ -1,0 +1,15 @@
+.roster-list {
+
+  li {
+    padding: 15px 20px 15px 0;
+  }
+
+  li + li {
+    border-top: 1px solid $color-gray-light;
+  }
+
+  .name {
+    min-width: 100px;
+    max-width: 300px;
+  }
+}

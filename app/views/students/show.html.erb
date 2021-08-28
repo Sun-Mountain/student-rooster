@@ -12,4 +12,54 @@
       <%= button_to "Delete Student", team_student_path(@student.team_id, @student.id), data: { confirm: 'Are you sure you want to delete this student?', test: 'delete-student' }, method: :delete, class: "delete-btn" %>
     </div>
   </div>
+
+  <div class="form-wrapper">
+    <%= form_for UniqueRoster.new do |f| %>
+      <div class="field">
+        <%= f.collection_select :lesson_id, Lesson.order(:name),:id,:name, {include_blank: 'Select a Lesson'}, class: "field-text" %>
+      </div>
+
+      <div class="field">
+        <%= f.collection_select :roster_id, Roster.order(:begin_date),:id,:label, {include_blank: 'Select a Roster'}, class: "field-text" %>
+      </div>
+
+      <div class="actions">
+        <%= f.hidden_field :student_id, value: @student.id %>
+        <%= f.submit "Add Roster", class: "form-button", data: {test: "add-unique-roster"} %>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <% if @student.no_unique_rosters? %>
+      This student has not been enrolled in any classes.
+    <% else %>
+      <ul class="roster-list">
+        <li class="header flex-row">
+          <div class="name">
+            Lesson
+          </div>
+          <div>
+            Roster
+          </div>
+        </li>
+        <% @student.unique_rosters.each do |ur| %>
+          <li class="flex-row-sp-btwn">
+            <div class="flex-row">
+              <div class="name">
+                <%= ur.lesson.name %>
+              </div>
+              <div>
+                <%= ur.roster.label %>
+              </div>
+            </div>
+
+            <div>
+              <%= button_to "X", unique_roster_path(ur.id), data: { confirm: 'Are you sure you want to delete this student?', test: "delete-ur-#{ur.id}" }, method: :delete, class: "delete-btn" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </div>

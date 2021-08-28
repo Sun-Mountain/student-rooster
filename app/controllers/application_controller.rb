@@ -46,4 +46,8 @@ class ApplicationController < ActionController::Base
   def team_id
     Team.find(params[:team_id])
   end
+
+  def unique_rosters_controller?
+    params[:controller] == 'unique_rosters'
+  end
 end
