@@ -7,7 +7,7 @@ class UniqueRostersController < ApplicationController
   def create
     @unique_roster = student.unique_rosters.build(unique_roster_params)
 
-    if @unique_roster.save
+    if @unique_roster.save && unique_roster_unique?(@unique_roster)
       flash[:notice] = 'Student added to Roster!'
     else
       flash[:alert] = "Student could not be added: #{model_error_string(@unique_roster)}"
@@ -48,5 +48,9 @@ class UniqueRostersController < ApplicationController
 
   def unique_roster
     UniqueRoster.find(params[:id])
+  end
+
+  def unique_roster_unique?(ur)
+    
   end
 end
