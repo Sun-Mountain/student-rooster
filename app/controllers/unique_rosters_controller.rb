@@ -5,7 +5,6 @@ class UniqueRostersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-
     @unique_roster = student.unique_rosters.build(unique_roster_params)
 
     if @unique_roster.save
@@ -19,6 +18,7 @@ class UniqueRostersController < ApplicationController
 
   def destroy
     @unique_roster = unique_roster
+    binding.pry
 
     if @unique_roster.destroy
       flash[:alert] = "Deleted"
