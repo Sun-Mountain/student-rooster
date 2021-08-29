@@ -2,7 +2,9 @@
 
 <!--- Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. --->
 
-Fixes [#XXX]() <!-- Link to Trello card if applicable>
+<!-- Link to Trello card if applicable -->
+
+Fixes [#XXX]()
 
 ## Type of change
 

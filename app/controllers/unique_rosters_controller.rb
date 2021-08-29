@@ -5,6 +5,7 @@ class UniqueRostersController < ApplicationController
   before_action :authenticate_user!
 
   def create
+
     @unique_roster = student.unique_rosters.build(unique_roster_params)
 
     if @unique_roster.save
