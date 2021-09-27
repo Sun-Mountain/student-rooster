@@ -44,6 +44,18 @@ RSpec.feature 'redirection after deleting unique roster' do
 
     context 'delete from roster profile' do
       scenario 'redirects to roster profile' do
+        unique_roster = create(:unique_roster, student_id: @student.id, lesson_id: @lesson.id, roster_id: @roster.id)
+
+        visit team_lesson_roster_path(@team.id, @lesson.id, @roster.id)
+
+        expect(page.body).to have_content(@roster.name)
+        expect(page.body).to have_content(@student.contact)
+
+        find("[data-test=\"delete-student-from-ur-#{unique_roster.id}\"]").click
+
+        expect(page.body).to have_content("Student removed from class.")
+        expect(page.body).to have_content(@roster.name)
+        expect(page.body).to_not have_content(@student.contact)
       end
     end
   end
