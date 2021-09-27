@@ -38,6 +38,7 @@ class UniqueRostersController < ApplicationController
     if params[:student].present?
       redirect_to team_student_path(params[:team], params[:student])
     elsif params[:lesson].present?
+      redirect_to team_lesson_roster_path(params[:team], params[:lesson], params[:roster])
     end
   end
 

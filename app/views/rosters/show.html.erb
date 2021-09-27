@@ -38,7 +38,7 @@
             </div>
           </div>
           <div>
-            <%= button_to "X", unique_roster_path(ur.id), data: { confirm: 'Are you sure you want to delete this student?', test: "delete-student-from-ur-#{ur.id}" }, method: :delete, class: "delete-btn" %>
+            <%= button_to "X", unique_roster_path(id: ur.id, team: @team_id, lesson: @lesson_id, roster: @roster.id), data: { confirm: 'Are you sure you want to delete this student?', test: "delete-student-from-ur-#{ur.id}" }, method: :delete, class: "delete-btn" %>
           </div>
         </li>
       <% end %>
