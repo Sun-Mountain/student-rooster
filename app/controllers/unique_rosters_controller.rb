@@ -5,7 +5,6 @@ class UniqueRostersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-
     @unique_roster = student.unique_rosters.build(unique_roster_params)
 
     if @unique_roster.save
@@ -21,18 +20,26 @@ class UniqueRostersController < ApplicationController
     @unique_roster = unique_roster
 
     if @unique_roster.destroy
-      flash[:alert] = "Deleted"
+      flash[:alert] = "Student removed from class."
     else
       flash[:alert] = "#{model_error_string(@lesson)}"
     end
 
-    redirect_to root_path
+    redirect(params)
   end
 
   private
 
   def lesson
     Lesson.find(unique_roster_params[:lesson_id])
+  end
+
+  def redirect(params)
+    if params[:student].present?
+      redirect_to team_student_path(params[:team], params[:student])
+    elsif params[:lesson].present?
+      redirect_to team_lesson_roster_path(params[:team], params[:lesson], params[:roster])
+    end
   end
 
   def roster

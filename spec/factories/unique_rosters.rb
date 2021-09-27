@@ -3,9 +3,5 @@ FactoryBot.define do
     association :student
     association :roster
     association :lesson
-
-    student { nil }
-    roster { nil }
-    lesson { nil }
   end
 end

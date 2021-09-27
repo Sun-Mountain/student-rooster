@@ -32,6 +32,8 @@ class RostersController < ApplicationController
 
   def show
     @roster = roster
+    @team_id = team.id
+    @lesson_id = lesson.id
   end
 
   def destroy

@@ -30,3 +30,7 @@ Fixes [#XXX]()
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] Any dependent changes have been merged and published in downstream modules
+
+# Notes / Details
+
+<!--- If any other details or notes, whether more indepth of your PR or details you added related or not go here --->
