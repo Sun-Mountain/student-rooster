@@ -18,21 +18,27 @@ class UniqueRostersController < ApplicationController
 
   def destroy
     @unique_roster = unique_roster
-    binding.pry
 
     if @unique_roster.destroy
-      flash[:alert] = "Deleted"
+      flash[:alert] = "Student removed from class."
     else
       flash[:alert] = "#{model_error_string(@lesson)}"
     end
 
-    redirect_to root_path
+    redirect(params)
   end
 
   private
 
   def lesson
     Lesson.find(unique_roster_params[:lesson_id])
+  end
+
+  def redirect(params)
+    if params[:student].present?
+      redirect_to team_student_path(params[:team], params[:student])
+    elsif params[:lesson].present?
+    end
   end
 
   def roster
