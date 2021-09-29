@@ -3,3 +3,50 @@
     border-top: 1px $color-gray-light solid;
   }
 }
+
+.team-lesson-list {
+  .header {
+    display: none;
+  }
+
+  .delete-button-container {
+    display: flex;
+    flex-direction: row;
+
+    .text {
+      font-weight: 600;
+      line-height: 40px;
+      padding-right: 10px;
+      text-align: center;
+    }
+  }
+}
+
+.lesson-name {
+  a {
+    font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .team-lesson-list {
+    .header {
+      display: initial;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .lesson-list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .delete-button-container {
+    .text {
+      display: none;
+    }
+  }
+}

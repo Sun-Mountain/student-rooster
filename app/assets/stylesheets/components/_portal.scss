@@ -1,9 +1,9 @@
 .portal-dash {
-  padding: 0 32px;
+  padding: 0;
 }
 
 .portal-welcome {
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 
 .dash-title {
@@ -43,5 +43,16 @@
 
   a:hover {
     text-decoration: none;
+  }
+}
+
+
+@media screen and (min-width: 700px) {
+  .portal-dash {
+    padding: 0 32px;
+  }
+  
+  .portal-welcome {
+    padding: 1rem 2rem;
   }
 }
