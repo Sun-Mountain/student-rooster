@@ -1,0 +1,11 @@
+#landing-page__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .sign-up-btn__container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+}
