@@ -7,5 +7,9 @@
     display: flex;
     justify-content: space-around;
     width: 100%;
+
+    .sign_up_btn {
+      border-radius: 12px;
+    }
   }
 }
