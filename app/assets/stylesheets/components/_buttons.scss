@@ -1,0 +1,14 @@
+.sign_up_btn {
+  background-color: $color-parrot-green;
+  border: 0px;
+  color: $color-white;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 15px;
+  padding: 5px 10px;
+}
+
+.sign_up_btn:hover {
+  cursor: pointer;
+  background-color: $color-queen-blue;
+}
