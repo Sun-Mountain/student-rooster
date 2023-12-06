@@ -20,6 +20,12 @@ changelog:
     - title: 🐛 Bugs Fixed
       labels:
         - bug
+    - security: 🔒 Security Updates
+      labels:
+        - security
+    - title: 🤖 DevOps Improvements
+      labels:
+        - devops
     - title: 🔧 Fixes Applied
       labels:
         - maintenance
