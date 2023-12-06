@@ -10,6 +10,8 @@ gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
+gem "devise", "~> 4.9"
+gem "devise-jwt", "~> 0.11.0"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -33,11 +35,19 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
-# gem "rack-cors"
+gem "rack-cors"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+
+  gem "rspec-rails", "~> 6.1"
+  gem "shoulda-matchers", "~> 5.3"
+  gem "factory_bot_rails", "~> 6.4"
+  gem "ffaker", "~> 2.23"
+  gem "database_cleaner", "~> 2.0"
+  gem "database_cleaner-active_record", "~> 2.1"
+  gem "email_spec", "~> 2.2"
 end
 
 group :development do
@@ -46,4 +56,3 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
-
