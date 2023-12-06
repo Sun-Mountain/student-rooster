@@ -1,6 +1,6 @@
 name: Auto Tag Release Draft
 on:
-  pull-requests:
+  pull-request:
     types:
       - merged
     branches:
