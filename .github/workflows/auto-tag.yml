@@ -1,8 +1,11 @@
 name: Auto Tag Release Draft
 on:
-  push:
+  pull-requests:
+    types:
+      - merged
     branches:
-      - main
+      - release/**
+
 jobs:
   Patch:
     runs-on: ubuntu-latest
@@ -37,9 +40,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
 
-    # auto releases is not working atm and is deleting releases due branch tags
     - name: automatic-draft-release
-      uses: marvinpinto/action-automatic-releases@v1.2.1
+      uses: marvinpinto/action-automatic-releases@latest
       with:
         draft: true
         repo_token: ${{ secrets.GITHUB_TOKEN }}
