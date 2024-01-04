@@ -30,12 +30,18 @@ gem "rack-cors"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'rspec-rails', '~> 6.1.0'
+  gem 'database_cleaner'
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem "rubocop", "~> 1.59"
+  gem "rubocop-performance", "~> 1.20"
 end
+
 
