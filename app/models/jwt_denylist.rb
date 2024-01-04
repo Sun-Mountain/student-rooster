@@ -1,2 +1,0 @@
-class JwtDenylist < ApplicationRecord
-end
