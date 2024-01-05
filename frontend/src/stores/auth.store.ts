@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia';
 
-import { BASE_URL, fetchWrapper } from '@/helpers';
-import { Login } from '@/types';
+import { API_URL, fetchWrapper } from '@/helpers';
+import { type Login } from '@/types';
 import router from "@/router";
 
 export const useAuthStore = defineStore({
@@ -16,7 +16,7 @@ export const useAuthStore = defineStore({
   actions: {
     async login(values: Login) {
       try {
-        const response = await fetchWrapper.post(`${BASE_URL}/auth/login`, { user: values });
+        const response = await fetchWrapper.post(`${API_URL}/auth/login`, { user: values });
         this.user.currentUser = JSON.stringify(response.body.user);
         localStorage.setItem('currentUser', this.user.currentUser);
         this.user.token = response.body.token;
@@ -29,7 +29,7 @@ export const useAuthStore = defineStore({
     },
     async logout() {
       try {
-        await fetchWrapper.delete(`${BASE_URL}/auth/logout`, { token: this.user?.token });
+        await fetchWrapper.delete(`${API_URL}/auth/logout`, { token: this.user?.token });
         this.user.currentUser = '';
         this.user.token = '';
         localStorage.removeItem('currentUser');

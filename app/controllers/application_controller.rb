@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  include ActionController::RequestForgerProtection
+  include ActionController::RequestForgeryProtection
   before_action :authenticate_user
   before_action :configure_permitted_parameters, if: :devise_controller?
   respond_to :json
@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:email, :password)
+      user_params.permit(:username, :email, :password)
     end
   end
 

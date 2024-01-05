@@ -15,7 +15,7 @@
     "module": "NodeNext",
     "paths": {
       "@/*": [
-       "src/*"
+      "./src/*"
       ]
      }
   }
