@@ -2,25 +2,27 @@
 
 module Auth
   class RegistrationsController < Devise::RegistrationsController
+    skip_before_action :authenticate_user
     respond_to :json
 
     private
 
+    def register_user(resource)
+      if resource.save
+        render json: { message: 'You are signed up successfully.' },
+               data: UserSerializer.new(resource).serializable_hash[:data][:attributes],
+               status: :ok
+      else
+        render json: resource.errors, status: :unprocessable_entity
+      end
+    end
+
     def respond_with(resource, _opts = {})
-      register_success && return if resource.persisted?
-
-      register_failed
-    end
-
-    def register_success
-      render json: {
-        message: 'Signed up successfully.',
-        user: current_user
-      }, status: :ok
-    end
-
-    def register_failed
-      render json: { message: 'Something went wrong.' }, status: :unprocessable_entity
+      if request.method == 'POST' && resource
+        register_user(resource)
+      else
+        render json: { message: 'Hmm nothing happened.' }, status: 503
+      end
     end
   end
 end

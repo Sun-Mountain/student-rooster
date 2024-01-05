@@ -2,29 +2,36 @@
 
 module Auth
   class SessionsController < Devise::SessionsController
+    before_action :find_user, only: %i[create destroy]
+    skip_before_action :authenticate_user, only: :create
     respond_to :json
 
     private
-
-    def respond_with(_resource, _opts = {})
-      render json: {
-        message: 'You are logged in',
-        user: current_user
-      }, status: :ok
+    
+    def find_user
+      @user = User.find_by(email: params[:email])
     end
 
-    def resond_to_on_destroy
-      log_out_success && return if current_user
-
-      log_out_failure
+    def respond_with(resource, _opts = {})
+      if request.method == 'POST' && resource
+        if @user.valid_password?(params[:password])
+          render json: { message: 'You are signed in successfully.' },
+                 data: UserSerializer.new(resource).serializable_hash[:data][:attributes],
+                 status: :ok
+        else
+          render json: { message: 'Invalid email or password.' }, status: 401
+        end
+      else
+        render json: { message: 'Hmm nothing happened.' }, status: 503
+      end
     end
 
-    def log_out_success
-      render json: { message: 'You are logged out.' }, status: :ok
-    end
-
-    def log_out_failure
-      render json: { message: 'Hmm nothing happened.' }, status: :unauthorized
+    def respond_to_on_destroy
+      if request.method == 'DELETE' && current_user
+        render json: { message: 'You are signed out successfully.' }, status: :ok
+      else
+        render json: { message: 'Hmm nothing happened.' }, status: 503
+      end
     end
   end
 end
