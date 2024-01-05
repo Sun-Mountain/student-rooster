@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Users
-  class SessionsCotnroller < Devise::SessionsController
+module Auth
+  class SessionsController < Devise::SessionsController
     respond_to :json
 
     private

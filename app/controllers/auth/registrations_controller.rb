@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Users
+module Auth
   class RegistrationsController < Devise::RegistrationsController
     respond_to :json
 
