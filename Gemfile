@@ -21,7 +21,7 @@ gem 'devise-jwt'
 # DB and JWT management
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
-gem 'nokogiri', force_ruby_platform: true
+gem 'nokogiri'
 gem 'rack-cors'
 gem 'redis', '~> 4.0'
 gem 'sidekiq', '~> 7.0'
@@ -44,4 +44,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
+  gem "dockerfile-rails", ">= 1.6"
 end
+
