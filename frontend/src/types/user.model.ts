@@ -6,3 +6,11 @@ export interface Login {
 export interface Email {
   email: string;
 }
+
+export interface User {
+  id: number;
+  email: string;
+  username: string;
+  token: string;
+  created_at: string;
+}
