@@ -1,10 +1,6 @@
 <template>
-  <h1>Register</h1>
+  <h1>Login</h1>
   <form @submit="submitForm">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="name" v-model="username" required>
-    </div>
     <div>
       <label for="email">Email:</label>
       <input type="email" id="email" v-model="email" required>
@@ -13,32 +9,29 @@
       <label for="password">Password:</label>
       <input type="password" id="password" v-model="password" required>
     </div>
-    <button type="submit">Register</button>
+    <button type="submit">Login</button>
   </form>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useUserStore } from '@/stores';
-import { type Register } from '@/types';
+import { useAuthStore } from '@/stores';
+import { type Login } from '@/types';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const username = ref('');
 const email = ref('');
 const password = ref('');
 
 async function submitForm(e: Event) {
   e.preventDefault();
-  const userStore = useUserStore();
-  const user: Register = {
-    username: username.value,
+  const authStore = useAuthStore();
+  const user: Login = {
     email: email.value,
     password: password.value,
   };
-  await userStore.register(user);
-  router.push('/');
+  await authStore.login(user);
 }
 
 </script>

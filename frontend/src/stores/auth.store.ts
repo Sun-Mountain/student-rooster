@@ -8,19 +8,21 @@ export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     returnURl: '',
-    user: {
+    currentUser: {
       token: localStorage.getItem('token') || '',
-      currentUser: JSON.parse(localStorage.getItem('currentUser')!),
-    }
+      email: '',
+      username: '',
+    },
+    isAuthenticated: false,
   }),
   actions: {
-    async login(values: Login) {
+    async login(user: Login) {
       try {
-        const response = await fetchWrapper.post(`${API_URL}/auth/login`, { user: values });
-        this.user.currentUser = JSON.stringify(response.body.user);
-        localStorage.setItem('currentUser', this.user.currentUser);
-        this.user.token = response.body.token;
-        localStorage.setItem('token', this.user.token);
+        const response = await fetchWrapper.post(`${API_URL}/auth/login`, { user });
+        this.currentUser = response.body.user;
+        this.currentUser.token = response.body.user.jti;
+        this.isAuthenticated = true;
+        localStorage.setItem('token', response.token);
         router.push(this.returnURl || '/');
         return response;
       } catch (err) {
@@ -29,12 +31,25 @@ export const useAuthStore = defineStore({
     },
     async logout() {
       try {
-        await fetchWrapper.delete(`${API_URL}/auth/logout`, { token: this.user?.token });
-        this.user.currentUser = '';
-        this.user.token = '';
-        localStorage.removeItem('currentUser');
+        await fetchWrapper.delete(`${API_URL}/auth/logout`, { user: this.currentUser });
+        this.currentUser = {
+          token: '',
+          email: '',
+          username: '',
+        };
+        this.isAuthenticated = false;
         localStorage.removeItem('token');
-        router.push('/login');
+        router.push('/');
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    async getCurrentUser() {
+      try {
+        const response = await fetchWrapper.get(`${API_URL}/auth/me`);
+        this.currentUser = response;
+        this.isAuthenticated = true;
+        return response;
       } catch (err) {
         console.log(err);
       }
