@@ -1,25 +1,30 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  devise_for :users, path: 'users', controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords'
-  }
+  devise_for :users, path: 'auth', path_names:{
+                      # confirmation: 'verification',
+                      registration: 'signup',
+                      sign_in: 'login',
+                      sign_out: 'logout'
+                    },
+                    controllers: {
+                      sessions: 'auth/sessions',
+                      registrations: 'auth/registrations'
+                    }
 
-  resources :users, path: 'u/'
+  get '/member-data', to: 'members#show'
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  resources :teams, path: 't/', only: [:create, :edit, :update] do
-    resources :lessons, path: 'L/', only: [:create, :edit, :update, :show, :destroy] do
-      resources :rosters, path: 'r/', only: [:create, :edit, :update, :show, :destroy]
-    end
-    resources :students, path: 'st/', only: [:index, :create, :edit, :show, :update, :destroy]
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get 'up' => 'rails/health#show', as: :rails_health_check
+
+  # Defines the root path route ("/")
+  # root "posts#index"
+
+  if Rails.env.development?
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+    # mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
-
-  resources :unique_rosters, only: [:create, :destroy]
-
-
-  authenticated :user do
-    root 'portal#show', as: :authenticated_root, via: :get
-  end
-
-  root to: 'public#landing'
 end

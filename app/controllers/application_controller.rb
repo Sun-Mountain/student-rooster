@@ -1,53 +1,40 @@
-class ApplicationController < ActionController::Base
+# frozen_string_literal: true
+
+class ApplicationController < ActionController::API
+  include ActionController::RequestForgeryProtection
+  before_action :authenticate_user
   before_action :configure_permitted_parameters, if: :devise_controller?
+  respond_to :json
+
+  protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) do |user|
-      user.permit(
-        :first_name, :last_name, :email, :password, :password_confirmation,
-        :current_password
-      )
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit(:username, :email, :password)
     end
-
-    devise_parameter_sanitizer.permit(:account_update) do |user|
-      user.permit(
-        :first_name, :last_name, :email, :password, :password_confirmation,
-        :current_password
-      )
-    end
-  end
-
-  def model_error_string(resource)
-    resource.errors.full_messages.join(', ')
   end
 
   private
 
-  def after_sign_out_path_for(resource_or_scope)
-    request.referrer || root_path
+  def authenticate_user
+    header = request.headers['Authorization']
+    header = header.split(' ').last if header
+
+    begin
+      @decoded = JwtToken.decode(header)
+      return if current_user.id === @decoded[:sub]
+    rescue ActiveRecord::RecordNotFound, JWT::DecodeError => e
+      render json: { errors: e.message }, status: :unauthorized
+    end
   end
 
-  def lessons_controller?
-    params[:controller] == 'lessons'
+  def authenticate_password(account_update_params)
+    @user.valid_password?(account_update_params[:current_password])
   end
 
-  def sessions_controller?
-    params[:controller] == 'sessions'
-  end
-
-  def students_controller?
-    params[:controller] == 'students'
-  end
-
-  def teams_controller?
-    params[:controller] == 'teams'
-  end
-
-  def team_id
-    Team.find(params[:team_id])
-  end
-
-  def unique_rosters_controller?
-    params[:controller] == 'unique_rosters'
+  def deny_content_type_json
+    return unless request.content_type == 'application/json'
+    render json: { message: 'Content-Type must be application/json' },
+           status: :unsupported_media_type
   end
 end
