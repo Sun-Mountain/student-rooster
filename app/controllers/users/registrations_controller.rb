@@ -1,22 +1,26 @@
-class Users::RegistrationsController < Devise::RegistrationsController
-  respond_to :json
+# frozen_string_literal: true
 
-  private
+module Users
+  class RegistrationsController < Devise::RegistrationsController
+    respond_to :json
 
-  def respond_with(resource, _opts = {})
-    register_success && return if resource.persisted?
+    private
 
-    register_failed
-  end
+    def respond_with(resource, _opts = {})
+      register_success && return if resource.persisted?
 
-  def register_success
-    render json: {
-      message: 'Signed up successfully.',
-      user: current_user
-    }, status: :ok
-  end
+      register_failed
+    end
 
-  def register_failed
-    render json: { message: 'Something went wrong.' }, status: :unprocessable_entity
+    def register_success
+      render json: {
+        message: 'Signed up successfully.',
+        user: current_user
+      }, status: :ok
+    end
+
+    def register_failed
+      render json: { message: 'Something went wrong.' }, status: :unprocessable_entity
+    end
   end
 end
