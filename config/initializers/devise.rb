@@ -17,6 +17,13 @@ Devise.setup do |config|
   # config.secret_key = '87858a1b3948d42439b3d986d94e1dc48757586a1879772345ec5a70026dac2e53bec04f7a3c13268dd9aa19ca7ce22911bca3963fdfca6c66790d7b0c9d0a75'
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.devise[:jwt_secret_key]
+    jwt.dispatch_requests = [
+      ['POST', %r{^/auth/login$}]
+    ]
+    jwt.revocation_requests = [
+      ['DELETE', %r{^/auth/logout$}]
+    ]
+    jwt.expiration_time = 20.days.to_i
   end
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -145,7 +152,7 @@ Devise.setup do |config|
   # without confirming their account.
   # Default is 0.days, meaning the user cannot access the website without
   # confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+  config.allow_unconfirmed_access_for = nil
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm
@@ -159,7 +166,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]

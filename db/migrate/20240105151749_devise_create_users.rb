@@ -3,6 +3,11 @@
 class DeviseCreateUsers < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
+      ## Custom fields
+      t.string :username, null: false, default: ''
+      t.string :jti,      null: false
+      t.integer :role,    null: false, default: 0
+
       ## Database authenticatable
       t.string :email,              null: false, default: ''
       t.string :encrypted_password, null: false, default: ''
@@ -39,5 +44,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     add_index :users, :unlock_token,         unique: true
+    add_index :users, :jti,                  unique: true
+    add_index :users, :role,                 unique: false
   end
 end

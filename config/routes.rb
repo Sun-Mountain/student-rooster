@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users,
-             controllers: {
-              sessions: 'auth/sessions',
-              registrations: 'auth/registrations'
-             }
+  devise_for :users, path: 'auth', path_names:{
+                      # confirmation: 'verification',
+                      registration: 'signup',
+                      sign_in: 'login',
+                      sign_out: 'logout'
+                    },
+                    controllers: {
+                      sessions: 'auth/sessions',
+                      registrations: 'auth/registrations'
+                    }
+
   get '/member-data', to: 'members#show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -15,4 +21,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  if Rails.env.development?
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+    # mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end
