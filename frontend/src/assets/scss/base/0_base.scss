@@ -1,8 +1,11 @@
+@import './1_palette.scss';
 @import './1_variables.scss';
 
 body {
+  color: $text-color;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  height: 100%;
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -19,4 +22,28 @@ body {
   &.no-scroll {
     overflow: hidden;
   }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+header {
+  flex: 0 1 auto;
+}
+
+main {
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+footer {
+  flex: 0 1 40px;
 }

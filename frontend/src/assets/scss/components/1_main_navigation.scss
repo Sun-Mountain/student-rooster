@@ -1,0 +1,18 @@
+#main-navigation {
+  background-color: $nav-bg-color;
+  color: $nav-link-color;
+  min-height: 3rem;
+}
+
+.main-nav-link {
+  color: $nav-link-color;
+  display: inline-block;
+  font-weight: 700;
+  padding: 1rem;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $nav-link-hover-bg;
+    color: $nav-link-hover;
+  }
+}

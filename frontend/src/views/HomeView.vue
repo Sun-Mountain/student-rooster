@@ -7,20 +7,18 @@ const authStore = useAuthStore();
 </script>
 
 <template>
-  <main>
-    <h1>Home</h1>
-    <p v-show="!authStore.isAuthenticated">
-      <RegisterForm />
-      or
-      <LoginForm />
+  <h1>Home</h1>
+  <p v-if="!authStore.isAuthenticated">
+    <RegisterForm />
+    or
+    <LoginForm />
+  </p>
+  <p v-else>
+    You are logged in as {{ authStore.currentUser?.email }}
+    <p>
+      <button @click="authStore.logout()">
+        Logout
+      </button>
     </p>
-    <p v-show="authStore.isAuthenticated">
-      You are logged in as {{ authStore.currentUser?.email }}
-      <p>
-        <button @click="authStore.logout()">
-          Logout
-        </button>
-      </p>
-    </p>
-  </main>
+  </p>
 </template>
