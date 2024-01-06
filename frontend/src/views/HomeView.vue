@@ -15,7 +15,7 @@ const authStore = useAuthStore();
       <LoginForm />
     </p>
     <p v-show="authStore.isAuthenticated">
-      You are logged in as {{ authStore.user?.email }}
+      You are logged in as {{ authStore.currentUser?.email }}
       <p>
         <button @click="authStore.logout()">
           Logout
