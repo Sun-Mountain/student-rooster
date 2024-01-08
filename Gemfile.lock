@@ -90,7 +90,6 @@ GEM
       reline (>= 0.3.8)
     drb (2.2.0)
       ruby2_keywords
-    error_highlight (0.6.0)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -216,13 +215,12 @@ GEM
 
 PLATFORMS
   aarch64-linux
-  arm64-darwin-22
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
   bootsnap
   debug
-  error_highlight (>= 0.4.0)
   importmap-rails
   jbuilder
   pg (~> 1.1)
@@ -235,7 +233,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.6
+   2.4.1
