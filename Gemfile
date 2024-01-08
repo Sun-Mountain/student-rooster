@@ -26,6 +26,7 @@ group :development, :test do
   gem 'capybara', '>= 3.35.3'
   gem 'database_cleaner'
   gem 'debug', platforms: %i[mri windows]
+  gem "dotenv-rails", "~> 2.8"
   gem 'factory_bot_rails', '>= 6.1.0'
   gem 'pry'
   gem 'pry-nav'
@@ -45,3 +46,4 @@ group :test do
   gem 'fakefs', require: 'fakefs/safe'
   gem 'fakeredis'
 end
+

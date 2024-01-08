@@ -4,6 +4,11 @@
   background-color: $nav-background;
   min-height: $nav-height;
 
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+
   a, a:visited {
     border-bottom: 2px solid $nav-background;
     color: $nav-link-color;
