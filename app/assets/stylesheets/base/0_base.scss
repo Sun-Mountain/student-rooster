@@ -1,7 +1,44 @@
 @import './1_variables.scss';
 
 body {
-  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  margin: 0 auto;
+  // color: $text-color;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  height: 100%;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+nav {
+  flex: 0 1 auto;
+}
+
+main {
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+footer {
+  flex: 0 1 auto;
 }

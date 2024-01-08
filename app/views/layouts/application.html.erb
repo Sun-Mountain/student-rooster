@@ -3,8 +3,12 @@
   <%= render partial: 'shared/head' %>
 
   <body>
-    <%= render partial: 'shared/main-nav' %>
-    <%= yield %>
-    <%= render partial: 'shared/footer' %>
+    <div id="app">
+      <%= render partial: 'shared/main-nav' %>
+      <main>
+        <%= yield %>
+      </main>
+      <%= render partial: 'shared/footer' %>
+    </div>
   </body>
 </html>
