@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 
 class ColorSwatchComponent < ViewComponent::Base
-  def initialize(colorCode:,
-                 colorCode50:,
-                 colorCode30:,
-                 textColor: 'rgba(73, 80, 87, 1)',
-                 lightTextColor: 'rgba(73, 80, 87, 1)',
+  def initialize(color_code:,
+                 color_code50:,
+                 color_code30:,
+                 light_text_color: 'rgba(73, 80, 87, 1)',
                  title: 'No Title')
-    @colorCode = colorCode
-    @colorCode50 = colorCode50
-    @colorCode30 = colorCode30
-    @lightTextColor = lightTextColor
+    @color_code = color_code
+    @color_code50 = color_code50
+    @color_code30 = color_code30
+    @light_text_color = light_text_color
     @title = title
   end
 end

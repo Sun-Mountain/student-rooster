@@ -5,6 +5,9 @@ source 'https://rubygems.org'
 ruby '3.2.0'
 
 gem 'bootsnap', require: false
+gem 'devise', '~> 4.9'
+gem 'devise-async', '~> 1.0'
+gem 'devise-security', '~> 0.18.0'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
