@@ -1,0 +1,57 @@
+@import './1_variables.scss';
+
+body {
+  background-color: $body-background;
+  // color: $text-color;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  height: 100%;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+nav {
+  flex: 0 1 auto;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+main {
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+footer {
+  background-color: $footer-background;
+  flex: 0 1 auto;
+  min-height: 3rem;
+}

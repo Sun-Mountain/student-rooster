@@ -1,0 +1,44 @@
+<h1>
+  Color Swatches
+</h1>
+
+<div class="color-swatches-container">
+  <%= render(ColorSwatchComponent.new(color_code: "rgba(142, 202, 230, 1)",
+                                      color_code50: "rgba(142, 202, 230, 0.5)",
+                                      color_code30: "rgba(142, 202, 230, 0.3)",
+                                      title: "Sky Blue")) %>
+
+  <%= render(ColorSwatchComponent.new(color_code: "rgba(33, 158, 188, 1)",
+                                      color_code50: "rgba(33, 158, 188, 0.5)",
+                                      color_code30: "rgba(33, 158, 188, 0.3)",
+                                      title: "Blue Green")) %>
+
+  <%= render(ColorSwatchComponent.new(color_code: "rgba(2, 48, 71, 1)",
+                                      color_code50: "rgba(2, 48, 71, 0.5)",
+                                      color_code30: "rgba(2, 48, 71, 0.3)",
+                                      light_text_color: "rgba(248, 249, 250, 1)",
+                                      title: "Prussian Blue")) %>
+
+  <%= render(ColorSwatchComponent.new(color_code: "rgba(255, 183, 3, 1)",
+                                      color_code50: "rgba(255, 183, 3, 0.5)",
+                                      color_code30: "rgba(255, 183, 3, 0.3)",
+                                      title: "Selective Yellow")) %>
+
+  <%= render(ColorSwatchComponent.new(color_code: "rgba(251, 133, 0, 1)",
+                                      color_code50: "rgba(251, 133, 0, 0.5)",
+                                      color_code30: "rgba(251, 133, 0, 0.3)",
+                                      title: "UT Orange")) %>
+
+  <div class="swatch-container">
+    <div class="swatch-title">GrayScale</div>
+    <div class="swatch" style="background-color: rgba(248, 249, 250, 1);">rgba(248, 249, 250, 1)</div>
+    <div class="swatch" style="background-color: rgba(233, 236, 239, 1);">rgba(233, 236, 239, 1)</div>
+    <div class="swatch" style="background-color: rgba(222, 226, 230, 1);">rgba(222, 226, 230, 1)</div>
+    <div class="swatch" style="background-color: rgba(206, 212, 218, 1);">rgba(206, 212, 218, 1)</div>
+    <div class="swatch" style="background-color: rgba(173, 181, 189, 1);">rgba(173, 181, 189, 1)</div>
+    <div class="swatch" style="background-color: rgba(108, 117, 125, 1); color: rgba(248, 249, 250, 1);">rgba(108, 117, 125, 1)</div>
+    <div class="swatch" style="background-color: rgba(73, 80, 87, 1); color: rgba(248, 249, 250, 1);">rgba(73, 80, 87, 1)</div>
+    <div class="swatch" style="background-color: rgba(52, 58, 64, 1); color: rgba(248, 249, 250, 1);">rgba(52, 58, 64, 1)</div>
+    <div class="swatch" style="background-color: rgba(33, 37, 41, 1); color: rgba(248, 249, 250, 1);">rgba(33, 37, 41, 1)</div>
+  </div>
+</div>

@@ -18,6 +18,9 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
@@ -27,10 +30,10 @@ development:
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: student_rooster
+  username: <%= ENV.fetch("DB_USER", nil) %>
 
   # The password associated with the PostgreSQL role (username).
-  #password:
+  password: '<%= ENV.fetch("DB_PASS", nil) %>'
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -56,6 +59,8 @@ development:
 test:
   <<: *default
   database: student_rooster_test
+  username: <%= ENV.fetch("DB_USER", nil) %>
+  password: '<%= ENV.fetch("DB_PASS", nil) %>'
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,6 +84,3 @@ test:
 #
 production:
   <<: *default
-  database: student_rooster_production
-  username: student_rooster
-  password: <%= ENV["STUDENT_ROOSTER_DATABASE_PASSWORD"] %>

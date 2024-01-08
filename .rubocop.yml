@@ -5,7 +5,7 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.2
   Exclude:
     - 'app/jobs/application_job.rb'
     - 'app/mailers/application_mailer.rb'

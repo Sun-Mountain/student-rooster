@@ -1,0 +1,29 @@
+@import '../base/1_variables.scss';
+
+#main-navigation {
+  background-color: $nav-background;
+  min-height: $nav-height;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  a, a:visited {
+    border-bottom: 2px solid $nav-background;
+    color: $nav-link-color;
+    display: inline-block;
+    font-weight: 700;
+    margin: 1rem;
+    text-decoration: none;
+
+    &.active {
+      border-bottom: 2px solid $nav-link-color;
+    }
+
+    &:hover {
+      border-bottom: 2px solid $nav-link-hover;
+      color: $nav-link-hover;
+    }
+  }
+}
