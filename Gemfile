@@ -15,6 +15,7 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'sass-rails'
 
 group :development, :test do
   gem 'capybara', '>= 3.35.3'
