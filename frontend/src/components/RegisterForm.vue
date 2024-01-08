@@ -1,19 +1,21 @@
 <template>
   <h1>Register</h1>
   <form @submit="submitForm">
-    <div>
-      <label for="username">Username:</label>
+    <div class="form-input-container">
+      <label for="username">Username:</label><br />
       <input type="text" id="name" v-model="username" required>
     </div>
-    <div>
-      <label for="email">Email:</label>
+    <div class="form-input-container">
+      <label for="email">Email:</label><br />
       <input type="email" id="email" v-model="email" required>
     </div>
-    <div>
-      <label for="password">Password:</label>
+    <div class="form-input-container">
+      <label for="password">Password:</label><br />
       <input type="password" id="password" v-model="password" required>
     </div>
-    <button type="submit">Register</button>
+    <div class="submit-btn-container">
+      <button type="submit">Register</button>
+    </div>
   </form>
 </template>
 

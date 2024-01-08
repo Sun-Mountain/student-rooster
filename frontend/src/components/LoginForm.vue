@@ -2,9 +2,7 @@
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores';
 import { type Login } from '@/types';
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
+import { FormField } from '@/components';
 
 const email = ref('');
 const password = ref('');
@@ -24,14 +22,16 @@ async function submitForm(e: Event) {
 <template>
   <h1>Login</h1>
   <form @submit="submitForm">
-    <div>
-      <label for="email">Email:</label>
+    <div class="form-input-container">
+      <label for="email">Email:</label><br />
       <input type="email" id="email" v-model="email" required>
     </div>
-    <div>
-      <label for="password">Password:</label>
+    <div class="form-input-container">
+      <label for="password">Password:</label><br />
       <input type="password" id="password" v-model="password" required>
     </div>
-    <button type="submit">Login</button>
+    <div class="submit-btn-container">
+      <button type="submit">Login</button>
+    </div>
   </form>
 </template>

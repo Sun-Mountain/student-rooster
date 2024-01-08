@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import LoginForm from '@/components/LoginForm.vue';
-import RegisterForm from '@/components/RegisterForm.vue';
 import { useAuthStore } from '@/stores';
 
 const authStore = useAuthStore();
@@ -9,8 +8,6 @@ const authStore = useAuthStore();
 <template>
   <h1>Home</h1>
   <p v-if="!authStore.isAuthenticated">
-    <RegisterForm />
-    or
     <LoginForm />
   </p>
   <p v-else>
