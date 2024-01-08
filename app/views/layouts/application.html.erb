@@ -6,6 +6,7 @@
     <div id="app">
       <%= render partial: 'shared/main-nav' %>
       <main>
+        <%= render partial: 'shared/alerts', locals: { notice: flash[:notice], alert: flash[:alert] } %>
         <%= yield %>
       </main>
       <%= render partial: 'shared/footer' %>
