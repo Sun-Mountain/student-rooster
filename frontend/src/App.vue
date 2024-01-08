@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import MainNav from '@/components/shared/MainNav.vue';
 </script>
 
 <template>
   <header>
-    <nav id="main-navigation">
-      <RouterLink to="/" class="main-nav-link">Home</RouterLink> |
-      <RouterLink to="/about" class="main-nav-link">About</RouterLink>
-    </nav>
+    <MainNav />
   </header>
 
   <main>
