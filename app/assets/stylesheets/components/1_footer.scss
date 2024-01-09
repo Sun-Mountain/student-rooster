@@ -1,0 +1,17 @@
+@import '../base/1_variables.scss';
+
+#footer-content {
+  background-color: $footer-background;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+}
+
+@media (min-width: $breakpoint-md) {
+  #footer-content {
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: $breakpoint-xl;
+  }
+}
