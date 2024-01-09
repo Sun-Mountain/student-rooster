@@ -2,14 +2,14 @@
 
 # require './lib/redis_store/mail_throttle_store'
 
-module Users
+module Auth
   class PasswordsController < Devise::PasswordsController
     # GET /resource/password/new
     # def new
     #   super
     # end
 
-    # # POST /resource/password
+    # POST /resource/password
     # def create
     #   mail_throttle_store = RedisStore::MailThrottleStore.new
     #   if mail_throttle_store.can_email? email_param[:email]

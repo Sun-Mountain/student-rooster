@@ -14,7 +14,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.2'
 gem 'redis', '>= 4.0.1'
-gem "sidekiq", "~> 7.2"
+gem 'sidekiq', '~> 7.2'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
@@ -26,7 +26,7 @@ group :development, :test do
   gem 'capybara', '>= 3.35.3'
   gem 'database_cleaner'
   gem 'debug', platforms: %i[mri windows]
-  gem "dotenv-rails", "~> 2.8"
+  gem 'dotenv-rails', '~> 2.8'
   gem 'factory_bot_rails', '>= 6.1.0'
   gem 'pry'
   gem 'pry-nav'
@@ -47,3 +47,4 @@ group :test do
   gem 'fakeredis'
 end
 
+gem 'dockerfile-rails', '>= 1.6', group: :development

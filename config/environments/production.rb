@@ -52,6 +52,7 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+  config.ssl_options = { redirect: { exclude: -> request { request.path =~ /health_check/ } } }
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new($stdout)
@@ -67,7 +68,11 @@ Rails.application.configure do
   config.log_level = ENV.fetch('RAILS_LOG_LEVEL', 'info')
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+
+  # Use a different cache store in production.
+  config.action_controller.perform_caching = true
+
+  config.cache_store = :redis_cache_store, { url: "#{ENV.fetch('REDIS_URL', 'redis://localhost')}:6379/1" }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
@@ -76,6 +81,16 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: ENV['HOST_NAME'], port: ENV['PORT'] }
   config.action_mailer.asset_host = "https://#{ENV['HOST_NAME']}:#{ENV['PORT']}"
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    user_name:            ENV['SMTP_USERNAME'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       'plain',
+    # enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
