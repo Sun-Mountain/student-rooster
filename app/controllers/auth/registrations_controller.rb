@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Users
+module Auth
   class RegistrationsController < Devise::RegistrationsController
     # def destroy
     #   if resource.destroy_with_password(user_params[:password_to_delete])
