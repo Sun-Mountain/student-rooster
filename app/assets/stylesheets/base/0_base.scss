@@ -36,7 +36,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav {
+  background-color: $nav-background;
   flex: 0 1 auto;
+  min-height: $nav-height;
+  width: 100%;
 
   ul {
     list-style: none;
@@ -48,10 +51,18 @@ nav {
 main {
   flex: 1 1 auto;
   padding: 1rem;
+  width: 100%;
 }
 
 footer {
   background-color: $footer-background;
   flex: 0 1 auto;
   min-height: 3rem;
+}
+
+@media (min-width: $breakpoint-md) {
+  main {
+    margin: 0 auto;
+    max-width: $breakpoint-xl;
+  }
 }

@@ -1,12 +1,12 @@
 @import '../base/1_variables.scss';
 
 #main-navigation {
-  background-color: $nav-background;
   min-height: $nav-height;
+  width: 100%;
 
   ul {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 
   a, a:visited {
@@ -24,6 +24,16 @@
     &:hover {
       border-bottom: 2px solid $nav-link-hover;
       color: $nav-link-hover;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-md) {
+  #main-navigation {
+    ul {
+      flex-direction: row;
+      margin: 0 auto;
+      max-width: $breakpoint-xl;
     }
   }
 }

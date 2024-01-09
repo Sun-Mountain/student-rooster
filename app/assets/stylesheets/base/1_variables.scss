@@ -25,6 +25,12 @@ $onyx: rgba(52, 58, 64, 1);
 $eerie-black: rgba(33, 37, 41, 1);
 $white: #FFF;
 
+/* Breakpoints */
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
 /* Body */
 $body-background: $seasalt;
 
@@ -35,4 +41,4 @@ $nav-link-color: $antiflash-white;
 $nav-link-hover: $selective-yellow;
 
 /* Footer */
-$footer-background: $french-gray;
+$footer-background: $platinum;
