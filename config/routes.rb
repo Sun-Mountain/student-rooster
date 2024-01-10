@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     root 'dashboard#index', as: :authenticated_root, via: :get
   end
 
-  get 'up' => 'rails/health#show', as: :rails_health_check
-
   resources :teams
+  resources :team_ownerships
+  
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
   match '/style', to: 'public#style-guide', via: :get
   match '/dashboard', to: 'dashboard#index', via: :get

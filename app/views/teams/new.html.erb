@@ -1,1 +1,21 @@
-<h1>Create A New Team</h1>
+<div class="page-container">
+  <div class="form-container">
+    <div class="form-heading-wrapper">
+      <h2>Create A New Team</h2>
+    </div>
+
+    <div class="form-wrapper">
+      <%= form_for @team do |f| %>
+        <div class="field">
+          <%= f.label :name %>
+          <div class="input-wrapper">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text-input" %>
+          </div>
+        </div>
+        <div class="form-btn-wrapper">
+          <%= f.submit "Create Team", class: "form-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
