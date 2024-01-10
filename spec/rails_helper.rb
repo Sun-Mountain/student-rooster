@@ -22,6 +22,19 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
+
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+  config.include Rails.application.routes.url_helpers
+
+  config.before(:all, type: :request) do
+    WebMock.allow_net_connect!
+  end
+end
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Rails.application.routes.url_helpers
