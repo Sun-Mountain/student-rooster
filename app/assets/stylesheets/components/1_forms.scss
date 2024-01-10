@@ -1,0 +1,40 @@
+@import '../base/1_variables.scss';
+
+.form-container {
+  background-color: $white;
+  border: 1px solid $french-gray;
+  border-radius: 0.25rem;
+  box-shadow: 0.25rem 0.125rem 0.25rem rgba($outer-space, 0.075);
+  margin: 0 auto;
+  min-width: $screen-xxs;
+}
+
+.form-wrapper {
+  padding: 0rem 1rem 1rem;
+
+  label {
+    font-weight: 700;
+  }
+
+  .field {
+    margin: 0.5rem 0;
+  }
+
+  .text-input {
+    border: 1px solid $outer-space;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: 90%;
+  }
+}
+
+.form-heading-wrapper {
+  margin: 1rem;
+  h1, h2, h3, h4, h5, h6 {
+    color: $prussian-blue;
+  }
+}
+
+.devise-form-container {
+  width: 50%;
+}
