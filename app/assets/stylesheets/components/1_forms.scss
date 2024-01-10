@@ -1,10 +1,10 @@
 @import '../base/1_variables.scss';
 
 .form-container {
-  background-color: $white;
-  border: 1px solid $french-gray;
+  background-color: $form-background;
+  border: $form-border;
   border-radius: 0.25rem;
-  box-shadow: 0.25rem 0.125rem 0.25rem rgba($outer-space, 0.075);
+  box-shadow: $form-box-shadow;
   margin: 0 auto;
   min-width: $screen-xxs;
 }
@@ -21,7 +21,7 @@
   }
 
   .text-input {
-    border: 1px solid $outer-space;
+    border: $text-border;
     border-radius: 0.25rem;
     padding: 0.5rem;
     width: 90%;
@@ -31,7 +31,7 @@
 .form-heading-wrapper {
   margin: 1rem;
   h1, h2, h3, h4, h5, h6 {
-    color: $prussian-blue;
+    color: $form-header-color;
   }
 }
 
