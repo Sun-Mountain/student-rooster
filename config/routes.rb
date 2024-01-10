@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 
+  resources :teams
+
   match '/style', to: 'public#style-guide', via: :get
   match '/dashboard', to: 'dashboard#index', via: :get
 
