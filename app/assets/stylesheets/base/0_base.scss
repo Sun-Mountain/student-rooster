@@ -2,14 +2,13 @@
 
 body {
   background-color: $body-background;
-  // color: $text-color;
+  color: $text-color;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   height: 100%;
   line-height: 1.5;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -18,6 +17,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  overflow-x: hidden;
 
   &.no-scroll {
     overflow: hidden;
@@ -50,8 +50,12 @@ nav {
 
 main {
   flex: 1 1 auto;
-  padding: 1rem;
+  margin: 0 auto;
   width: 100%;
+}
+
+#main-content {
+  padding: 1rem;
 }
 
 footer {
@@ -60,9 +64,8 @@ footer {
   min-height: 3rem;
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: $breakpoint-lg) {
   main {
-    margin: 0 auto;
     max-width: $breakpoint-xl;
   }
 }

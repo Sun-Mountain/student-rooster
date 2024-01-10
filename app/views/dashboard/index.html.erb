@@ -1,7 +1,10 @@
 <h1>Dashboard</h1>
 
-<% if @teams.count > 0 %>
-  Yay, teams!
-<% else %>
-  No teams yet.
-<% end %>
+<h2>Teams</h2>
+<div class="dash-teams-list">
+  <% if @teams.count > 0 %>
+    Yay, teams!
+  <% else %>
+    No teams yet.
+  <% end %>
+</div>
