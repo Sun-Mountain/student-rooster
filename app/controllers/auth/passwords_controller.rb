@@ -40,8 +40,6 @@ module Auth
     #   super(resource_name)
     # end
 
-    private
-
     # def email_param
     #   params.require(:user).permit(:email)
     # end

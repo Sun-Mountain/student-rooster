@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Team < ApplicationRecord
   has_one :team_ownership, dependent: :destroy
   has_many :memberships, dependent: :destroy

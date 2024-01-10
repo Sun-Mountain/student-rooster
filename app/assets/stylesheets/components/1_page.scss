@@ -1,4 +1,17 @@
+@import "../base/1_variables.scss";
+
 .page-container {
   margin: 0 auto;
   width: 100%;
+}
+
+.dashboard-content,
+.public-content,
+.teams-content {
+  background-color: $white;
+  box-shadow: $main-box-shadow;
+  
+  .container.plus-one {
+    padding: 1rem;
+  }
 }
