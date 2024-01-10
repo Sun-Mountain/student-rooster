@@ -1,10 +1,6 @@
 @import '../base/1_variables.scss';
 
 .form-container {
-  background-color: $form-background;
-  border: $form-border;
-  border-radius: 0.25rem;
-  box-shadow: $form-box-shadow;
   margin: 0 auto;
   min-width: $screen-xxs;
 }
@@ -24,7 +20,10 @@
     border: $text-border;
     border-radius: 0.25rem;
     padding: 0.5rem;
-    width: 90%;
+
+    &:focus {
+      outline: $focus-border;
+    }
   }
 }
 
@@ -35,6 +34,49 @@
   }
 }
 
+/* Devise Forms */
+
 .devise-form-container {
+  background-color: $form-background;
+  border: $form-border;
+  border-radius: 0.25rem;
+  box-shadow: $form-box-shadow;
   width: 50%;
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .links-wrapper {
+    a, a:visited {
+      font-weight: 700;
+    }
+  }
+}
+
+.devise-form-btn {
+  background-color: $button-background;
+  border: $button-border;
+  border-radius: 0.25rem;
+  color: $button-color;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 auto;
+  padding: 0.5rem;
+  text-align: center;
+  width: 90%;
+
+  &:hover {
+    background-color: $button-background-hover;
+    border: $button-border-hover;
+    color: $button-color-hover;
+  }
+
+  &:focus {
+    outline: $focus-border;
+  }
 }

@@ -28,6 +28,15 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+a, a:visited {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 #app {
   display: flex;
   flex-direction: column;

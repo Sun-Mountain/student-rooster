@@ -35,6 +35,9 @@ $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 $screen-xxs: 320px;
 
+/* Links */
+$link-color: $blue-green;
+
 /* Body */
 $body-background: $seasalt;
 $text-color: $outer-space;
@@ -51,9 +54,18 @@ $footer-background: $platinum;
 /* Dashboard */
 $teams-border-color: $blue-green;
 
+/* Buttons */
+$button-background: $sky-blue;
+$button-border: 1px solid $sky-blue;
+$button-border-hover: 1px solid $blue-green;
+$button-color: $outer-space;
+$button-background-hover: $antiflash-white;
+$button-color-hover: $prussian-blue;
+
 /* Forms */
 $form-background: $white;
 $form-border:  1px solid $french-gray;
 $form-box-shadow: 0.25rem 0.125rem 0.25rem rgba($outer-space, 0.075);
 $form-header-color: $prussian-blue;
 $text-border: 1px solid $outer-space;
+$focus-border: 5px solid $selective-yellow;
