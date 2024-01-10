@@ -13,6 +13,10 @@ Rails.application.routes.draw do
                 sign_up: ''
               }
 
+  authenticated :user do
+    root 'dashboard#index', as: :authenticated_root, via: :get
+  end
+
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   match '/style', to: 'public#style-guide', via: :get
