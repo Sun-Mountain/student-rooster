@@ -10,10 +10,16 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
-      redirect_to root_path, notice: 'Team was successfully created.'
+      redirect_to team_path(@team.id), notice: 'Team was successfully created.'
     else
       render :new
     end
+  end
+
+  def show
+    @team = Team.find(params[:id])
+    # @team_owner = User.find(@team.user_id)
+    @team_members = @team.users
   end
 
   private
