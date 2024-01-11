@@ -1,15 +1,18 @@
 <% if notice %>
-  <div class="ds-c-alert"">
-    <div class="ds-c-alert__body">
-      <h3 class="ds-c-alert__heading"><%= notice %></h3>
+<% end %>
+  <div class="alert"">
+    <div class="alert__body">
+      <div class="alert__icon">
+        <%= icon('fa-regular', 'circle-check')%>
+      </div>
+      <h3 class="alert__heading">Notice</h3>
     </div>
   </div>
-<% end %>
 
 <% if alert %>
-  <div class="ds-c-alert ds-c-alert--error"">
-    <div class="ds-c-alert__body">
-      <h3 class="ds-c-alert__heading"><%= alert %></h3>
+<% end %>
+  <div class="alert alert--error"">
+    <div class="alert__body">
+      <h3 class="alert__heading">Alert</h3>
     </div>
   </div>
-<% end %>

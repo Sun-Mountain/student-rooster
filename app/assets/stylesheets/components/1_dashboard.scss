@@ -1,13 +1,13 @@
-@import '../base/1_variables.scss';
+@import '../base/1_variables';
 
 #dashboard {
-  h1, h2 {
+  h1 {
     padding-left: 8px;
   }
   
   h2 {
     color: $teams-border-color;
-    margin-bottom: -11px;
+    margin-bottom: 0;
   }
 
   h3 {
@@ -18,10 +18,15 @@
 
 .dash-teams-list {
   border: 1px solid $teams-border-color;
+  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 1rem;
+
+  h2 {
+    padding-left: 0;
+  }
 }
 
 .team-list-section + .team-list-section {
