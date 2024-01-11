@@ -31,18 +31,20 @@ class TeamsController < ApplicationController
   def update
     @team = current_user.teams.find(params[:id])
     if @team.update(team_params)
-      redirect_to team_path(@team.id), notice: 'Team was successfully updated.'
+      redirect_to team_path(@team.id), notice: "Team was successfully updated."
     else
-      render :edit, alert: 'Team was not updated.'
+      flash.now[:alert] = "Team could not be updated: #{model_error_string(@team)}."
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @team = current_user.teams.find(params[:id])
     if @team.destroy
-      redirect_to root_path, notice: 'Team was successfully destroyed.'
+      redirect_to root_path, notice: "Team was successfully destroyed."
     else
-      redirect_to team_path(@team.id), alert: 'Team was not destroyed.'
+      flash.now[:alert] = "Team could not be destroyed: #{model_error_string(@team)}."
+      redirect_to team_path(@team.id), status: :unprocessable_entity
     end
   end
 
