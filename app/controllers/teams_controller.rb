@@ -18,8 +18,13 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    # @team_owner = User.find(@team.user_id)
+    @team_ownership = TeamOwnership.find_by(team_id: @team.id)
+    @owner = User.find(@team_ownership.user_id)
     @team_members = @team.users
+  end
+
+  def edit
+    @team = Team.find(params[:id])
   end
 
   private

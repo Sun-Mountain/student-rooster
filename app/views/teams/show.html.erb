@@ -1,1 +1,9 @@
 <h1><%= @team.name %></h1>
+
+<div>
+  <%= link_to "Edit Team", edit_team_path(@team.id) %>
+</div>
+
+<div>
+  Owner: <%= @owner.email %>
+</div>
