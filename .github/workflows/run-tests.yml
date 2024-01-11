@@ -16,6 +16,9 @@ jobs:
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+      redis:
+        image: redis
+        ports: ["6379:6379"]
 
     steps:
     - name: Checkout Repository
@@ -24,15 +27,21 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
 
+    - name: Install PostgreSQL
+      run: sudo apt-get -yqq install libpq-dev
+
     - name: Install Dependencies
       run: |
         gem install bundler
         bundle install
 
     - name: Database Setup
-      run: |
-        bundle exec rails db:create
-        bundle exec rails db:migrate
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: postgres
+        run: |
+          bin/rails db:create db:migrate db:schema:load
 
     - name: Run Tests
       run: bundle exec rspec
