@@ -4,13 +4,21 @@
   background-color: $notice-background;
   border: $notice-border;
   border-radius: 0.5rem;
-  margin: 0.75rem auto 0 auto;
+  margin: 1rem auto;
   width: 75%;
 
   .alert__body {
     display: flex;
     flex-direction: row;
     padding: 0.5rem;
+  }
+
+  .alert__content {
+    padding-left: 0.5rem;
+
+    ul {
+      margin: 0;
+    }
   }
 
   .alert__heading {
