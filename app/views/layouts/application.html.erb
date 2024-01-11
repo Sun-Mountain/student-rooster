@@ -7,7 +7,10 @@
       <%= render partial: 'shared/nav' %>
       <main class="<%= controller_name %>-content">
         <div class="container plus-one">
-          <%= render partial: 'shared/alerts', locals: { notice: flash[:notice], alert: flash[:alert] } %>
+          <%= render partial: 'shared/alerts', locals: {
+                                                  notice: flash[:notice] || flash[:success],
+                                                  alert: flash[:alert],
+                                                  info: flash[:info] } %>
           <%= yield %>
         </div>
       </main>
