@@ -36,12 +36,12 @@ jobs:
         bundle install
 
     - name: Database Setup
-        env:
-          RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: postgres
-        run: |
-          bin/rails db:create db:migrate db:schema:load
+      env:
+        RAILS_ENV: test
+        PGHOST: localhost
+        PGUSER: postgres
+      run: |
+        bin/rails db:create db:migrate db:schema:load
 
     - name: Run Tests
       run: bundle exec rspec
