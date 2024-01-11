@@ -27,6 +27,15 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def update
+    @team = current_user.teams.find(params[:id])
+    if @team.update(team_params)
+      redirect_to team_path(@team.id), notice: 'Team was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def team_params

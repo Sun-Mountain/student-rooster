@@ -16,30 +16,6 @@
     margin: 0.5rem 0;
   }
 
-  .form-btn {
-    background-color: $button-background;
-    border: $button-border;
-    border-radius: 0.25rem;
-    color: $button-color;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 0 auto;
-    padding: 0.5rem;
-    text-align: center;
-    width: 90%;
-
-    &:hover {
-      background-color: $button-background-hover;
-      border: $button-border-hover;
-      color: $button-color-hover;
-    }
-
-    &:focus {
-      outline: $focus-border;
-    }
-  }
-
   .form-btn-wrapper {
     display: flex;
     justify-content: center;
@@ -55,6 +31,30 @@
     &:focus {
       outline: $focus-border;
     }
+  }
+}
+
+.form-btn {
+  background-color: $button-background;
+  border: $button-border;
+  border-radius: 0.25rem;
+  color: $button-color;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 auto;
+  padding: 0.5rem;
+  text-align: center;
+  width: 90%;
+
+  &:hover {
+    background-color: $button-background-hover;
+    border: $button-border-hover;
+    color: $button-color-hover;
+  }
+
+  &:focus {
+    outline: $focus-border;
   }
 }
 

@@ -1,0 +1,16 @@
+@import "../base/1_variables";
+
+.team-edit-form-container {
+  .team-name-header {
+    .text-input {
+      font-size: 2rem;
+      line-height: 2rem;
+      margin: auto 0;
+    }
+  }
+
+  .form-btn {
+    margin: 2rem 0 0 0;
+    width: 5rem;
+  }
+}
