@@ -10,9 +10,10 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
-      redirect_to team_path(@team.id), notice: 'Team was successfully created.'
+      redirect_to team_path(@team.id), notice: "Team was successfully created."
     else
-      render :new, alert: 'Team was not created.'
+      flash.now[:alert] = "Team could not be created: #{model_error_string(@team)}."
+      render :new, status: :unprocessable_entity
     end
   end
 

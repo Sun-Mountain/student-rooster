@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def model_error_string(resource)
+    resource.errors.full_messages.join(', ')
+  end
+
   protected
 
   def configure_permitted_parameters
