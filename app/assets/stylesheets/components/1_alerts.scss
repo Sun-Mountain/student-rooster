@@ -16,12 +16,41 @@
     display: flex;
     color: $notice-text;
     flex-direction: column;
+    font-size: 18px;
     justify-content: center;
   }
 
   .alert__icon {
     color: $notice-text;
-    font-size: 22px;
-    margin-right: 0.75rem;
+    font-size: 18px;
+    margin-right: 0.5rem;
+  }
+}
+
+.alert--error {
+  background-color: $error-background;
+  border: $error-border;
+  color: $error-text;
+
+  .alert__heading {
+    color: $error-text;
+  }
+
+  .alert__icon {
+    color: $error-text;
+  }
+}
+
+.alert--success {
+  background-color: $success-background;
+  border: $success-border;
+  color: $success-text;
+
+  .alert__heading {
+    color: $success-text;
+  }
+
+  .alert__icon {
+    color: $success-text;
   }
 }
