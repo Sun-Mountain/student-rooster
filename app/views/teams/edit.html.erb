@@ -1,11 +1,19 @@
 <%= render partial: 'shared/back-link' %>
 
 <div class="team-edit-form-container">
-  <%= form_for @team, url: team_path(@team.id), html: { method: :put } do |f| %>
-    <h1 class="team-name-header">
-      Edit:
-      <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text-input" %>
-    </h1>
-    <%= f.submit "Save", class: "form-btn" %>
-  <% end %>
+  <div>
+    <%= form_for @team, url: team_path(@team.id), html: { method: :put } do |f| %>
+      <h1 class="team-name-header">
+        Edit:
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "text-input" %>
+      </h1>
+      <%= f.submit "Save", class: "form-btn" %>
+    <% end %>
+  </div>
+
+  <div class="delete-btn-container">
+    <%= form_for @team, url: team_path(@team), html: { method: :delete } do |f| %>
+      <%= f.submit "Delete", class:"button button--danger", data: { test: "delete-team" } %>
+    <% end %>
+  </div>
 </div>

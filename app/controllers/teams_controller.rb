@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
     if @team.save
       redirect_to team_path(@team.id), notice: 'Team was successfully created.'
     else
-      render :new
+      render :new, alert: 'Team was not created.'
     end
   end
 
@@ -32,7 +32,16 @@ class TeamsController < ApplicationController
     if @team.update(team_params)
       redirect_to team_path(@team.id), notice: 'Team was successfully updated.'
     else
-      render :edit
+      render :edit, alert: 'Team was not updated.'
+    end
+  end
+
+  def destroy
+    @team = current_user.teams.find(params[:id])
+    if @team.destroy
+      redirect_to root_path, notice: 'Team was successfully destroyed.'
+    else
+      redirect_to team_path(@team.id), alert: 'Team was not destroyed.'
     end
   end
 

@@ -53,6 +53,24 @@ $success-background: $forest-green-20;
 $success-border: 4px solid $forest-green;
 $success-text: $pakistan-green;
 
+/* Buttons */
+$button-background: $blue-green;
+$button-border: 1px solid $blue-green;
+$button-background-hover: $sky-blue;
+$button-border-hover: 1px solid $sky-blue;
+$button-text: $antiflash-white;
+$button-text-hover: $prussian-blue;
+$button-text-size: 1rem;
+$button-text-weight: 700;
+$button-padding: 0.5rem 1rem;
+
+$button--danger-background: $rufous;
+$button--danger-border: 1px solid $rufous;
+$button--danger-background-hover: $rufous-20;
+$button--danger-border-hover: 1px solid $rufous-20;
+$button--danger-text: $antiflash-white;
+$button--danger-text-hover: $barn-red;
+
 /* Links */
 $link-color: $blue-green;
 
