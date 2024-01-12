@@ -1,0 +1,12 @@
+@import '../base/1_variables';
+
+.admin-content {
+  .container {
+    h1.admin-content__header {
+      background-color: $admin-header-background;
+      text-align: center;
+      margin: -1rem;
+      padding: 1rem 1rem 3.5rem 1rem;
+    }
+  }
+}
