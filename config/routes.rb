@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     root 'dashboard#index', as: :authenticated_root, via: :get
   end
 
+  resources :admin, only: [:index]
   resources :teams
   resources :team_ownerships
   
