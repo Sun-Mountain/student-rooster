@@ -1,5 +1,34 @@
 <%= render 'admin/header' %>
 
-<h2>
+<h2 class="dash-section__header">
   Users
 </h2>
+
+<div class="dash-list dash-list__admin users-list-container">
+  <% @users.each do |user| %>
+    <div class="list-item">
+      <div class="list-detail">
+        <%= user.username %>
+      </div>
+      <div class="list-detail">
+        <% if user.siteAdmin? %>
+          <div class="icon role-detail site-admin">
+            <%= icon('fa-solid', 'cog')%>
+          </div>
+        <% end %>
+        <% if user.confirmed? %>
+          <div class="icon confirmed-detail">
+            <%= icon('fa-solid', 'circle-check')%>
+          </div>
+        <% else %>
+          <div class="icon unconfirmed-detail">
+            <%= icon('fa-solid', 'x')%>
+          </div>
+        <% end %>
+        <div class="joined-detail">
+          Joined: <%= user.created_at.strftime("%d %b, %Y") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
