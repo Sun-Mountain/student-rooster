@@ -193,13 +193,19 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.16.0-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.16.0-arm-linux)
+      racc (~> 1.4)
     nokogiri (1.16.0-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.24.0)
-    parser (3.3.0.2)
+    parser (3.3.0.3)
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
@@ -358,7 +364,10 @@ GEM
 
 PLATFORMS
   aarch64-linux
-  arm64-darwin-23
+  arm-linux
+  arm64-darwin
+  x86-linux
+  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
@@ -399,7 +408,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.2.0p0
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.5.4
