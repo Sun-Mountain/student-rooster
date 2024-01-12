@@ -10,12 +10,22 @@
 
 <% if current_user.siteAdmin? %>
   <div class="profile-detail status">
-    <div class="badge-container">
-      <%= icon('fa-solid', 'cog', class: 'icon') %>
-      <div class="badge-text">
-        Site Admin
+    <% if @user.siteAdmin? %>
+      <div class="badge-container">
+        <%= icon('fa-solid', 'cog', class: 'icon') %>
+        <div class="badge-text">
+          Site Admin
+        </div>
       </div>
-    </div>
+    <% end %>
+    <% if @user.user? %>
+      <div class="badge-container">
+        <%= icon('fa-solid', 'user', class: 'icon') %>
+        <div class="badge-text">
+          User
+        </div>
+      </div>
+    <% end %>
     <% if @user.confirmed? %>
       <div class="badge-container confirmed">
         <%= icon('fa-solid', 'circle-check', class: 'icon ')%>
