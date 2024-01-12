@@ -8,40 +8,40 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13
-        env:
-          POSTGRES_USER: test_user
-          POSTGRES_PASSWORD: test_password
-          POSTGRES_DB: test_db
-        ports:
-          - 5432:5432
+        image: postgres:11.6
+        ports: ["5432:5432"]
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
       redis:
         image: redis
         ports: ["6379:6379"]
+      elasticsearch:
+        image: elasticsearch:6.8.8
+        ports: ["9200:9200"]
+        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.6
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
+      - name: Install PostgreSQL
+        run: sudo apt-get -yqq install libpq-dev
 
-    - name: Install PostgreSQL
-      run: sudo apt-get -yqq install libpq-dev
+      - name: Run bundle install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: Setup Database
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: postgres
+        run: bin/rails db:create db:schema:load
 
-    - name: Install Dependencies
-      run: |
-        gem install bundler
-        bundle install
-
-    - name: Database Setup
-      env:
-        RAILS_ENV: test
-        PGHOST: localhost
-        PGUSER: postgres
-      run: |
-        bin/rails db:create db:migrate db:schema:load
-
-    - name: Run Tests
-      run: bundle exec rspec
+      - name: Build and test with rspec
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: postgres
+        run: bundle exec rspec spec
