@@ -21,7 +21,10 @@ Rails.application.routes.draw do
   get '/admin/users', to: 'admin/users#index', as: :admin_users
   get '/admin/teams', to: 'admin/teams#index', as: :admin_teams
 
-  resources :teams
+  resources :teams do
+    resources :memberships
+    resources :lessons
+  end
   resources :team_ownerships
   
   get 'up' => 'rails/health#show', as: :rails_health_check
