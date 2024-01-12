@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :teams, through: :team_ownerships, dependent: :destroy
   has_many :memberships, dependent: :destroy
 
-  enum role: %i[superadmin admin user]
+  enum role: %i[siteAdmin admin user]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
