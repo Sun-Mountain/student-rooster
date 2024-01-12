@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class AdminController < ApplicationController
-  before_action :authenticate_user!
   before_action :user_admin?
 
   def index
-    @users = User.all
+    @teams_count = Team.all.count
+    @user_count = User.all.count
   end
 
   private

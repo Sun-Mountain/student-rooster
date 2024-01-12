@@ -1,12 +1,73 @@
 @import '../base/1_variables';
 
-.admin-content {
+.admin-content,
+.users-content,
+.teams-content {
   .container {
     h1.admin-content__header {
       background-color: $admin-header-background;
       text-align: center;
-      margin: -1rem;
-      padding: 1rem 1rem 3.5rem 1rem;
+      margin: -1rem -1rem 0rem -1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+.site-stats {
+  background: 
+    linear-gradient(to bottom, transparent 50%, $main-body-color 50%), 
+    linear-gradient(to top, transparent 50%, $admin-header-background);
+  margin: 0rem -1rem;
+  padding: 1rem 2.5rem;
+
+  .stat-block+.stat-block {
+    margin-left: 1.5rem;
+  }
+
+  .stat-block {
+    background-color: $stat-block-background;
+    border: 1px solid $outer-space;
+    border-radius: 0.25rem;
+    display: inline-block;
+    margin: 0rem;
+    padding: 1rem;
+    width: 200px;
+
+    .stat-block__header-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+
+      .stat-block__icon {
+        background-color: $stat-block-btn-background;
+        border: $stat-block-btn-border;
+        border-radius: 0.25rem;
+        color: $stat-block-btn-color;
+        font-size: 1.5rem;
+        padding: 5px;
+
+        &:hover {
+          background-color: $stat-block-btn-hover-background;
+          color: $stat-block-btn-hover;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .stat-block__header {
+      color: $prussian-blue;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+    .stat-block__stat {
+      color: $outer-space;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      text-align: center;
     }
   }
 }

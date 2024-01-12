@@ -17,7 +17,10 @@ Rails.application.routes.draw do
     root 'dashboard#index', as: :authenticated_root, via: :get
   end
 
-  resources :admin, only: [:index]
+  resources :admin, path: '/admin', only: [:index]
+  get '/admin/users', to: 'admin/users#index', as: :admin_users
+  get '/admin/teams', to: 'admin/teams#index', as: :admin_teams
+
   resources :teams
   resources :team_ownerships
   
