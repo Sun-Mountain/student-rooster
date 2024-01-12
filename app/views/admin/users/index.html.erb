@@ -8,7 +8,7 @@
   <% @users.each do |user| %>
     <div class="list-item">
       <div class="list-detail">
-        <%= user.username %>
+        <%= link_to user.username, admin_user_profile_path(user.email) %>
       </div>
       <div class="list-detail">
         <% if user.siteAdmin? %>
@@ -17,11 +17,11 @@
           </div>
         <% end %>
         <% if user.confirmed? %>
-          <div class="icon confirmed-detail">
+          <div class="icon confirmed">
             <%= icon('fa-solid', 'circle-check')%>
           </div>
         <% else %>
-          <div class="icon unconfirmed-detail">
+          <div class="icon unconfirmed">
             <%= icon('fa-solid', 'x')%>
           </div>
         <% end %>

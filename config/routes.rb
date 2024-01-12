@@ -19,7 +19,10 @@ Rails.application.routes.draw do
 
   resources :admin, path: '/admin', only: [:index]
   get '/admin/users', to: 'admin/users#index', as: :admin_users
+  get '/admin/users/:email', to: 'users#show', as: :admin_user_profile
   get '/admin/teams', to: 'admin/teams#index', as: :admin_teams
+
+  get '/profile', to: 'users#show', as: :user_profile
 
   resources :teams do
     resources :memberships

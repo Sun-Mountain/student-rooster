@@ -59,20 +59,8 @@
       margin-left: 1rem;
     }
 
-    .icon {
-      font-size: 1.5rem;
-    }
-
     .role-detail {
       color: $role-detail-color;
-    }
-
-    .confirmed-detail {
-      color: $list-item-confirmed;
-    }
-
-    .unconfirmed-detail {
-      color: $list-item-unconfirmed;
     }
 
     .list-detail {
@@ -84,4 +72,8 @@
       color: $prussian-blue;
     }
   }
+}
+
+.icon {
+  font-size: 1.5rem;
 }
