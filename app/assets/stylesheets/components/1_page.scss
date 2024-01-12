@@ -1,0 +1,18 @@
+@import "../base/1_variables";
+
+.page-container {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboard-content,
+.public-content,
+.team_ownerships-content,
+.teams-content {
+  background-color: $white;
+  box-shadow: $main-box-shadow;
+  
+  .container.plus-one {
+    padding: 1rem;
+  }
+}

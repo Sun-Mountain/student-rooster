@@ -1,0 +1,113 @@
+@import '../base/1_variables';
+
+.form-container {
+  margin: 2rem auto;
+  min-width: $screen-xxs;
+}
+
+.form-wrapper {
+  padding: 0rem 1rem 1rem;
+
+  label {
+    font-weight: 700;
+  }
+
+  .field {
+    margin: 0.5rem 0;
+  }
+
+  .form-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 0 0;
+  }
+
+  .text-input {
+    border: $text-border;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    width: calc(100% - 1rem);
+
+    &:focus {
+      outline: $focus-border;
+    }
+  }
+}
+
+.form-btn {
+  background-color: $button-background;
+  border: $button-border;
+  border-radius: 0.25rem;
+  color: $button-color;
+  cursor: pointer;
+  font-size: $button-text-size;
+  font-weight: $button-text-weight;
+  margin: 0 auto;
+  padding: $button-padding;
+  text-align: center;
+  width: 90%;
+
+  &:hover {
+    background-color: $button-background-hover;
+    border: $button-border-hover;
+    color: $button-color-hover;
+  }
+
+  &:focus {
+    outline: $focus-border;
+  }
+}
+
+.form-heading-wrapper {
+  margin: 1rem 1rem 0rem 1rem;
+  h1, h2, h3, h4, h5, h6 {
+    color: $form-header-color;
+  }
+}
+
+/* Devise Forms */
+
+.devise-form-container {
+  background-color: $form-background;
+  border: $form-border;
+  border-radius: 0.25rem;
+  box-shadow: $form-box-shadow;
+  width: 50%;
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .links-wrapper {
+    a, a:visited {
+      font-weight: 700;
+    }
+  }
+}
+
+.devise-form-btn {
+  background-color: $button-background;
+  border: $button-border;
+  border-radius: 0.25rem;
+  color: $button-color;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: $button-text-weight;
+  margin: 0 auto;
+  padding: $button-padding;
+  text-align: center;
+  width: 90%;
+
+  &:hover {
+    background-color: $button-background-hover;
+    border: $button-border-hover;
+    color: $button-color-hover;
+  }
+
+  &:focus {
+    outline: $focus-border;
+  }
+}

@@ -1,0 +1,40 @@
+@import '../base/1_variables';
+
+#dashboard {
+  h1 {
+    padding-left: 8px;
+  }
+  
+  h2 {
+    color: $teams-border-color;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    color: $prussian-blue;
+    margin-bottom: 0;
+  }
+}
+
+.dash-teams-list {
+  border: 1px solid $teams-border-color;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+
+  h2 {
+    padding-left: 0;
+  }
+
+  p+p {
+    margin-top: 0.5rem;
+  }
+}
+
+.team-list-section + .team-list-section {
+  border-top: 1px solid $teams-border-color;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}

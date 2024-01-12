@@ -1,15 +1,32 @@
 <% if notice %>
-  <div class="ds-c-alert"">
-    <div class="ds-c-alert__body">
-      <h3 class="ds-c-alert__heading"><%= notice %></h3>
+  <div class="alert alert--success">
+    <div class="alert__body">
+      <div class="alert__icon">
+        <%= icon('fa-solid', 'circle-check')%>
+      </div>
+      <h3 class="alert__heading"><%= notice %></h3>
+    </div>
+  </div>
+<% end %>
+
+<% if info %>
+  <div class="alert">
+    <div class="alert__body">
+      <div class="alert__icon">
+        <%= icon('fa-solid', 'circle-info')%>
+      </div>
+      <h3 class="alert__heading"><%= info %></h3>
     </div>
   </div>
 <% end %>
 
 <% if alert %>
-  <div class="ds-c-alert ds-c-alert--error"">
-    <div class="ds-c-alert__body">
-      <h3 class="ds-c-alert__heading"><%= alert %></h3>
+  <div class="alert alert--error">
+    <div class="alert__body">
+      <div class="alert__icon">
+        <%= icon('fa-solid', 'triangle-exclamation')%>
+      </div>
+      <h3 class="alert__heading"><%= alert %></h3>
     </div>
   </div>
 <% end %>

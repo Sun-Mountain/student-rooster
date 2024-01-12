@@ -1,15 +1,14 @@
-@import './1_variables.scss';
+@import './1_variables';
 
 body {
   background-color: $body-background;
-  // color: $text-color;
+  color: $text-color;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   height: 100%;
   line-height: 1.5;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -18,6 +17,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  overflow-x: hidden;
 
   &.no-scroll {
     overflow: hidden;
@@ -25,7 +25,17 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: $header-color;
   margin: 0;
+}
+
+a, a:visited {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 #app {
@@ -36,7 +46,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav {
+  background-color: $nav-background;
   flex: 0 1 auto;
+  min-height: $nav-height;
+  width: 100%;
 
   ul {
     list-style: none;
@@ -47,6 +60,11 @@ nav {
 
 main {
   flex: 1 1 auto;
+  margin: 0 auto;
+  width: 100%;
+}
+
+#main-content {
   padding: 1rem;
 }
 
@@ -54,4 +72,10 @@ footer {
   background-color: $footer-background;
   flex: 0 1 auto;
   min-height: 3rem;
+}
+
+@media (min-width: $breakpoint-lg) {
+  main {
+    max-width: $breakpoint-xl;
+  }
 }

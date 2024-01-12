@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '3.2.0'
+ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem 'devise', '~> 4.9'
@@ -21,6 +21,8 @@ gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'sass-rails'
 gem 'view_component'
+gem 'font-awesome-sass', '~> 6.5.1'
+gem 'dockerfile-rails', '>= 1.6', group: :development
 
 group :development, :test do
   gem 'capybara', '>= 3.35.3'
@@ -46,5 +48,3 @@ group :test do
   gem 'fakefs', require: 'fakefs/safe'
   gem 'fakeredis'
 end
-
-gem 'dockerfile-rails', '>= 1.6', group: :development

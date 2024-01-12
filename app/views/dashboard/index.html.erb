@@ -1,1 +1,29 @@
-Dashboard
+<div id="dashboard">
+  <h1>Dashboard</h1>
+
+  <div class="dash-teams-list">
+    <h2>Your Teams</h2>
+    <% if @teams.count == 0 && @memberships.count == 0%>
+      <p>You are not a member of any teams.</p>
+      <p>Create your first team <%= link_to 'here', new_team_path %>.</p>
+    <% else %>
+      <% if @teams.count > 0 %>
+        <ul>
+          <% @teams.each do |team| %>
+            <li><%= link_to team.name, team_path(team) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>Create your own team <%= link_to 'here', new_team_path %>..</p>
+      <% end %>
+      <% if @memberships.count > 0 %>
+        <h3>Member of:</h3>
+        <ul>
+          <% @memberships.each do |membership| %>
+            <li><%= link_to membership.team.name, team_path(membership.team) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>

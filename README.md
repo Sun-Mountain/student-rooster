@@ -1,24 +1,21 @@
-# README
+# Student Rooster
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Student Rooster, an excercise to build a web-based application to simplify the process of managing and tracking students and classes. Originally designed for a dance school that wanted to keep track of what classes students have taken to help track progress, we are constantly evolving, so check back here to see what we're working on!
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+:ballot_box_with_check: - Feature
 
-* System dependencies
+:construction: - In Progress
 
-* Configuration
+:memo: - To Do
 
-* Database creation
+------------
 
-* Database initialization
+:ballot_box_with_check: - User Authentication: Secure login and registration system for administrators, teachers, and students.
 
-* How to run the test suite
+:construction: - Admin Dashboard: A comprehensive dashboard for administrators to manage users, classes, and student records.
 
-* Services (job queues, cache servers, search engines, etc.)
+:memo: - Class Management: Easily create, update, and delete classes.
 
-* Deployment instructions
-
-* ...
+:memo: - Student Enrollment: Effortlessly enroll students in classes and keep track of their class history.
