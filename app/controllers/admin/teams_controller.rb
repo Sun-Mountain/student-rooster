@@ -2,6 +2,8 @@
 
 module Admin
   class TeamsController < ApplicationController
+    before_action :authorize_siteAdmin!
+
     def index
       @team = Team.all
       @teams_count = @team.count

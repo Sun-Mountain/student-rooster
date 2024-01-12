@@ -2,6 +2,8 @@
 
 module Admin
   class UsersController < ApplicationController
+    before_action :authorize_siteAdmin!
+
     def index
       @users = User.all
       @user_count = @users.count

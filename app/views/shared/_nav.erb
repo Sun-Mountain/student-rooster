@@ -6,12 +6,14 @@
           <%= icon('fa-solid', 'house')%> Home
         <% end %>
       </li>
-      <% if current_user.siteAdmin? %>
-        <li class="site-links">
-          <%= link_to admin_index_path, class: current_class?(admin_index_path) do %>
-            <%= icon('fa-solid', 'cog')%> Admin
-          <% end %>
-        </li>
+      <% if user_signed_in? %>
+        <% if current_user.siteAdmin? %>
+          <li class="site-links">
+            <%= link_to admin_index_path, class: current_class?(admin_index_path) do %>
+              <%= icon('fa-solid', 'cog')%> Admin
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
     </div>
     <div class="account-links">
