@@ -1,2 +1,7 @@
 <%= render 'teams/header' %>
 <%= render 'lessons/header' %>
+
+<% unless @lesson.rosters.count > 0 %>
+  <p>There are no active classes yet. Create your first class <%= link_to "here", new_team_lesson_roster_path(team_id: @team.id, lesson_id: @lesson.id) %>.</p>
+<% end %>
+

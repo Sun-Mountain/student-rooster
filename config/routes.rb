@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :memberships
-    resources :lessons
+    resources :lessons, except: [:index] do
+      resources :rosters
+    end
   end
   resources :team_ownerships
   
