@@ -18,9 +18,9 @@ class RostersController < ApplicationController
     @lesson = lesson
     @roster = @lesson.rosters.new(roster_params)
     if @roster.save
-      redirect_to team_lesson_path(@team.id, @lesson.id), notice: "Roster was successfully created."
+      redirect_to team_lesson_path(@team.id, @lesson.id), notice: "Session was successfully created."
     else
-      flash.now[:alert] = "Roster could not be created: #{model_error_string(@roster)}."
+      flash.now[:alert] = "Session could not be created: #{model_error_string(@roster)}."
       render :new, status: :unprocessable_entity
     end
   end

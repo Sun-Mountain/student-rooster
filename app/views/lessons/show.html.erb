@@ -2,6 +2,30 @@
 <%= render 'lessons/header' %>
 
 <% unless @lesson.rosters.count > 0 %>
-  <p>There are no active classes yet. Create your first class <%= link_to "here", new_team_lesson_roster_path(team_id: @team.id, lesson_id: @lesson.id) %>.</p>
+  <p>There are no active sessions yet. Create your first session <%= link_to "here", new_team_lesson_roster_path(team_id: @team.id, lesson_id: @lesson.id) %>.</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Session</th>
+        <th>Attendance</th>
+        <th>Notes</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @lesson.rosters.each do |roster| %>
+        <tr>
+          <td><%= roster.name %></td>
+          <td><%= roster.start_date %></td>
+          <td><%= roster.end_date %></td>
+          <td><%= link_to "Edit", edit_team_lesson_roster_path(team_id: @team.id, lesson_id: @lesson.id, id: roster.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "Add Session", new_team_lesson_roster_path(team_id: @team.id, lesson_id: @lesson.id), class: "btn btn-primary" %>
 <% end %>
 
