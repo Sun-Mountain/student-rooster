@@ -38,3 +38,42 @@
   margin-top: 1rem;
   padding-top: 1rem;
 }
+
+.dash-list.dash-list__admin {
+  border: 1px solid $outer-space;
+  border-radius: 0.25rem;
+  margin: 1rem 1.5rem;
+
+  .list-item+.list-item {
+    border-top: 1px solid $outer-space;
+  }
+
+  .list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 2.5rem;
+    padding: 0.5rem 1rem;
+
+    div+div {
+      margin-left: 1rem;
+    }
+
+    .role-detail {
+      color: $role-detail-color;
+    }
+
+    .list-detail {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .joined-detail {
+      color: $prussian-blue;
+    }
+  }
+}
+
+.icon {
+  font-size: 1.5rem;
+}

@@ -1,19 +1,16 @@
-<div class="back-link-container">
-  <%= link_to root_path do %>
-    <%= icon('fa-solid', 'arrow-left')%>
-    Back to Home
+<%= render 'teams/header' %>
+
+<section id="team-lessons" class="content-section">
+  <h2>Lessons</h2>
+  <% if @team.lessons.count > 0 %>
+    <ul>
+      <% @team.lessons.each do |lesson| %>
+        <li><%= link_to lesson.title, team_lesson_path(team_id: @team.id, id: lesson.id) %></li>
+      <% end %>
+    </ul>
+
+    <%= link_to "Add a new lesson", new_team_lesson_path(team_id: @team.id) %>
+  <% else %>
+    <p>There are no lessons yet. Create your first lesson <%= link_to "here", new_team_lesson_path(team_id: @team.id) %>.</p>
   <% end %>
-</div>
-
-<h1><%= @team.name %></h1>
-
-<div>
-  <%= link_to edit_team_path(@team.id) do %>
-    <%= icon('fa-solid', 'pen-to-square')%>
-    Edit Team
-  <% end %>
-</div>
-
-<p>
-  Owner: <%= @owner.email %>
-</p>
+</section>

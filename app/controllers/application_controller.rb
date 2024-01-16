@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authorize_siteAdmin!
+    unless current_user.siteAdmin?
+      redirect_to root_path, alert: 'You are not authorized to access this page.'
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end

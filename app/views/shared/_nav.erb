@@ -1,19 +1,39 @@
 <nav id='main-navigation'>
   <ul>
-    <li>
-      <%= link_to 'Home', root_path, class: current_class?(root_path) %>
-    </li>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete } %>
+    <div>
+      <li class="site-links">
+        <%= link_to root_path, class: current_class?(root_path) do %>
+          <%= icon('fa-solid', 'house')%> Home
+        <% end %>
       </li>
-    <% else %>
-      <li>
-        <%= link_to 'Log In', new_user_session_path, class: current_class?(new_user_session_path) %>
-      </li>
-      <li>
-        <%= link_to 'Register', new_user_registration_path, class: current_class?(new_user_registration_path) %>
-      </li>
-    <% end %>
+      <% if user_signed_in? %>
+        <% if current_user.siteAdmin? %>
+          <li class="site-links">
+            <%= link_to admin_index_path, class: current_class?(admin_index_path) do %>
+              <%= icon('fa-solid', 'cog')%> Admin
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="account-links">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to user_profile_path, class: current_class?(user_profile_path)  do %>
+            <%= icon('fa-solid', 'user')%> Profile
+          <% end %>
+        </li>
+        <li>
+          <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete } %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to 'Log In', new_user_session_path, class: current_class?(new_user_session_path) %>
+        </li>
+        <li>
+          <%= link_to 'Register', new_user_registration_path, class: current_class?(new_user_registration_path) %>
+        </li>
+      <% end %>
+    </div>
   </ul>
 </nav>

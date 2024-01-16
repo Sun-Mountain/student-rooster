@@ -5,10 +5,36 @@
   width: 100%;
 }
 
+.page-header {
+  .page-header__heading {
+    font-size: 2rem;
+  }
+
+  .page-header__details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.page-header__heading,
+.page-header__subheading {
+  text-align: center;
+}
+
+.content-section {
+  border: $section-border;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+.admin-content,
 .dashboard-content,
+.lessons-content,
 .public-content,
-.team_ownerships-content,
-.teams-content {
+.users-content,
+.teams-content,
+.team_ownerships-content {
   background-color: $white;
   box-shadow: $main-box-shadow;
   

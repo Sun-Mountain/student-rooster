@@ -5,6 +5,7 @@ $sky-blue-30: rgba(142, 202, 230, 0.3);
 $blue-green: rgba(33, 158, 188, 1);
 $blue-green-50: rgba(33, 158, 188, 0.5);
 $blue-green-30: rgba(33, 158, 188, 0.3);
+$blue-green-20: rgba(33, 158, 188, 0.2);
 $prussian-blue: rgba(2, 48, 71, 1);
 $prussian-blue-50: rgba(2, 48, 71, 0.5);
 $prussian-blue-30: rgba(2, 48, 71, 0.3);
@@ -110,3 +111,19 @@ $form-box-shadow: 0.25rem 0.125rem 0.25rem rgba($outer-space, 0.075);
 $form-header-color: $prussian-blue;
 $text-border: 1px solid $outer-space;
 $focus-border: 5px solid $selective-yellow;
+
+/* Admin */
+$admin-header-background: $selective-yellow-30;
+$stat-block-background: $white;
+$stat-block-btn-background: $blue-green-20;
+$stat-block-btn-color: $blue-green;
+$stat-block-btn-border: 1px solid $stat-block-btn-color;
+$stat-block-btn-hover: $white;
+$stat-block-btn-hover-background: $stat-block-btn-color;
+$list-item-confirmed: $forest-green;
+$list-item-unconfirmed: $rufous;
+$role-detail-color: $prussian-blue;
+
+/* Pages */
+/* Page Content */
+$section-border: 1px solid $blue-green;
