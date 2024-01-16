@@ -11,6 +11,6 @@
 
     <%= link_to "Add a new lesson", new_team_lesson_path(team_id: @team.id) %>
   <% else %>
-    <p>There are no lessons yet. Add your first lesson <%= link_to "here", new_team_lesson_path(team_id: @team.id) %>.</p>
+    <p>There are no lessons yet. Create your first lesson <%= link_to "here", new_team_lesson_path(team_id: @team.id) %>.</p>
   <% end %>
 </section>

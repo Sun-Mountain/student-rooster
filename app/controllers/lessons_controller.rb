@@ -13,6 +13,8 @@ class LessonsController < ApplicationController
   def create
     @team = team
     @lesson = @team.lessons.new(lesson_params)
+    @team_ownership = TeamOwnership.find_by(team_id: @team.id)
+    @owner = User.find(@team_ownership.user_id)
     if @lesson.save
       redirect_to team_path(@team.id), notice: "Lesson was successfully created."
     else
@@ -39,7 +41,7 @@ class LessonsController < ApplicationController
     @team = team
     @lesson = @team.lessons.find(params[:id])
     if @lesson.update(lesson_params)
-      redirect_to team_lesson_path(@team.id, @lesson.id), notice: "Team was successfully updated."
+      redirect_to team_lesson_path(@team.id, @lesson.id), notice: "Lesson was successfully updated."
     else
       flash.now[:alert] = "Lesson could not be updated: #{model_error_string(@team)}."
       render :edit, status: :unprocessable_entity

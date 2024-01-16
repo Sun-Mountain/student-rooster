@@ -1,5 +1,7 @@
 <%= render partial: 'shared/back-link' %>
 
+<h2>Edit:</h2>
+
 <div class="edit-form-container">
   <div>
     <%= form_for @lesson, url: team_lesson_path(@team.id, @lesson.id), html: { method: :put } do |f| %>

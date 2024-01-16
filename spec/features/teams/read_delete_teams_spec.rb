@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'delete teams' do
+RSpec.feature 'read and delete teams' do
   let(:user) { create(:user) }
 
   before(:each) do
@@ -11,6 +11,17 @@ RSpec.feature 'delete teams' do
   end
 
   context 'when successful' do
+    scenario 'owner visits team page' do
+      team = create(:team, name: 'Team1')
+      create(:team_ownership, team_id: team.id, user_id: user.id)
+
+      visit team_path(team.id)
+
+      expect(page).to have_content('Team1')
+      expect(page).to have_content("Owner: #{user.email}")
+      expect(page).to have_content('Edit Team')
+    end
+
     scenario 'user deletes a team' do
       team = create(:team, name: 'Team1')
       create(:team_ownership, team_id: team.id, user_id: user.id)
