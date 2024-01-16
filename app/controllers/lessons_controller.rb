@@ -43,7 +43,7 @@ class LessonsController < ApplicationController
     if @lesson.update(lesson_params)
       redirect_to team_lesson_path(@team.id, @lesson.id), notice: "Lesson was successfully updated."
     else
-      flash.now[:alert] = "Lesson could not be updated: #{model_error_string(@team)}."
+      flash.now[:alert] = "Lesson could not be updated: #{model_error_string(@lesson)}."
       render :edit, status: :unprocessable_entity
     end
   end

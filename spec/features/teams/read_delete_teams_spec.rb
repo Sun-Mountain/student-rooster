@@ -17,7 +17,7 @@ RSpec.feature 'read and delete teams' do
 
       visit team_path(team.id)
 
-      expect(page).to have_content('Team1')
+      expect(page).to have_css('h1', text: 'Team1')
       expect(page).to have_content("Owner: #{user.email}")
       expect(page).to have_content('Edit Team')
     end
