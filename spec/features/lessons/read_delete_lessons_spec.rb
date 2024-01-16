@@ -27,12 +27,12 @@ RSpec.feature 'read and delete lessons' do
     end
 
     scenario 'user deletes a lesson' do
-      lesson = create(:lesson, title: 'Delete This Lesson', team_id: team.id)
+      create(:lesson, title: 'Delete This Lesson', team_id: team.id)
 
       visit team_path(team.id)
 
       expect(page).to have_content('Delete This Lesson')
-      
+
       click_link('Delete This Lesson')
 
       expect(page).to have_content('Edit Lesson')

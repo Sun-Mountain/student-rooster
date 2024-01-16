@@ -4,11 +4,9 @@ class UsersController < ApplicationController
   before_action :profile_permissions
   before_action :find_user
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     # Your code here
@@ -33,8 +31,8 @@ class UsersController < ApplicationController
   end
 
   def profile_permissions
-    if !current_user.siteAdmin? && params[:email] != current_user.email
-      redirect_to root_path, alert: 'You are not authorized to access this page.'
-    end
+    return unless !current_user.siteAdmin? && params[:email] != current_user.email
+
+    redirect_to root_path, alert: 'You are not authorized to access this page.'
   end
 end

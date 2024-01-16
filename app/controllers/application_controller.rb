@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def authorize_siteAdmin!
-    unless current_user.siteAdmin?
-      redirect_to root_path, alert: 'You are not authorized to access this page.'
-    end
+    return if current_user.siteAdmin?
+
+    redirect_to root_path, alert: 'You are not authorized to access this page.'
   end
 
   def configure_permitted_parameters

@@ -38,7 +38,7 @@ RSpec.feature 'read and delete teams' do
 
       expect(page).to have_content('Edit:')
       click_button('Delete')
-      
+
       expect(page).to have_content('Team was successfully destroyed.')
       expect(page).to have_content('Dashboard')
       expect(page).to_not have_content('Team1')
