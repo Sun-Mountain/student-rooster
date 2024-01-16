@@ -1,6 +1,6 @@
 <%= render partial: 'shared/back-link' %>
 
-<div class="team-edit-form-container">
+<div class="edit-form-container">
   <div>
     <%= form_for @team, url: team_path(@team.id), html: { method: :put } do |f| %>
       <h1 class="team-name-header">
