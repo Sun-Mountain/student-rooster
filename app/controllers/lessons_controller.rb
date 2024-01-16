@@ -41,8 +41,19 @@ class LessonsController < ApplicationController
     if @lesson.update(lesson_params)
       redirect_to team_lesson_path(@team.id, @lesson.id), notice: "Team was successfully updated."
     else
-      flash.now[:alert] = "Team could not be updated: #{model_error_string(@team)}."
+      flash.now[:alert] = "Lesson could not be updated: #{model_error_string(@team)}."
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @team = team
+    @lesson = @team.lessons.find(params[:id])
+    if @lesson.destroy
+      redirect_to team_path(@team.id), notice: "Lesson was successfully destroyed."
+    else
+      flash.now[:alert] = "Lesson could not be destroyed: #{model_error_string(@lesson)}."
+      redirect_to team_path(@lesson.id), status: :unprocessable_entity
     end
   end
 
