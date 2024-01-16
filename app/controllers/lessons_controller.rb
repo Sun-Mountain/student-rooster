@@ -36,6 +36,7 @@ class LessonsController < ApplicationController
   def update
     @team = find_team(params[:team_id])
     @lesson = @team.lessons.find(params[:id])
+    @owner = find_owner_by_team(@team.id)
     if @lesson.update(lesson_params)
       redirect_to team_lesson_path(@team.id, @lesson.id), notice: 'Lesson was successfully updated.'
     else

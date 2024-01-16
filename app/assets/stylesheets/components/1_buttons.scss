@@ -28,3 +28,30 @@
     }
   }
 }
+
+.btn-container {
+  padding: 1rem;
+}
+
+a.btn {
+  font-weight: 700;
+  text-decoration: none;
+
+  &.btn-primary {
+    background-color: $button-background;
+    border: $button-border;
+    border-radius: 0.25rem;
+    color: $button-color;
+    font-size: $button-text-size;
+    font-weight: $button-text-weight;
+    padding: $button-padding;
+
+    &:hover {
+      background-color: $button-background-hover;
+      border: $button-border-hover;
+      color: $button-color-hover;
+      cursor: pointer;
+    }
+  }
+}
+

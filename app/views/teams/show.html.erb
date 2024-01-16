@@ -9,7 +9,9 @@
       <% end %>
     </ul>
 
-    <%= link_to "Add a new lesson", new_team_lesson_path(team_id: @team.id) %>
+    <div class="btn-container">
+      <%= link_to "Add a new lesson", new_team_lesson_path(team_id: @team.id), class: "btn btn-primary" %>
+    </div>
   <% else %>
     <p>There are no lessons yet. Create your first lesson <%= link_to "here", new_team_lesson_path(team_id: @team.id) %>.</p>
   <% end %>
