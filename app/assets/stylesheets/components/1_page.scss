@@ -8,7 +8,6 @@
 .page-header {
   .page-header__heading {
     font-size: 2rem;
-    text-align: center;
   }
 
   .page-header__details {
@@ -16,6 +15,11 @@
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.page-header__heading,
+.page-header__subheading {
+  text-align: center;
 }
 
 .content-section {

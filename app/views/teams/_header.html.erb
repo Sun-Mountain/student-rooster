@@ -1,8 +1,15 @@
 <section class="page-header">
   <div class="back-link-container">
-    <%= link_to root_path do %>
-      <%= icon('fa-solid', 'arrow-left')%>
-      Back to Home
+    <% unless params[:controller] == 'teams' %>
+      <%= link_to team_path(@team.id) do %>
+        <%= icon('fa-solid', 'arrow-left')%>
+        Back to Team
+      <% end %>
+    <% else %>
+      <%= link_to root_path do %>
+        <%= icon('fa-solid', 'arrow-left')%>
+        Back to Home
+      <% end %>
     <% end %>
   </div>
 

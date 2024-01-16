@@ -6,6 +6,8 @@ class LessonsController < ApplicationController
   def new
     @team = team
     @lesson = @team.lessons.new
+    @team_ownership = TeamOwnership.find_by(team_id: @team.id)
+    @owner = User.find(@team_ownership.user_id)
   end
 
   def create
@@ -17,6 +19,14 @@ class LessonsController < ApplicationController
       flash.now[:alert] = "Lesson could not be created: #{model_error_string(@lesson)}."
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @team = team
+    @lesson = @team.lessons.find(params[:id])
+    @lesson_title = @lesson.title
+    @team_ownership = TeamOwnership.find_by(team_id: @team.id)
+    @owner = User.find(@team_ownership.user_id)
   end
 
   private
