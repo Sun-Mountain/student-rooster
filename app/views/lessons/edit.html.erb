@@ -1,0 +1,16 @@
+<%= render partial: 'shared/back-link' %>
+
+<div class="edit-form-container">
+  <div>
+    <%= form_for @lesson, url: team_lesson_path(@team.id, @lesson.id), html: { method: :put } do |f| %>
+      Edit: <%= f.text_field :title, autofocus: true, autocomplete: "title", class: "text-input" %>
+      <%= f.submit "Save", class: "form-btn" %>
+    <% end %>
+  </div>
+
+  <div class="delete-btn-container">
+    <%= form_for @lesson, url: team_lesson_path(@team.id, @lesson.id), html: { method: :delete } do |f| %>
+      <%= f.submit "Delete", class:"button button--danger", data: { test: "delete-lesson" } %>
+    <% end %>
+  </div>
+</div>
