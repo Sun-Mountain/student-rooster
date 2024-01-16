@@ -77,7 +77,7 @@ Rails.application.configure do
   config.action_controller.raise_on_missing_callback_actions = true
 
   # Devise requires mailer
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: ENV.fetch('PORT', 3000) }
   config.action_mailer.asset_host = "http://127.0.0.1:3000"
   config.action_mailer.delivery_method = :letter_opener_web
 end

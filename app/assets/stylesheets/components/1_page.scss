@@ -5,6 +5,25 @@
   width: 100%;
 }
 
+.page-header {
+  .page-header__heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .page-header__details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.content-section {
+  border: $section-border;
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
 .dashboard-content,
 .public-content,
 .team_ownerships-content,

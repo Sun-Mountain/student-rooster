@@ -1,0 +1,25 @@
+<section class="page-header">
+  <div class="back-link-container">
+    <%= link_to root_path do %>
+      <%= icon('fa-solid', 'arrow-left')%>
+      Back to Home
+    <% end %>
+  </div>
+
+  <h1 class="page-header__heading"><%= @team.name %></h1>
+
+  <div class="page-header__details">
+    <p>
+      Owner: <%= @owner.email %>
+    </p>
+
+    <div>
+      <% if current_user.id == @owner.id %>
+        <%= link_to edit_team_path(@team.id) do %>
+          <%= icon('fa-solid', 'pen-to-square')%>
+          Edit Team
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
