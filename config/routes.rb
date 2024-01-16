@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 
   resources :teams do
     resources :memberships
-    resources :lessons
+    resources :lessons do
+      resources :sessions
+    end
   end
   resources :team_ownerships
   

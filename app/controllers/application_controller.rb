@@ -28,4 +28,17 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
   end
+
+  def find_owner_by_team(team_id)
+    @team_ownership = TeamOwnership.find_by(team_id: team_id)
+    return User.find(@team_ownership.user_id)
+  end
+
+  def find_team(team_id)
+    @team ||= Team.find(team_id)
+  end
+
+  def find_lesson(lesson_id)
+    @lesson ||= Lesson.find(lesson_id)
+  end
 end
