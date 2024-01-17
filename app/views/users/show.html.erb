@@ -22,14 +22,13 @@
                   }",
                   class: 'icon') %>
         <div class="badge-text">
-          <%= if @user.siteAdmin?
+        <%= link_to "#{if @user.siteAdmin?
                 'Site Admin'
               elsif @user.moderator?
                 'Moderator'
               else
                 'User'
-              end
-          %>
+              end}", edit_user_path(@user.id), data: { turbo_frame: 'modal' } %>
       </div>
     <% if @user.confirmed? %>
       <div class="badge-container confirmed">
@@ -48,3 +47,5 @@
     <% end %>
   </div>
 <% end %>
+
+<%= turbo_frame_tag "modal" %>
