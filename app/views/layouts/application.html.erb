@@ -6,6 +6,7 @@
     <div id="app">
       <%= render partial: 'shared/nav' %>
       <main class="<%= controller_name %>-content">
+        <%= turbo_frame_tag "modal" %>
         <div class="container plus-one">
           <%= render partial: 'shared/alerts', locals: {
                                                   notice: flash[:notice] || flash[:success],
