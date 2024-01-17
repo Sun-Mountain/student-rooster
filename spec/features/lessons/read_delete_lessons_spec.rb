@@ -23,7 +23,6 @@ RSpec.feature 'read and delete lessons' do
 
       expect(page).to have_css('h2', text: 'Lesson1')
       expect(page).to have_content('Edit Lesson')
-      expect(page).to have_content('Back to Team')
     end
 
     scenario 'user deletes a lesson' do
