@@ -22,7 +22,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'sass-rails'
 gem 'view_component'
 gem 'font-awesome-sass', '~> 6.5.1'
-gem 'dockerfile-rails', '>= 1.6', group: :development
+gem "breadcrumbs"
 
 group :development, :test do
   gem 'capybara', '>= 3.35.3'
@@ -36,6 +36,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'dockerfile-rails', '>= 1.6'
   gem 'letter_opener', '~> 1.8'
   gem 'letter_opener_web', '~> 2.0'
   gem 'rack-mini-profiler'

@@ -2,6 +2,7 @@
 
 class LessonsController < ApplicationController
   before_action :authenticate_user!
+  before_action :add_breadcrumb
 
   def new
     @team = find_team(params[:team_id])
@@ -57,6 +58,11 @@ class LessonsController < ApplicationController
   end
 
   private
+
+  def add_breadcrumb
+    @team = find_team(params[:team_id])
+    breadcrumbs.add "Team: #{@team.name}", team_path(@team.id)
+  end
 
   def lesson_params
     params.require(:lesson).permit(:id, :title, :team_id)

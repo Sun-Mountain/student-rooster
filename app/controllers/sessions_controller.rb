@@ -2,6 +2,7 @@
 
 class SessionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :add_breadcrumb
 
   def new
     @team = find_team(params[:team_id])
@@ -63,6 +64,13 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def add_breadcrumb
+    @team = find_team(params[:team_id])
+    @lesson = find_lesson(params[:lesson_id])
+    breadcrumbs.add "Team: #{@team.name}", team_path(@team.id)
+    breadcrumbs.add "Lesson: #{@lesson.title}", team_lesson_path(@team, @lesson)
+  end
 
   def session_params
     params.require(:session).permit(:id, :name, :start_date, :end_date, :lesson_id)

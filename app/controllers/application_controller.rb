@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :info, :success
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :add_initial_breadcrumbs
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || dashboard_path
@@ -18,6 +19,10 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def add_initial_breadcrumbs
+    breadcrumbs.add "Home", root_path
+  end
 
   def authorize_siteAdmin!
     return if current_user.siteAdmin?

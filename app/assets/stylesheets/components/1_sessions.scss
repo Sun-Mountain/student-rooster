@@ -1,8 +1,71 @@
 @import "../base/1_variables";
 
 .session-list-container {
-  border: 1px solid $blue-green;
+  border: 1px solid $onyx;
   border-radius: 0.25rem;
-  margin: 1rem;
+  margin-top: 1.5rem;
   padding: 1rem;
+
+  table {
+    width: 100%;
+  }
+
+  td {
+    align-items: center;
+    text-align: center;
+  }
+
+  .action-btns {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .session-list-container {
+    border: 0;
+    padding: 0;
+
+    table {
+      thead {
+        display: none;
+      }
+  
+      tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid $onyx;
+        border-bottom: 0;
+        border-radius: 0.25rem;
+      }
+  
+      td {
+        display: block;
+        justify-content: space-between;
+        padding: 0.5rem;
+        border-bottom: 1px solid $onyx;
+      }
+  
+      td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+  
+      .cell-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  } 
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  .session-list-container {
+    .in-line-label {
+      display: none;
+    }
+  }
 }
