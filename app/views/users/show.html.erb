@@ -8,24 +8,29 @@
   <h3>Email: <%= @user.email %></h3>
 </div>
 
-<% if current_user.siteAdmin? %>
+<% if current_user.siteAdmin? || current_user.moderator? %>
   <div class="profile-detail status">
-    <% if @user.siteAdmin? %>
       <div class="badge-container">
-        <%= icon('fa-solid', 'cog', class: 'icon') %>
+        <%= icon('fa-solid',
+                  "#{if @user.siteAdmin?
+                      'crown'
+                    elsif @user.moderator?
+                      'shield-check'
+                    else
+                      'user'
+                    end
+                  }",
+                  class: 'icon') %>
         <div class="badge-text">
-          Site Admin
+          <% if @user.siteAdmin? %>
+            Site Admin
+          <% elsif @user.moderator? %>
+            Site Moderator
+          <% else %>
+            User
+          <% end %>
         </div>
       </div>
-    <% end %>
-    <% if @user.user? %>
-      <div class="badge-container">
-        <%= icon('fa-solid', 'user', class: 'icon') %>
-        <div class="badge-text">
-          User
-        </div>
-      </div>
-    <% end %>
     <% if @user.confirmed? %>
       <div class="badge-container confirmed">
         <%= icon('fa-solid', 'circle-check', class: 'icon ')%>

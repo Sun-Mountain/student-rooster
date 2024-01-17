@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_183612) do
 
   create_table "sessions", force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.date "start_date", default: "2024-01-16", null: false
+    t.date "start_date", default: "2024-01-17", null: false
     t.date "end_date"
     t.bigint "lesson_id", null: false
     t.datetime "created_at", null: false

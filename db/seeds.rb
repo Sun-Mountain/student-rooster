@@ -18,6 +18,30 @@ User.create!([
     password: "123456",
     role: 4,
     confirmed_at: Time.now,
+  }, {
+    username: "Commander Riker",
+    email: "riker@gmail.com",
+    password: "123456",
+    confirmed_at: Time.now,
+  }, {
+    username: "Lieutenant Worf",
+    email: "worf@gmail.com",
+    password: "123456",
+    confirmed_at: Time.now,
+  }, {
+    username: "Lieutenant Commander Data",
+    email: "data@gmail.com",
+    password: "123456",
+    confirmed_at: Time.now,
+  }, {
+    username: "Lieutenant Commander La Forge",
+    email: "laforge@gmail.com",
+    password: "123456",
+    confirmed_at: Time.now,
+  }, {
+    username: "Ensign Crusher",
+    email: "wesley@gmail.com",
+    password: "123456",
   }
 ])
 

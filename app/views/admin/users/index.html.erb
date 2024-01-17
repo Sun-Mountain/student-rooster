@@ -11,9 +11,14 @@
         <%= link_to user.username, admin_user_profile_path(user.email) %>
       </div>
       <div class="list-detail">
-        <% if user.siteAdmin? %>
+        <% if user.siteAdmin? || user.moderator? %>
           <div class="icon role-detail site-admin">
-            <%= icon('fa-solid', 'cog')%>
+            <%= icon('fa-solid', "#{if user.siteAdmin?
+                                        'crown'
+                                      elsif user.moderator?
+                                        'shield-check'
+                                      end
+                                    }")%>
           </div>
         <% end %>
         <% if user.confirmed? %>
