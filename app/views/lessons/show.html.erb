@@ -6,7 +6,7 @@
     <p>There are no active sessions yet. Create your first session <%= link_to "here", new_team_lesson_session_path(team_id: @team.id, lesson_id: @lesson.id) %>.</p>
   <% else %>
     <table class="table table-striped">
-      <thead>
+      <thead class="sessions-list-header">
         <tr>
           <th>Session</th>
           <th>Start Date</th>
@@ -43,7 +43,7 @@
                   <% if current_user.id == @owner.id || current_user.siteAdmin? %>
                     <%= link_to "Edit", edit_team_lesson_session_path(team_id: @team.id, lesson_id: @lesson.id, id: session.id), class: "" %>
                     <%= form_for session, url: team_lesson_session_path(@team.id, @lesson.id, session.id), html: { method: :delete } do |f| %>
-                      <%= f.submit "Delete", data: { confirm: "Are you sure you want to delete this session?" }, class: "" %>
+                      <%= f.submit "Delete", data: { confirm: "Are you sure you want to delete this session?" }, class: "btn btn--danger" %>
                     <% end %>
                   <% end %>
                 </div>
