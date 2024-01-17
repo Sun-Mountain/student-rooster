@@ -22,14 +22,14 @@
                   }",
                   class: 'icon') %>
         <div class="badge-text">
-          <% if @user.siteAdmin? %>
-            Site Admin
-          <% elsif @user.moderator? %>
-            Site Moderator
-          <% else %>
-            User
-          <% end %>
-        </div>
+          <%= if @user.siteAdmin?
+                'Site Admin'
+              elsif @user.moderator?
+                'Moderator'
+              else
+                'User'
+              end
+          %>
       </div>
     <% if @user.confirmed? %>
       <div class="badge-container confirmed">
