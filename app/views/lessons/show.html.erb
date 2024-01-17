@@ -1,2 +1,61 @@
 <%= render 'teams/header' %>
 <%= render 'lessons/header' %>
+
+<div class="session-list-container">
+  <% unless @lesson.sessions.count > 0 %>
+    <p>There are no active sessions yet. Create your first session <%= link_to "here", new_team_lesson_session_path(team_id: @team.id, lesson_id: @lesson.id) %>.</p>
+  <% else %>
+    <table class="table table-striped">
+      <thead class="sessions-list-header">
+        <tr>
+          <th>Session</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @lesson.sessions.each do |session| %>
+          <tr>
+            <td>
+              <div class="cell-content">
+                <strong class="in-line-label">Session:</strong>
+                <%= session.name %>
+              </div>
+            </td>
+            <td>
+              <div class="cell-content">
+                <strong class="in-line-label">Start Date:</strong>
+                <%= session.start_date.strftime("%m/%d/%Y") %>
+              </div>
+            </td>
+            <td>
+              <div class="cell-content">
+                <strong class="in-line-label">End Date:</strong>
+                <%= session.end_date.strftime("%m/%d/%Y") %>
+              </div>
+            </td>
+            <td class="actions-cell">
+              <div class="cell-content">
+                <strong class="in-line-label">Actions:</strong>
+                <div class="action-btns">
+                  <%= link_to "View", team_lesson_session_path(team_id: @team.id, lesson_id: @lesson.id, id: session.id), class: "", data: { test: "view-session-#{session.id}" } %>
+                  <% if current_user.id == @owner.id || current_user.siteAdmin? %>
+                    <%= link_to "Edit", edit_team_lesson_session_path(team_id: @team.id, lesson_id: @lesson.id, id: session.id), data: { test: "edit-session-#{session.id}" } %>
+                    <%= form_for session, url: team_lesson_session_path(@team.id, @lesson.id, session.id), html: { method: :delete } do |f| %>
+                      <%= f.submit "Delete", data: { confirm: "Are you sure you want to delete this session?" }, class: "btn btn--danger", data: { test: "delete-session-#{session.id}" } %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="btn-container">
+      <%= link_to "Add a new session", new_team_lesson_session_path(team_id: @team.id, lesson_id: @lesson.id), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
   def create
     @team = current_user.teams.build(team_params)
     if @team.save
-      redirect_to team_path(@team.id), notice: "Team was successfully created."
+      redirect_to team_path(@team.id), notice: 'Team was successfully created.'
     else
       flash.now[:alert] = "Team could not be created: #{model_error_string(@team)}."
       render :new, status: :unprocessable_entity
@@ -31,7 +31,7 @@ class TeamsController < ApplicationController
   def update
     @team = current_user.teams.find(params[:id])
     if @team.update(team_params)
-      redirect_to team_path(@team.id), notice: "Team was successfully updated."
+      redirect_to team_path(@team.id), notice: 'Team was successfully updated.'
     else
       flash.now[:alert] = "Team could not be updated: #{model_error_string(@team)}."
       render :edit, status: :unprocessable_entity
@@ -41,7 +41,7 @@ class TeamsController < ApplicationController
   def destroy
     @team = current_user.teams.find(params[:id])
     if @team.destroy
-      redirect_to root_path, notice: "Team was successfully destroyed."
+      redirect_to root_path, notice: 'Team was successfully destroyed.'
     else
       flash.now[:alert] = "Team could not be destroyed: #{model_error_string(@team)}."
       redirect_to team_path(@team.id), status: :unprocessable_entity

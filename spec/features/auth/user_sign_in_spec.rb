@@ -7,17 +7,18 @@ RSpec.feature 'user signs in' do
     user = create(:user, password: '12345ABCDEfghi!', password_confirmation: '12345ABCDEfghi!')
 
     visit new_user_session_path
-    
+
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: '12345ABCDEfghi!'
-    
+
     find('[data-test="submit"]').click
 
-    expect(page).to have_content("Dashboard")
+    expect(page).to have_content('Dashboard')
   end
 
   scenario 'user cannot sign in if account not confirmed' do
-    unconfirmed = create(:user, password: '12345ABCDEfghi!', password_confirmation: '12345ABCDEfghi!', confirmed_at: nil)
+    unconfirmed = create(:user, password: '12345ABCDEfghi!', password_confirmation: '12345ABCDEfghi!',
+                                confirmed_at: nil)
 
     visit new_user_session_path
     fill_in 'user_email', with: unconfirmed.email
@@ -32,16 +33,16 @@ RSpec.feature 'user signs in' do
 
     last_delivery = ActionMailer::Base.deliveries.last
 
-    confirmation_link = last_delivery.body.raw_source.match(%r{href="http:\/\/localhost:3500(?<path>.+?)">})[:path]
+    confirmation_link = last_delivery.body.raw_source.match(%r{href="http://localhost:3500(?<path>.+?)">})[:path]
 
     visit confirmation_link
     visit new_user_session_path
-    
+
     fill_in 'user_email', with: unconfirmed.email
     fill_in 'user_password', with: '12345ABCDEfghi!'
-    
+
     find('[data-test="submit"]').click
 
-    expect(page.body).to include("Dashboard")
+    expect(page.body).to include('Dashboard')
   end
 end

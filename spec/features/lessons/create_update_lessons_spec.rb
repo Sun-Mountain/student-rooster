@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.feature 'create and update teams' do
+RSpec.feature 'create and update lesson' do
   let(:user) { create(:user) }
 
   before(:each) do
@@ -49,7 +49,7 @@ RSpec.feature 'create and update teams' do
 
       click_link('Edit Lesson')
 
-      expect(page).to have_content('Edit:')
+      expect(page).to have_content('Edit Lesson')
 
       fill_in('lesson[title]', with: 'Lesson2')
       click_button('Save')
@@ -95,7 +95,7 @@ RSpec.feature 'create and update teams' do
 
       click_link('Edit Lesson')
 
-      expect(page).to have_content('Edit:')
+      expect(page).to have_content('Edit Lesson:')
 
       fill_in('lesson[title]', with: '')
       click_button('Save')

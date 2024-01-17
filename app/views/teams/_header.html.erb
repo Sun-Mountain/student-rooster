@@ -1,16 +1,6 @@
 <section class="page-header">
   <div class="back-link-container">
-    <% unless params[:controller] == 'teams' %>
-      <%= link_to team_path(@team.id) do %>
-        <%= icon('fa-solid', 'arrow-left')%>
-        Back to Team
-      <% end %>
-    <% else %>
-      <%= link_to root_path do %>
-        <%= icon('fa-solid', 'arrow-left')%>
-        Back to Home
-      <% end %>
-    <% end %>
+    <%= breadcrumbs.render(format: :inline, separator: " / ") %>
   </div>
 
   <h1 class="page-header__heading"><%= @team.name %></h1>

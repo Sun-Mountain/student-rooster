@@ -1,0 +1,10 @@
+<%= render 'teams/header' %>
+<%= render 'lessons/header' %>
+
+<h3>
+  Session:<br />
+  <% if @session.name %>
+    <%= @session.name %><br />
+  <% end %>
+  <%= @session.start_date.strftime("%d %B, %Y") %> - <%= @session.end_date.strftime("%d %B, %Y") %>
+</h3>

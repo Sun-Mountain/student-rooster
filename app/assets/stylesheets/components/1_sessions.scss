@@ -1,0 +1,108 @@
+@import "../base/1_variables";
+
+.session-list-container {
+  border: 1px solid $blue-green;
+  border-radius: 0.25rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+
+  table {
+    width: 100%;
+  }
+
+  td {
+    align-items: center;
+    text-align: center;
+  }
+
+  .action-btns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn--danger {
+    background-color: $rufous;
+    border: 1px solid $rufous;
+    border-radius: 0.25rem;
+    color: $white;
+    font-weight: 700;
+
+    &:hover {
+      background-color: $rufous-20;
+      border: 1px solid $rufous;
+      color: $rufous;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpoint-sm) {
+  .session-list-container {
+    border: 0;
+    padding: 0;
+
+    table {
+      thead {
+        display: none;
+      }
+  
+      tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid $onyx;
+        border-bottom: 0;
+        border-radius: 0.25rem;
+      }
+  
+      td {
+        display: block;
+        justify-content: space-between;
+        padding: 0.5rem;
+        border-bottom: 1px solid $onyx;
+      }
+  
+      td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+  
+      .cell-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  } 
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  .session-list-container {
+    padding: 2rem 2rem 1.5rem 2rem;
+
+    .in-line-label {
+      display: none;
+    }
+
+    table {
+      border: 1px solid $onyx;
+    }
+
+    .sessions-list-header {
+      border-bottom: 1px solid $onyx;
+    }
+
+    td {
+      padding: 0.5rem;
+    }
+
+    table{
+      border-collapse: collapse;
+    }
+
+    tr+tr {
+      border-top: 1px solid $onyx;
+    }
+  }
+}

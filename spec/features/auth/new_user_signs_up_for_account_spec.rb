@@ -27,7 +27,7 @@ RSpec.feature 'new user signs up for account' do
       fill_in :user_email, with: 'angua@gmail.com'
       fill_in :user_password, with: '3veryDay#P0tato'
       fill_in :user_password_confirmation, with: '3veryDay#P0tato'
-      
+
       click_on('Sign up')
 
       expect(ActionMailer::Base.deliveries.count).to eq(2)
@@ -46,8 +46,8 @@ RSpec.feature 'new user signs up for account' do
       Sidekiq::Worker.drain_all
 
       last_delivery = ActionMailer::Base.deliveries.last
-  
-      confirmation_link = last_delivery.body.raw_source.match(%r{href="http:\/\/localhost:3500(?<path>.+?)">})[:path]
+
+      confirmation_link = last_delivery.body.raw_source.match(%r{href="http://localhost:3500(?<path>.+?)">})[:path]
 
       visit confirmation_link
 
@@ -89,7 +89,8 @@ RSpec.feature 'new user signs up for account' do
     scenario 'unverified user tries and fails to sign in' do
       Sidekiq::Worker.drain_all
 
-      unconfirmed = create(:user, password: '12345ABCDEfghi!', password_confirmation: '12345ABCDEfghi!', confirmed_at: nil)
+      unconfirmed = create(:user, password: '12345ABCDEfghi!', password_confirmation: '12345ABCDEfghi!',
+                                  confirmed_at: nil)
 
       visit new_user_session_path
 

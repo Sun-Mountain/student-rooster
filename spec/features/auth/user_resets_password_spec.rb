@@ -17,7 +17,7 @@ RSpec.feature 'user resets password' do
       end.to change(ActionMailer::Base.deliveries, :count).by(1)
 
       last_delivery = ActionMailer::Base.deliveries.last
-      reset_link = last_delivery.body.raw_source.match(%r{href="http:\/\/localhost:3500(?<path>.+?)">})[:path]
+      reset_link = last_delivery.body.raw_source.match(%r{href="http://localhost:3500(?<path>.+?)">})[:path]
 
       visit reset_link
 
@@ -41,12 +41,12 @@ RSpec.feature 'user resets password' do
       end.to change(ActionMailer::Base.deliveries, :count).by(1)
 
       last_delivery = ActionMailer::Base.deliveries.last
-      reset_link = last_delivery.body.raw_source.match(%r{href="http:\/\/localhost:3500(?<path>.+?)">})[:path]
+      reset_link = last_delivery.body.raw_source.match(%r{href="http://localhost:3500(?<path>.+?)">})[:path]
 
       visit reset_link
 
       fill_in 'user_password', with: 'CrabW0rd$_B00m#'
-      fill_in 'user_password_confirmation', with: "CrabW0rd$_B00m!"
+      fill_in 'user_password_confirmation', with: 'CrabW0rd$_B00m!'
       find('input[data-test="submit"]').click
 
       expect(page.body).to include('1 error prohibited this user from being saved:')
