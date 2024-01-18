@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin!
-    return if current_user.admin?
+    return if current_user.authorized? 
 
     redirect_to root_path, alert: 'You are not authorized to access this page.'
   end

@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :user
   end
+
+  def authorized?
+    self.role == 'admin' || self.role == 'moderator'
+  end
 end

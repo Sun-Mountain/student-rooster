@@ -8,38 +8,40 @@
   <h3>Email: <%= @user.email %></h3>
 </div>
 
-<div class="profile-detail status">
-  <%= link_to user_permissions_path(@user.id), data: { turbo_frame: 'modal' }, class: "badge-container" do %>
-    <%= icon('fa-solid',
-              "#{if @user.admin?
-                  'crown'
-                elsif @user.moderator?
-                  'shield'
-                elsif @user.beta?
-                  'flask-vial'
-                else
-                  'user'
-                end
-              }",
-              class: 'icon') %>
-    <div class="badge-text">
-      <%= @user.role.titleize %>
+<% if current_user.authorized? %>
+  <div class="profile-detail status">
+    <div class="badge-container">
+      <%= icon('fa-solid',
+                "#{if @user.admin?
+                    'crown'
+                  elsif @user.moderator?
+                    'shield'
+                  elsif @user.beta?
+                    'flask-vial'
+                  else
+                    'user'
+                  end
+                }",
+                class: 'icon') %>
+      <div class="badge-text">
+        <%= @user.role.titleize %>
+      </div>
     </div>
-  <% end %>
 
-  <% if @user.confirmed? %>
-    <div class="badge-container confirmed">
-      <%= icon('fa-solid', 'circle-check', class: 'icon ')%>
-      <div class="badge-text">
-        Confirmed
+    <% if @user.confirmed? %>
+      <div class="badge-container confirmed">
+        <%= icon('fa-solid', 'circle-check', class: 'icon ')%>
+        <div class="badge-text">
+          Confirmed
+        </div>
       </div>
-    </div>
-  <% else %>
-    <div class="badge-container unconfirmed">
-      <%= icon('fa-solid', 'x', class: 'icon')%> 
-      <div class="badge-text">
-        Unconfirmed
+    <% else %>
+      <div class="badge-container unconfirmed">
+        <%= icon('fa-solid', 'x', class: 'icon')%> 
+        <div class="badge-text">
+          Unconfirmed
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>

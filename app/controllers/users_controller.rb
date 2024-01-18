@@ -1,8 +1,8 @@
 #  frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :profile_permissions
   before_action :find_user
+  before_action :profile_permissions
 
   def show; end
 
@@ -16,21 +16,13 @@ class UsersController < ApplicationController
     # Your code here
   end
 
-  def permissions
-    unless current_user.admin? || current_user.moderator?
-      redirect_to root_path, alert: 'You are not authorized to access this page.'
-    else
-
-    end
-  end
-
   private
 
   def user_params
-    if current_user.admin?
+    if current_user.authorized?
       params.permit(:email)
     else
-      params.required(:user).permit(:username, :email, :password, :password_confirmation, :current_password)
+      params.required(:user).permit(:id, :username, :email, :password, :password_confirmation, :current_password)
     end
   end
 
@@ -39,7 +31,9 @@ class UsersController < ApplicationController
   end
 
   def profile_permissions
-    return unless !current_user.admin? && params[:email] != current_user.email
+    return unless !current_user.authorized? && params[:email] != current_user.email
+    
+    return unless current_user.id != @user.id
 
     redirect_to root_path, alert: 'You are not authorized to access this page.'
   end
