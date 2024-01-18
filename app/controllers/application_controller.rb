@@ -24,8 +24,8 @@ class ApplicationController < ActionController::Base
     breadcrumbs.add "Home", root_path
   end
 
-  def authorize_siteAdmin!
-    return if current_user.siteAdmin?
+  def authorize_admin!
+    return if current_user.admin?
 
     redirect_to root_path, alert: 'You are not authorized to access this page.'
   end

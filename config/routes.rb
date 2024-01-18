@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/admin/users', to: 'admin/users#index', as: :admin_users
   get '/admin/users/:email', to: 'users#show', as: :admin_user_profile
   get '/admin/teams', to: 'admin/teams#index', as: :admin_teams
+  get '/admin/users/:email/permissions', to: 'users#permissions', via: [:get, :put], as: :user_permissions
 
   resources :users, only: [:show, :edit, :update]
   get '/profile', to: 'users#show', as: :user_profile

@@ -2,7 +2,7 @@
 
 module Admin
   class TeamsController < ApplicationController
-    before_action :authorize_siteAdmin!
+    before_action :authorize_admin!
 
     def index
       @team = Team.all

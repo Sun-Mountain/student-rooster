@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.feature 'site admin dashboard' do
   context 'when successful' do
     scenario 'site admin visits site admin dashboard' do
-      site_admin = create(:user, role: 'siteAdmin')
+      site_admin = create(:user, role: 'admin')
       sign_in(site_admin)
 
       visit admin_index_path

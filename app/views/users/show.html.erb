@@ -9,25 +9,21 @@
 </div>
 
 <div class="profile-detail status">
-  <%= link_to edit_user_path(@user.id), data: { turbo_frame: 'modal' }, class: "badge-container" do %>
+  <%= link_to user_permissions_path(@user.id), data: { turbo_frame: 'modal' }, class: "badge-container" do %>
     <%= icon('fa-solid',
-              "#{if @user.siteAdmin?
+              "#{if @user.admin?
                   'crown'
                 elsif @user.moderator?
                   'shield'
+                elsif @user.beta?
+                  'flask-vial'
                 else
                   'user'
                 end
               }",
               class: 'icon') %>
     <div class="badge-text">
-      <% if @user.siteAdmin? %>
-        Site Admin
-      <% elsif @user.moderator? %>
-        Moderator
-      <% else %>
-        User
-      <% end %>
+      <%= @user.role.titleize %>
     </div>
   <% end %>
 

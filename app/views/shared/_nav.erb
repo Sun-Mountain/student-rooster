@@ -7,7 +7,7 @@
         <% end %>
       </li>
       <% if user_signed_in? %>
-        <% if current_user.siteAdmin? %>
+        <% if current_user.admin? %>
           <li class="site-links">
             <%= link_to admin_index_path, class: current_class?(admin_index_path) do %>
               <%= icon('fa-solid', 'cog')%> Admin

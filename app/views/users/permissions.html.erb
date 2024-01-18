@@ -1,0 +1,16 @@
+<%= render TurboModalComponent.new(title: "Update User Permissions") do %>
+  <% form_for @user, url: user_permissions_path, html: { method: :put } do |f| %>
+    <div class="modal__form-wrapper">
+      <%= f.hidden_field :id %>
+      <div class="input-wrapper">
+        <%= f.select :role, User.roles.keys.map { |role| [role.titleize, role] }, selected: params[@user.role], class: "select-input" %>
+      </div>
+      <div class="form-btn__container">
+        <%= f.submit "Update", class: "modal-btn modal-btn__submit" %>
+        <%= button_tag data: { action: "turbo-modal#hideModal" }, type: "button", class: "modal-btn__cancel" do %>
+          Cancel
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

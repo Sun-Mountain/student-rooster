@@ -40,8 +40,70 @@
     background-color: $modal-content-background;
     border-radius: 0.5rem;
     margin-top: 0.75rem;
-    padding: 2rem;
+    padding: 1.5rem 2rem 2rem 2rem;
     position: relative;
     z-index: 20;
+  }
+
+  .modal-body__header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .modal__form-wrapper {
+    .input-wrapper {
+      margin-bottom: 0.5rem;
+
+      select, option {
+        background-color: $form-background;
+        border: $form-border;
+        border-radius: 0.25rem;
+        height: 2.5rem;
+        width: 100%;
+
+        &:focus {
+          border: $focus-border;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .form-btn__container {
+      margin-top: 1.5rem;
+    }
+
+    .modal-btn {
+      background-color: $button-background;
+      border: $button-border;
+      border-radius: 0.25rem;
+      color: $button-color;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        background-color: $button-background-hover;
+        border: $button-border-hover;
+        color: $button-color-hover;
+        cursor: pointer;
+      }
+    }
+
+    .modal-btn__cancel {
+      background-color: $button-cancel-background;
+      border: $button-cancel-border;
+      color: $button-cancel-text;
+      font-size: 1rem;
+      text-decoration: underline;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
   }
 }

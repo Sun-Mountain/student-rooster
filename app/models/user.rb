@@ -10,7 +10,7 @@ class User < ApplicationRecord
          :confirmable, :timeoutable, :trackable
   # :lockable
 
-  enum role: %i[user beta admin moderator siteAdmin]
+  enum role: %i[user beta moderator admin]
 
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true

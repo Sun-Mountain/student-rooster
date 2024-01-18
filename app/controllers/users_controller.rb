@@ -16,10 +16,18 @@ class UsersController < ApplicationController
     # Your code here
   end
 
+  def permissions
+    unless current_user.admin? || current_user.moderator?
+      redirect_to root_path, alert: 'You are not authorized to access this page.'
+    else
+
+    end
+  end
+
   private
 
   def user_params
-    if current_user.siteAdmin?
+    if current_user.admin?
       params.permit(:email)
     else
       params.required(:user).permit(:username, :email, :password, :password_confirmation, :current_password)
@@ -31,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def profile_permissions
-    return unless !current_user.siteAdmin? && params[:email] != current_user.email
+    return unless !current_user.admin? && params[:email] != current_user.email
 
     redirect_to root_path, alert: 'You are not authorized to access this page.'
   end
