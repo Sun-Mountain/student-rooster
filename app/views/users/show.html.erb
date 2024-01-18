@@ -8,42 +8,42 @@
   <h3>Email: <%= @user.email %></h3>
 </div>
 
-<% if current_user.siteAdmin? || current_user.moderator? %>
-  <div class="profile-detail status">
-      <div class="badge-container">
-        <%= icon('fa-solid',
-                  "#{if @user.siteAdmin?
-                      'crown'
-                    elsif @user.moderator?
-                      'shield'
-                    else
-                      'user'
-                    end
-                  }",
-                  class: 'icon') %>
-        <div class="badge-text">
-        <%= link_to "#{if @user.siteAdmin?
-                'Site Admin'
-              elsif @user.moderator?
-                'Moderator'
-              else
-                'User'
-              end}", edit_user_path(@user.id), data: { turbo_frame: 'modal' } %>
+<div class="profile-detail status">
+  <%= link_to edit_user_path(@user.id), data: { turbo_frame: 'modal' }, class: "badge-container" do %>
+    <%= icon('fa-solid',
+              "#{if @user.siteAdmin?
+                  'crown'
+                elsif @user.moderator?
+                  'shield'
+                else
+                  'user'
+                end
+              }",
+              class: 'icon') %>
+    <div class="badge-text">
+      <% if @user.siteAdmin? %>
+        Site Admin
+      <% elsif @user.moderator? %>
+        Moderator
+      <% else %>
+        User
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @user.confirmed? %>
+    <div class="badge-container confirmed">
+      <%= icon('fa-solid', 'circle-check', class: 'icon ')%>
+      <div class="badge-text">
+        Confirmed
       </div>
-    <% if @user.confirmed? %>
-      <div class="badge-container confirmed">
-        <%= icon('fa-solid', 'circle-check', class: 'icon ')%>
-        <div class="badge-text">
-          Confirmed
-        </div>
+    </div>
+  <% else %>
+    <div class="badge-container unconfirmed">
+      <%= icon('fa-solid', 'x', class: 'icon')%> 
+      <div class="badge-text">
+        Unconfirmed
       </div>
-    <% else %>
-      <div class="badge-container unconfirmed">
-        <%= icon('fa-solid', 'x', class: 'icon')%> 
-        <div class="badge-text">
-          Unconfirmed
-        </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>

@@ -2,9 +2,15 @@
   <%= tag.div data: { controller: "turbo-modal",
                       turbo_modal_target: "modal",
                       action: "turbo:submit-end->turbo-modal#submitEnd keyup@window->turbo-modal#closeWithKeyboard click@window->turbo-modal#closeBackground" },
-                      class: "modal__body" do %>
-    <%= button_tag "X", data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-red-600 text-white" %>
-    <h1 class="font-bold text-4xl"><%= @title %></h1>
-    <%= content %>
+                      class: "modal-body" do %>
+    <div class="modal-btn__container">
+      <%= button_tag data: { action: "turbo-modal#hideModal" }, type: "button", class: "modal-btn__close" do %>
+        <%= icon('fa-solid', 'x')%>
+      <% end %>
+    </div>
+    <div class="modal-body__content">
+      <h1 class="font-bold text-4xl"><%= @title %></h1>
+      <%= content %>
+    </div>
   <% end %>
 <% end %>

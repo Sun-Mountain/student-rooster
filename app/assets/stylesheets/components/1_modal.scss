@@ -1,15 +1,46 @@
+@import '../base/1_variables';
+
 #modal {
   z-index: 2;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 6px;
-  background: #bad5ff;
-  width: 400px;
+  top: 25%;
+  transform: translate(-50%, -25%);
+  min-width: 400px;
 }
 
-.modal__body {
-  padding: 2rem;
+.modal-body {
+  background-color: $modal-background;
+  border: $modal-border;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem 2rem 2rem;
   z-index: 10;
+
+  .modal-btn__container {
+    display: flex;
+    justify-content: right;
+  }
+
+  .modal-btn__close {
+    background-color: $modal-btn-close-background;
+    border: $modal-btn-close-border;
+    border-radius: 0.5rem;
+    color: $modal-btn-close-color;
+    font-size: 22px;
+    padding: 5px;
+    z-index: 20;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .modal-body__content {
+    background-color: $modal-content-background;
+    border-radius: 0.5rem;
+    margin-top: 0.75rem;
+    padding: 2rem;
+    position: relative;
+    z-index: 20;
+  }
 }
