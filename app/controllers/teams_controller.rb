@@ -18,14 +18,16 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
-    @team_ownership = TeamOwnership.find_by(team_id: @team.id)
-    @owner = User.find(@team_ownership.user_id)
+    @team = find_team(params[:id])
+    @owner = find_owner_by_team(@team.id)
     @team_members = @team.users
   end
 
   def edit
-    @team = Team.find(params[:id])
+    @team = find_team(params[:id])
+    @owner = find_owner_by_team(@team.id)
+
+    breadcrumbs.add "Team: #{@team.name}", team_path(@team.id)
   end
 
   def update
