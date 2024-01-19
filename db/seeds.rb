@@ -16,12 +16,13 @@ User.create!([
     username: "Captain Picard",
     email: "picard@gmail.com",
     password: "123456",
-    role: 4,
+    role: 3,
     confirmed_at: Time.now,
   }, {
     username: "Commander Riker",
     email: "riker@gmail.com",
     password: "123456",
+    role: 2,
     confirmed_at: Time.now,
   }, {
     username: "Lieutenant Worf",

@@ -3,3 +3,9 @@
 <div class="page-header__subheading">
   <h2>Manage Members</h2>
 </div>
+
+<div>
+  <%= link_to new_team_membership_path, data: { turbo_frame: 'modal' } do %>
+    <%= icon('fa-solid', 'envelope-open-text', class: 'icon') %> Invite Members
+  <% end %>
+</div>

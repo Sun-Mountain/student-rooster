@@ -1,6 +1,8 @@
 @import '../base/1_variables';
 
 #modal {
+  background-color: $white;
+  border-radius: 0.5rem;
   z-index: 2;
   position: absolute;
   left: 50%;
