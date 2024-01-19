@@ -4,8 +4,35 @@
   <h2>Manage Members</h2>
 </div>
 
-<div>
+<div class="invite-members-container">
   <%= link_to new_team_membership_path, data: { turbo_frame: 'modal' } do %>
     <%= icon('fa-solid', 'envelope-open-text', class: 'icon') %> Invite Members
   <% end %>
 </div>
+
+<section id="pending-members" class="content-section">
+  <% if @pending.count > 0 %>
+    <ul>
+      <% @pending.each do |membership| %>
+        <li>
+          <%= membership.user.email %>
+
+          <% if membership.user.nil? %>
+          <% else %>
+            <%= icon('fa-solid', 'envelope-open-text', class: 'icon') %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    There are currently no pending members for <%= @team.name %>.
+  <% end %>
+</section>
+
+<section id="current-members" class="content-section">
+  <% if @memberships.count > 0 %>
+    Members!
+  <% else %>
+    There are currently no members for <%= @team.name %>. You can invite members <%= link_to "here", new_team_membership_path, data: { turbo_frame: 'modal' } %>.
+  <% end %>
+</section>

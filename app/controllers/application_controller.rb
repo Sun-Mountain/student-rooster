@@ -46,4 +46,8 @@ class ApplicationController < ActionController::Base
   def find_lesson(lesson_id)
     @lesson ||= Lesson.find(lesson_id)
   end
+
+  def find_user_by_email(email)
+    User.find_by(email: email)
+  end
 end

@@ -26,8 +26,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_183612) do
     t.bigint "team_id", null: false
     t.bigint "user_id"
     t.string "email", default: "", null: false
-    t.boolean "accepted", default: false, null: false
+    t.boolean "accepted"
     t.boolean "no_account", default: true, null: false
+    t.integer "invited_by", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team_id"], name: "index_memberships_on_team_id"

@@ -18,9 +18,21 @@
 </section>
 
 <section id="team-members" class="content-section">
-  <h2>Members</h2>
+  <div class="content-section__header">
+    <h2>
+      Members
+    </h2>
+    <%= link_to team_memberships_path(@team.id), class: "" do %>
+      <%= icon('fa-solid', 'people-roof', class: 'icon') %> Manage Members
+    <% end %>
+  </div>
 
   <% if @team_members.count > 0 %>
+    <ul>
+      <% @team_members.each do |member| %>
+        <li><%= member.email %></li>
+      <% end %>
+    </ul>
   <% else %>
     <p>There are no members yet. Invite your first member <%= link_to "here", team_memberships_path(@team.id) %>.</p>
   <% end %>

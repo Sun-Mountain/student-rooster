@@ -54,10 +54,14 @@
   }
 
   .modal__form-wrapper {
+    label {
+      font-size: 1.25rem;
+    }
+
     .input-wrapper {
       margin-bottom: 0.5rem;
 
-      select, option {
+      select, option, input {
         background-color: $form-background;
         border: $form-border;
         border-radius: 0.25rem;
@@ -70,6 +74,12 @@
 
         &:hover {
           cursor: pointer;
+        }
+      }
+
+      input {
+        &:hover {
+          cursor: text;
         }
       }
     }
