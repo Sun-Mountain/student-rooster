@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "membership_#{membership.id}" do %>
+  <div class="membership">
+    <%= membership.email %>
+
+    <% if membership.user.nil? %>
+      <%= icon('fa-solid', 'magnifying-glass', class: 'icon') %>
+    <% else %>
+      <%= icon('fa-solid', 'envelope-circle-check', class: 'icon') %>
+    <% end %>
+  </div>
+<% end %>
