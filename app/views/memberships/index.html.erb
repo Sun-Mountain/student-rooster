@@ -10,7 +10,28 @@
   <% end %>
 </div>
 
-<section id="pending" class="content-section">
+<section id="pending" class="content-section member-list">
+  <h3>Pending Invitations</h3>
+  <div class="key">
+    <div class="key-item missing">
+      <%= icon('fa-solid', 'magnifying-glass', class: 'icon') %>
+      <div class="key-description">
+        Could not find user. (Make sure they have an account or that they email was entered correctly.)
+      </div>
+    </div>
+    <div class="key-item waiting">
+      <%= icon('fa-solid', 'envelope-circle-check', class: 'icon') %>
+      <div class="key-description">
+        Found user but they have not accepted the invitation yet.
+      </div>
+    </div>
+    <div class="key-item rejected">
+      <%= icon('fa-solid', 'ban', class: 'icon') %>
+      <div class="key-description">
+        Found user but they have rejected the invitation.
+      </div>
+    </div>
+  </div>
   <% if @pending.count > 0 %>
     <%= render @pending %>
   <% else %>

@@ -1,3 +1,5 @@
+@import '../base/1_variables';
+
 .invite-members-container {
   margin-bottom: 2rem;
   text-align: center;
@@ -9,4 +11,64 @@
     flex-direction: row;
     justify-content: space-between;
   }
+}
+
+.member-list {
+  h3 {
+    text-align: center;
+  }
+
+  .key {
+    border: 2px $french-gray-2 solid;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem auto;
+    padding: 1rem;
+
+    .icon {
+      margin-right: 0.75rem;
+    }
+  }
+
+  .key-item {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .key-item+.key-item {
+    margin-top: 0.75rem;
+  }
+}
+
+.missing {
+  color: $rufous;
+}
+
+.waiting {
+  color: $forest-green;
+}
+
+.rejected {
+  color: $prussian-blue;
+}
+
+.membership-list__item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  line-height: 2.5rem;
+
+  .pending-status {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+  }
+}
+
+.membership-list__item+.membership-list__item {
+  border-top: 1px solid $french-gray-2;
+  padding-top: 0.5rem;
 }

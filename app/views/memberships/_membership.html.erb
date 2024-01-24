@@ -1,11 +1,15 @@
-<%= turbo_frame_tag "membership_#{membership.id}" do %>
-  <div class="membership">
-    <%= membership.email %>
-
+<%= turbo_frame_tag "membership_#{membership.id}", class: "membership-list__item" do %>
+  <div class="pending-status <% if membership.user.nil? %>
+                              missing
+                              <% else %>
+                              waiting
+                              <% end %>">
     <% if membership.user.nil? %>
       <%= icon('fa-solid', 'magnifying-glass', class: 'icon') %>
     <% else %>
       <%= icon('fa-solid', 'envelope-circle-check', class: 'icon') %>
     <% end %>
   </div>
+
+  <%= membership.email %>
 <% end %>
