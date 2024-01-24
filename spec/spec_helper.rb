@@ -13,6 +13,20 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
+require 'simplecov'
+
+SimpleCov.start 'rails' do
+  track_files '**/{app,lib}/**/*.rb'
+
+  add_group 'Components', 'app/components'
+
+  add_filter '/app/channels/'
+  add_filter '/app/jobs/'
+
+  SimpleCov.minimum_coverage 80
+  SimpleCov.minimum_coverage_by_file 80
+end
+
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

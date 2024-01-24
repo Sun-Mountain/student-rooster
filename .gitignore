@@ -37,3 +37,6 @@
 # Ignore build files
 fly.toml
 Dockerfile
+
+# Ignore simple_cov results
+/coverage

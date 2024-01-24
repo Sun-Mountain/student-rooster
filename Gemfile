@@ -48,4 +48,5 @@ end
 group :test do
   gem 'fakefs', require: 'fakefs/safe'
   gem 'fakeredis'
+  gem 'simplecov', require: false
 end

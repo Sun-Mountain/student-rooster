@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
   def show
     @team = find_team(params[:id])
     @owner = find_owner_by_team(@team.id)
-    @team_members = @team.users
+    @team_members = @team.memberships.where(accepted: true)
   end
 
   def edit
