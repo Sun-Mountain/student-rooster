@@ -18,9 +18,13 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = find_team(params[:id])
-    @owner = find_owner_by_team(@team.id)
-    @team_members = @team.memberships.where(accepted: true)
+    unless current_user.memberships.exists?(team_id: params[:id]) || current_user.teams.exists?(id: params[:id])
+      redirect_to root_path, alert: 'You are not a member of that team.'
+    else
+      @team = find_team(params[:id])
+      @owner = find_owner_by_team(@team.id)
+      @team_members = @team.memberships.where(accepted: true)
+    end
   end
 
   def edit

@@ -16,10 +16,18 @@
       <% else %>
         <p>Create your own team <%= link_to 'here', new_team_path %>..</p>
       <% end %>
-      <% if @memberships.count > 0 %>
+      <% if @memberships.where(accepted: nil).count > 0 %>
+        <h3>Pending Invites:</h3>
+        <ul>
+          <% @memberships.where(accepted: nil).each do |membership| %>
+            <li><%= link_to membership.team.name, team_path(membership.team) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <% if @memberships.where(accepted: true).count > 0 %>
         <h3>Member of:</h3>
         <ul>
-          <% @memberships.each do |membership| %>
+          <% @memberships.where(accepted: true).each do |membership| %>
             <li><%= link_to membership.team.name, team_path(membership.team) %></li>
           <% end %>
         </ul>
