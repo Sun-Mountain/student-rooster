@@ -32,10 +32,10 @@
       </div>
     </div>
   </div>
-  <% if @pending.count > 0 %>
-    <%= render @pending %>
+  <% unless @pending.count > 0 %>
+    There are currently no pending invitations.
   <% else %>
-    There are currently no pending members for <%= @team.name %>.
+    <%= render @pending %>
   <% end %>
 </section>
 

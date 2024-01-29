@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show', as: :user_profile
 
   resources :teams do
-    resources :memberships
+    resources :memberships do
+      match '/accept', to: 'memberships#accept', via: [:get, :put], as: :accept
+      match '/decline', to: 'memberships#decline', via: [:get, :put], as: :decline
+    end
     resources :lessons do
       resources :sessions
     end

@@ -24,6 +24,9 @@ class TeamsController < ApplicationController
       @team = find_team(params[:id])
       @owner = find_owner_by_team(@team.id)
       @team_members = @team.memberships.where(accepted: true)
+      @valid_member = current_user.memberships.where(accepted: true).exists?(team_id: params[:id]) || current_user.id == @owner.id
+      @pending_member = current_user.memberships.where(accepted: nil).exists?(team_id: params[:id])
+      @membership = current_user.memberships.where(team_id: params[:id]).first
     end
   end
 

@@ -63,3 +63,15 @@
     color: $success-text;
   }
 }
+
+.conditional-alert {
+  .alert__content {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .link-container {
+    margin-top: 1rem;
+  }
+}

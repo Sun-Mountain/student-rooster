@@ -1,39 +1,63 @@
 <%= render 'teams/header' %>
 
+<% if @pending_member %>
+  <section class="alert conditional-alert">
+    <div class="alert__body">
+      <div class="alert__content">
+        <div>
+          You have been invited to join this team.
+        </div>
+        <div class="link-container">
+          <%= link_to "Accept", team_membership_accept_path(@team.id, @membership.id), method: :put, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
 <section id="team-lessons" class="content-section">
   <h2>Lessons</h2>
   <% if @team.lessons.count > 0 %>
     <ul>
       <% @team.lessons.each do |lesson| %>
-        <li><%= link_to lesson.title, team_lesson_path(team_id: @team.id, id: lesson.id) %></li>
+        <li>
+          <% if @valid_member %>
+            <%= link_to lesson.title, team_lesson_path(team_id: @team.id, id: lesson.id) %>
+          <% else %>
+            <%= lesson.title %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
-
-    <div class="btn-container">
-      <%= link_to "Add a new lesson", new_team_lesson_path(team_id: @team.id), class: "btn btn-primary" %>
-    </div>
   <% else %>
     <p>There are no lessons yet. Create your first lesson <%= link_to "here", new_team_lesson_path(team_id: @team.id) %>.</p>
   <% end %>
-</section>
-
-<section id="team-members" class="content-section">
-  <div class="content-section__header">
-    <h2>
-      Members
-    </h2>
-    <%= link_to team_memberships_path(@team.id), class: "" do %>
-      <%= icon('fa-solid', 'people-roof', class: 'icon') %> Manage Members
-    <% end %>
-  </div>
-
-  <% if @team_members.count > 0 %>
-    <ul>
-      <% @team_members.each do |member| %>
-        <li><%= member.email %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>There are no members yet. Invite your first member <%= link_to "here", team_memberships_path(@team.id) %>.</p>
+  <% if @valid_member %>
+    <div class="btn-container">
+      <%= link_to "Add a new lesson", new_team_lesson_path(team_id: @team.id), class: "btn btn-primary" %>
+    </div>
   <% end %>
 </section>
+
+<% if @valid_member %>
+  <section id="team-members" class="content-section">
+    <div class="content-section__header">
+      <h2>
+        Members
+      </h2>
+      <%= link_to team_memberships_path(@team.id), class: "" do %>
+        <%= icon('fa-solid', 'people-roof', class: 'icon') %> Manage Members
+      <% end %>
+    </div>
+
+    <% if @team_members.count > 0 %>
+      <ul>
+        <% @team_members.each do |member| %>
+          <li><%= member.email %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>There are no members yet. Invite your first member <%= link_to "here", team_memberships_path(@team.id) %>.</p>
+    <% end %>
+  </section>
+<% end %>
