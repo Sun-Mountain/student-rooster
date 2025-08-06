@@ -1,9 +1,0 @@
-<div class="page-header__subheading">
-  <h2><%= @lesson.title %></h2>
-  <% if current_user.id == @owner.id %>
-    <%= link_to edit_team_lesson_path(@team.id, @lesson.id) do %>
-      <%= icon('fa-solid', 'pen-to-square')%>
-      Edit Lesson
-    <% end %>
-  <% end %>
-</div>
