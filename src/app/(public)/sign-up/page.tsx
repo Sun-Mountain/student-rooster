@@ -1,5 +1,7 @@
+import UnderConstruction from "@/components/_Content/UnderConstruction";
+
 const AuthSignUpPage = () => {
-  return <div>Sign Up Page</div>;
+  return <UnderConstruction />;
 }
 
 export default AuthSignUpPage;

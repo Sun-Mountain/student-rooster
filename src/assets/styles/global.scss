@@ -33,6 +33,7 @@ nav {
 footer {
   background-color: $footer-bg;
   color: $footer-text;
+  text-align: center;
 }
 
 // Headers
@@ -42,4 +43,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Component styles
+@import './components/content.scss';
 @import './components/navigation.scss';
