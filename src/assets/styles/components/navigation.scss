@@ -1,0 +1,29 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+
+  a, a:visited {
+    color: $navbar-text;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 1rem;
+    text-decoration: none;
+  }
+
+  a:hover {
+    background-color: $navbar-text;
+    color: $navbar-bg;
+  }
+}
+
+.nav-logo {
+  padding: 0 1rem;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  margin: auto 0;
+  padding: 0;
+}

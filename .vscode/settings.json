@@ -1,9 +1,7 @@
 {
   "cSpell.words": [
-    "pinia"
-  ],
-  "editor.detectIndentation": false,
-  "editor.autoClosingBrackets": "always",
-  "editor.autoClosingComments": "always",
-  "editor.autoClosingQuotes": "always"
+    "antiflash",
+    "seasalt",
+    "turbopack"
+  ]
 }

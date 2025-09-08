@@ -1,0 +1,45 @@
+// Resources
+@import './resources/breakpoints.scss';
+@import './resources/colors.scss';
+
+// Global styles
+body {
+  background-color: $lavender-web;
+  color: $onyx;
+  font-family: 'Geist Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+main, nav, footer {
+  max-width: $main-max-width;
+  margin: 0 auto;
+}
+
+main, footer {
+  padding: 1rem;
+}
+
+main {
+  background-color: $main-bg;
+  min-height: 80vh;
+}
+
+nav {
+  background-color: $navbar-bg;
+  color: $navbar-text;
+}
+
+footer {
+  background-color: $footer-bg;
+  color: $footer-text;
+}
+
+// Headers
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Geist Mono', monospace;
+  margin: 0.5rem 0;
+}
+
+// Component styles
+@import './components/navigation.scss';
