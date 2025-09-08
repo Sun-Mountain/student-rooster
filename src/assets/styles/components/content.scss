@@ -1,0 +1,13 @@
+.content-container {
+  padding: 1rem 5rem;
+}
+
+.divider {
+  border-bottom: 1px solid $divider-color;
+  margin: 1rem 10rem;
+}
+
+// Specific styles for content
+.welcome-msg, .under-construction {
+  text-align: center;
+}

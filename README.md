@@ -1,21 +1,36 @@
-# Student Rooster
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to Student Rooster, an excercise to build a web-based application to simplify the process of managing and tracking students and classes. Originally designed for a dance school that wanted to keep track of what classes students have taken to help track progress, we are constantly evolving, so check back here to see what we're working on!
+## Getting Started
 
-## Features
+First, run the development server:
 
-:ballot_box_with_check: - Feature
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-:construction: - In Progress
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-:memo: - To Do
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-------------
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-:ballot_box_with_check: - User Authentication: Secure login and registration system for administrators, teachers, and students.
+## Learn More
 
-:construction: - Admin Dashboard: A comprehensive dashboard for administrators to manage users, classes, and student records.
+To learn more about Next.js, take a look at the following resources:
 
-:memo: - Class Management: Easily create, update, and delete classes.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-:memo: - Student Enrollment: Effortlessly enroll students in classes and keep track of their class history.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
