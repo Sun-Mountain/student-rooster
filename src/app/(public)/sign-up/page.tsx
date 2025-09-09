@@ -5,11 +5,16 @@ import Button from "@/components/_UI/Button";
 const AuthSignUpPage = () => {
   return (
     <div className="form-container">
+      <h1>Sign Up</h1>
       <Form>
         <TextField label="Username" name="username" type="text" required />
         <TextField label="Email" name="email" type="email" required />
         <TextField label="Password" name="password" type="password" required />
-        <Button type="submit" className="submit-button">Sign Up</Button>
+        <div className="btn-container">
+          <Button type="submit" className="submit-button">
+            Sign Up
+          </Button>
+        </div>
       </Form>
     </div>
   );

@@ -1,0 +1,60 @@
+button {
+  border-radius: 4px;
+  font-weight: 600;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  // transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  // default
+  background-color: $button-bg;
+  border: none;
+  box-shadow: $form-box-shadow;
+  color: $seasalt;
+
+  &:hover {
+    background-color: $button-bg-hover;
+  }
+  
+  &:disabled {
+    background-color: $button-bg-disabled;
+    color: $button-text-disabled;
+    cursor: not-allowed;
+  }
+
+  // &.primary {
+  //   background-color: $violet-blue;
+  //   color: $white;
+  //   border: none;
+
+  //   &:hover {
+  //     background-color: darken($violet-blue, 10%);
+  //   }
+
+  //   &:disabled {
+  //     background-color: lighten($violet-blue, 20%);
+  //     cursor: not-allowed;
+  //   }
+  // }
+
+  // &.secondary {
+  //   background-color: $white;
+  //   color: $violet-blue;
+  //   border: 2px solid $violet-blue;
+
+  //   &:hover {
+  //     background-color: $violet-blue;
+  //     color: $white;
+  //   }
+
+  //   &:disabled {
+  //     background-color: lighten($violet-blue, 40%);
+  //     color: lighten($violet-blue, 20%);
+  //     border-color: lighten($violet-blue, 20%);
+  //     cursor: not-allowed;
+  //   }
+  // }
+}

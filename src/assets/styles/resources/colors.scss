@@ -2,10 +2,12 @@ $cornell-red: rgba(188, 2, 22, 1);
 $folly: rgba(250, 64, 89, 1);
 $orange-peel: rgba(253, 163, 26, 1);
 $pakistan-green: rgba(23, 61, 23, 1);
+$pakistan-green-50: rgba(23, 61, 23, 0.5);
 $dark-spring-green: rgba(9, 109, 46, 1);
 $paynes-gray: rgba(67, 112, 124, 1);
 $verdigris: rgba(25, 176, 177, 1);
 $violet-blue: rgba(53, 72, 174, 1);
+$violet-blue-50: rgba(53, 72, 174, 0.5);
 $tufts-blue: rgba(71, 141, 211, 1);
 $lavender-web: rgba(224, 226, 238, 1);
 
@@ -26,4 +28,17 @@ $navbar-text: $seasalt;
 $footer-bg: $eerie-black;
 $footer-text: $french-gray;
 
+$button-bg: $paynes-gray;
+$button-text: $seasalt;
+$button-border: none;
+$button-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+$button-bg-hover: darken($paynes-gray, 25%);
+$button-bg-disabled: lighten($paynes-gray, 25%);
+$button-text-disabled: $seasalt;
+
 $divider-color: $french-gray-2;
+
+$form-container-bg: $white;
+$form-border-color: $paynes-gray;
+$form-header-color: $paynes-gray;
+$form-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
