@@ -22,7 +22,8 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/app/components/*"],
       "@styles/*": ["./src/assets/styles/*"],
-      "@db/*": ["./prisma/*"]
+      "@db/*": ["./prisma/*"],
+      "@lib/*": ["./src/lib/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

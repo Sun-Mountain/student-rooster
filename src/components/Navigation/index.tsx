@@ -1,6 +1,12 @@
+'use client';
+
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const Navigation = () => {
+  const { data: session } = useSession();
+  const isAuthenticated = !!session;
+
   return (
     <nav>
       <div className="nav-logo">
@@ -10,9 +16,15 @@ const Navigation = () => {
         <li>
           <Link href="/">Home</Link>
         </li>
-        <li>
-          <Link href="/login">Login</Link>
-        </li>
+        {isAuthenticated ? (
+          <>
+            Logged in!
+          </>
+        ) : (
+          <li>
+            <Link href="/login">Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
