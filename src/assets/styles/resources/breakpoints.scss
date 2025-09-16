@@ -4,4 +4,5 @@ $breakpoint-md: 992px;
 $breakpoint-lg: 1200px;
 $breakpoint-xl: 1400px;
 
-$main-max-width: 1200px;
+$main-max-width: $breakpoint-lg;
+$form-max-width: $breakpoint-sm;

@@ -1,6 +1,18 @@
+'use client';
+
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import Button from "@/components/_UI/Button";
 
 const Navigation = () => {
+  const { data: session } = useSession();
+  const isAuthenticated = !!session;
+
+  const handleSignOut = () => {
+    signOut({ callbackUrl: '/' });
+  }
+
   return (
     <nav>
       <div className="nav-logo">
@@ -10,9 +22,17 @@ const Navigation = () => {
         <li>
           <Link href="/">Home</Link>
         </li>
-        <li>
-          <Link href="/login">Login</Link>
-        </li>
+        {isAuthenticated ? (
+          <li>
+            <Button buttonAction={handleSignOut}>
+              Sign Out
+            </Button>
+          </li>
+        ) : (
+          <li>
+            <Link href="/login">Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

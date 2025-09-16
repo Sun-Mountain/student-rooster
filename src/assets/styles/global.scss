@@ -36,6 +36,21 @@ footer {
   text-align: center;
 }
 
+a, a:visited {
+  color: $link-color;
+
+  &:hover {
+    color: $link-color-hover;
+  }
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
 // Headers
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Geist Mono', monospace;
@@ -43,5 +58,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Component styles
+@import './components/button.scss';
 @import './components/content.scss';
+@import './components/forms.scss';
 @import './components/navigation.scss';

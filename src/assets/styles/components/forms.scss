@@ -1,0 +1,37 @@
+.form-container {
+  background-color: $form-container-bg;
+  border: 5px solid $form-border-color;
+  border-radius: 8px;
+  box-shadow: $form-box-shadow;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem auto;
+  max-width: $form-max-width;
+  padding: 1.5rem;
+
+  h1 {
+    color: $form-header-color;
+  }
+
+  input {
+    border: 1px solid $form-border-color;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 95%;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    margin-top: 1rem;
+  }
+}
