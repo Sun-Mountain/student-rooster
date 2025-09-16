@@ -3,6 +3,7 @@
     "accesscontrol",
     "antiflash",
     "cuid",
+    "primsa",
     "seasalt",
     "turbopack",
     "vercel"
