@@ -2,10 +2,16 @@
 
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import Button from "@/components/_UI/Button";
 
 const Navigation = () => {
   const { data: session } = useSession();
   const isAuthenticated = !!session;
+
+  const handleSignOut = () => {
+    signOut({ callbackUrl: '/' });
+  }
 
   return (
     <nav>
@@ -17,9 +23,11 @@ const Navigation = () => {
           <Link href="/">Home</Link>
         </li>
         {isAuthenticated ? (
-          <>
-            Logged in!
-          </>
+          <li>
+            <Button buttonAction={handleSignOut}>
+              Sign Out
+            </Button>
+          </li>
         ) : (
           <li>
             <Link href="/login">Login</Link>
