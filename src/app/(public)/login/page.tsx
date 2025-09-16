@@ -1,7 +1,7 @@
 import Link from "next/link";
 import LoginForm from "@/components/Forms/LoginForm";
 
-const LoginPage = () => {
+const AuthLoginPage = () => {
 
   return (
     <>
@@ -16,4 +16,4 @@ const LoginPage = () => {
   );
 }
 
-export default LoginPage;
+export default AuthLoginPage;
