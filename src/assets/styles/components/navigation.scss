@@ -21,9 +21,48 @@ nav {
   padding: 0 1rem;
 }
 
-.nav-menu {
-  list-style: none;
+.drawer-nav {
   display: flex;
-  margin: auto 0;
-  padding: 0;
+  flex-direction: column;
+  min-width: $drawer-width;
+  padding: 1rem;
+  text-align: center;
+  // align-items: center;
+  // justify-content: center;
+  // height: 100%;
+
+  .drawer-btn-container {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin: 0 1rem 1rem 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a, a:visited {
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: $navbar-bg;
+      color: $navbar-text;
+    }
+  }
 }
+
+// .nav-menu {
+//   list-style: none;
+//   display: flex;
+//   margin: auto 0;
+//   padding: 0;
+// }
