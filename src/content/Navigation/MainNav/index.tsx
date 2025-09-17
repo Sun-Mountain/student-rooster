@@ -14,7 +14,11 @@ export const MainNav = ({ isAuthenticated, handleSignOut }: MainNavProps) => {
       </li>
       {isAuthenticated ? (
         <li>
-          <Button buttonAction={handleSignOut} className="icon">
+          <Button
+            buttonAction={handleSignOut}
+            className="icon"
+            id="sign-out-btn"
+          >
             Sign Out
           </Button>
         </li>

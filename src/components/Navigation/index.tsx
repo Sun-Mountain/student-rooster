@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
-import { MainNav } from "@/components/_Content/Navigation/MainNav";
+import { MainNav } from "@/content/Navigation/MainNav";
 import Button from "@/components/_UI/Button";
 import { Drawer } from "@/components/_UI/Drawer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,15 +32,24 @@ const Navigation = () => {
       </div>
       {windowSize.width && windowSize.width < 992 ? (
         <>
-          <Button buttonAction={toggleNav}>
+          <Button
+            buttonAction={toggleNav}
+            id="navigation-btn"
+            className="icon"
+            ariaLabel="Open navigation menu"
+          >
             <FontAwesomeIcon icon={faBars} />
           </Button>
-          <Drawer drawerOpen={isNavOpen} toggleDrawer={toggleNav}>
+          <Drawer
+            drawerOpen={isNavOpen}
+            toggleDrawer={toggleNav}
+            ariaLabel="Navigation Menu"
+          >
             <MainNav isAuthenticated={isAuthenticated} handleSignOut={handleSignOut} />
           </Drawer>
         </>
       ) : (
-        <div className="nav-links">
+        <div className="nav-links" aria-label="Main navigation">
           <MainNav isAuthenticated={isAuthenticated} handleSignOut={handleSignOut} />
         </div>
       )}
