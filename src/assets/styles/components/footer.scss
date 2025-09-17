@@ -1,0 +1,23 @@
+.footer-content {
+  margin: 0;
+  padding: 0.5rem 0;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+
+    li {
+      margin: 0.25rem 0;
+    }
+  }
+
+  a, a:visited {
+    color: $footer-text;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
