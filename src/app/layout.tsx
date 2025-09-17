@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Provider from "@/components/Providers/SessionProvider";
+import Provider from "@/components/Providers";
 import "@styles/global.scss";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
