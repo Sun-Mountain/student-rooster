@@ -44,6 +44,13 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
+
+    li {
+      button {
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+    }
   }
 
   a, a:visited {
@@ -70,7 +77,11 @@ nav {
     display: flex;
     align-items: center;
     list-style: none;
-    margin: auto 0;
+    // margin: auto 0;
+
+    li {
+      margin: auto 0;
+    }
   }
 
   .nav-menu {
