@@ -70,7 +70,11 @@ nav {
     display: flex;
     align-items: center;
     list-style: none;
-    margin: auto 0;
+    // margin: auto 0;
+
+    li {
+      margin: auto 0;
+    }
   }
 
   .nav-menu {
