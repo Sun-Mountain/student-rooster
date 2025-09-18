@@ -5,15 +5,17 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  db-setup:
+  playwright-tests:
+    name: Playwright E2E Tests
+    environment: test
     runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_USER: ${{ test.DB_USER }}
-          POSTGRES_PASSWORD: ${{ test.DB_PASSWORD }}
-          POSTGRES_DB: ${{ test.DB_NAME }}
+          POSTGRES_USER: ${{ vars.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ vars.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ vars.DB_NAME }}
         ports:
           - 5432:5432
         options: >-
@@ -21,9 +23,7 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
-  test:
     timeout-minutes: 5
-    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
