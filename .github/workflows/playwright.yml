@@ -5,15 +5,16 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  test:
+  playwright-tests:
+    name: Playwright E2E Tests
     runs-on: ubuntu-latest
     services:
       postgres:
         image: postgres:15
         env:
-          POSTGRES_USER: ${{ env.DB_USER }}
-          POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
-          POSTGRES_DB: ${{ env.DB_NAME }}
+          POSTGRES_USER: ${{vars.DB_USER}}
+          POSTGRES_PASSWORD: ${{vars.DB_PASSWORD}}
+          POSTGRES_DB: ${{vars.DB_NAME}}
         ports:
           - 5432:5432
         options: >-
