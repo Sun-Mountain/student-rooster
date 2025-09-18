@@ -8,11 +8,9 @@ export async function middleware(req: NextRequest) {
   const { nextUrl } = req;
 
   if (PUBLIC_ROUTES.includes(nextUrl.pathname)) {
-    if (token) {
-      return NextResponse.redirect(new URL(ROOT, req.url));
-    }
     return NextResponse.next();
   }
+  
   
   if (!token) {
     return NextResponse.redirect(new URL('/login', req.url));
