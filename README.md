@@ -34,7 +34,7 @@ Then visit [http://localhost:3000](http://localhost:3000) (or relevant URL).
 student-rooster/
 ├── .github/            # GitHub resources
 ├── .vscode/            # VSCode Workspace settings
-├── bruno_for_sr/       # Bruno collections
+├── bruno/       # Bruno collections
 ├── primsa/             # Database
 ├── public/             # Static Assets
 ├── src/                # Main source code

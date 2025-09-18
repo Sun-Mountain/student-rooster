@@ -1,4 +1,4 @@
-import UnderConstruction from "@/components/_Content/UnderConstruction";
+import UnderConstruction from "@/content/UnderConstruction";
 
 const AboutPage = () => {
   return (

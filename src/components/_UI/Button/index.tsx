@@ -9,17 +9,21 @@ import {
 
 interface ButtonProps {
   children: ReactNode;
+  ariaLabel?: string;
   buttonAction?: MouseEventHandler<HTMLButtonElement> | undefined;
   className?: string;
   defaultDisabled?: boolean;
+  id?: string;
   type?: "button" | "submit" | "reset";
 }
 
 const Button = ({
   children,
+  ariaLabel,
   buttonAction,
   className,
   defaultDisabled = false,
+  id,
   type = "button",
 }: ButtonProps) => {
 
@@ -29,14 +33,15 @@ const Button = ({
   // const [ isLoading, setIsLoading ] = useState(false);
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
-    console.log('Button clicked', e);
     if (buttonAction) buttonAction(e);
   }
 
   return (
     <button
+      aria-label={ariaLabel}
       className={className}
       disabled={defaultDisabled}
+      id={id}
       onClick={handleClick}
       type={type}
     >
