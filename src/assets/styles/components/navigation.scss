@@ -44,6 +44,13 @@ nav {
     list-style: none;
     padding: 0;
     margin: 0;
+
+    li {
+      button {
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+    }
   }
 
   a, a:visited {
