@@ -14,14 +14,26 @@ enum Role {
   SUPER
 }
 
+model Profile {
+  id        String   @id @default(cuid())
+  bio       String?
+  userId    String   @unique @map(name: "user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "profiles")
+}
+
 model User {
-  id        String    @id @default(cuid())
-  username  String    @unique
-  email     String    @unique
-  password  String
-  role      Role      @default(USER)
-  createdAt DateTime  @default(now()) @map(name: "created_at")
-  updatedAt DateTime  @updatedAt @map(name: "updated_at")
+  id          String    @id @default(cuid())
+  username    String    @unique
+  email       String    @unique
+  password    String
+  role        Role      @default(USER)
+  createdAt   DateTime  @default(now()) @map(name: "created_at")
+  updatedAt   DateTime  @updatedAt @map(name: "updated_at")
+  profile     Profile?
 
   @@map(name: "users")
 }
