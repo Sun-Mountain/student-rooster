@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $cornell-red: rgba(188, 2, 22, 1);
 $folly: rgba(250, 64, 89, 1);
 $orange-peel: rgba(253, 163, 26, 1);
@@ -32,8 +34,8 @@ $button-bg: $paynes-gray;
 $button-text: $seasalt;
 $button-border: none;
 $button-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-$button-bg-hover: darken($paynes-gray, 25%);
-$button-bg-disabled: lighten($paynes-gray, 25%);
+$button-bg-hover: color.adjust($paynes-gray, $lightness: 25%);
+$button-bg-disabled: color.adjust($paynes-gray, $lightness: -25%);
 $button-text-disabled: $seasalt;
 
 $divider-color: $french-gray-2;

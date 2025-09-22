@@ -1,9 +1,9 @@
-$breakpoint-xs: 576px;
-$breakpoint-sm: 768px;
-$breakpoint-md: 992px;
-$breakpoint-lg: 1200px;
-$breakpoint-xl: 1400px;
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+$xl: 1400px;
 
-$main-max-width: $breakpoint-lg;
-$form-max-width: $breakpoint-sm;
+$main-max-width: $lg;
+$form-max-width: $sm;
 $drawer-width: 300px;

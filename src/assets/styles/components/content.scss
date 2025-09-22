@@ -1,9 +1,12 @@
+@use '../resources/breakpoints.scss';
+@use '../resources/colors.scss';
+
 .content-container {
   padding: 0rem;
 }
 
 .divider {
-  border-bottom: 1px solid $divider-color;
+  border-bottom: 1px solid colors.$divider-color;
   margin: 1rem;
 }
 
@@ -13,7 +16,7 @@
 }
 
 // media queries for responsiveness
-@media (min-width: $breakpoint-md) {
+@media (min-width: breakpoints.$md) {
   .content-container {
     padding: 1rem;
   }

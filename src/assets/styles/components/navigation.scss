@@ -1,10 +1,13 @@
+@use '../resources/breakpoints.scss';
+@use '../resources/colors.scss';
+
 nav {
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
 
   a, a:visited {
-    color: $navbar-text;
+    color: colors.$navbar-text;
     font-weight: bold;
     letter-spacing: 1px;
     padding: 1rem;
@@ -12,8 +15,8 @@ nav {
   }
 
   a:hover {
-    background-color: $navbar-text;
-    color: $navbar-bg;
+    background-color: colors.$navbar-text;
+    color: colors.$navbar-bg;
   }
 }
 
@@ -24,7 +27,7 @@ nav {
 .drawer-nav {
   display: flex;
   flex-direction: column;
-  min-width: $drawer-width;
+  min-width: breakpoints.$drawer-width;
   padding: 1rem;
   text-align: center;
   // align-items: center;
@@ -54,13 +57,13 @@ nav {
     transition: background-color 0.3s, color 0.3s;
 
     &:hover {
-      background-color: $navbar-bg;
-      color: $navbar-text;
+      background-color: colors.$navbar-bg;
+      color: colors.$navbar-text;
     }
   }
 }
 
-@media (min-width: $breakpoint-md) {
+@media (min-width: breakpoints.$md) {
   nav {
     a, a:visited {
       padding: 1rem 1.5rem;

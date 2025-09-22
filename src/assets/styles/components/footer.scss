@@ -1,3 +1,5 @@
+@use '../resources/colors.scss';
+
 .footer-content {
   margin: 0;
   padding: 0.5rem 0;
@@ -13,7 +15,7 @@
   }
 
   a, a:visited {
-    color: $footer-text;
+    color: colors.$footer-text;
     text-decoration: none;
 
     &:hover {

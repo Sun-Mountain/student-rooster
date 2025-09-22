@@ -1,3 +1,5 @@
+@use '../resources/colors.scss';
+
 button {
   border-radius: 4px;
   font-weight: 600;
@@ -10,18 +12,18 @@ button {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 
   // default
-  background-color: $button-bg;
+  background-color: colors.$button-bg;
   border: none;
-  box-shadow: $form-box-shadow;
-  color: $seasalt;
+  box-shadow: colors.$form-box-shadow;
+  color: colors.$seasalt;
 
   &:hover {
-    background-color: $button-bg-hover;
+    background-color: colors.$button-bg-hover;
   }
   
   &:disabled {
-    background-color: $button-bg-disabled;
-    color: $button-text-disabled;
+    background-color: colors.$button-bg-disabled;
+    color: colors.$button-text-disabled;
     cursor: not-allowed;
   }
 
