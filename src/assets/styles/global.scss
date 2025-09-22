@@ -1,18 +1,23 @@
 // Resources
-@import './resources/breakpoints.scss';
-@import './resources/colors.scss';
+@use './resources/breakpoints.scss';
+@use './resources/colors.scss';
+@forward './components/button.scss';
+@forward './components/content.scss';
+@forward './components/forms.scss';
+@forward './components/footer.scss';
+@forward './components/navigation.scss';
 
 // Global styles
 body {
-  background-color: $lavender-web;
-  color: $onyx;
+  background-color: colors.$lavender-web;
+  color: colors.$onyx;
   font-family: 'Geist Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 main, nav, footer {
-  max-width: $main-max-width;
+  max-width: breakpoints.$main-max-width;
   margin: 0 auto;
 }
 
@@ -21,26 +26,26 @@ main, footer {
 }
 
 main {
-  background-color: $main-bg;
+  background-color: colors.$main-bg;
   min-height: 80vh;
 }
 
 nav {
-  background-color: $navbar-bg;
-  color: $navbar-text;
+  background-color: colors.$navbar-bg;
+  color: colors.$navbar-text;
 }
 
 footer {
-  background-color: $footer-bg;
-  color: $footer-text;
+  background-color: colors.$footer-bg;
+  color: colors.$footer-text;
   text-align: center;
 }
 
 a, a:visited {
-  color: $link-color;
+  color: colors.$link-color;
 
   &:hover {
-    color: $link-color-hover;
+    color: colors.$link-color-hover;
   }
 }
 
@@ -58,8 +63,3 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Component styles
-@import './components/button.scss';
-@import './components/content.scss';
-@import './components/forms.scss';
-@import './components/footer.scss';
-@import './components/navigation.scss';
