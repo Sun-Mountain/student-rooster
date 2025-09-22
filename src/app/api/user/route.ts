@@ -1,4 +1,4 @@
-import db from "@db/lib";
+import { db } from "@db/lib";
 import { NextResponse } from "next/server";
 
 import { hash } from "bcrypt";

@@ -2,7 +2,7 @@ import { NextAuthOptions, User as NextAuthUser } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { compare } from "bcrypt";
-import db from "@db/lib";
+import { db } from "@db/lib";
 
 // Extend the User type to include 'role'
 declare module "next-auth" {
