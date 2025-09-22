@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LoginForm from "@/components/Forms/LoginForm";
+import { AccountLinks } from "@/components/Links/AccountLinks";
 
 const AuthLoginPage = () => {
 
@@ -10,7 +11,7 @@ const AuthLoginPage = () => {
         <LoginForm />
       </div>
       <div className="center-content">
-        <p>Don't have an account? <Link href="/sign-up">Sign Up</Link></p>
+        <AccountLinks showSignUp={true} />
       </div>
     </>
   );

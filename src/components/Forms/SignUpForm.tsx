@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from "react";
+import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Form } from "@base-ui-components/react/form";
 import TextField from "@/components/_UI/Forms/TextField";
 import Button from "@/components/_UI/Button";
 
-const AuthSignUpPage = () => {
+const SignUpForm: FC = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -15,7 +15,7 @@ const AuthSignUpPage = () => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const values = Object.fromEntries(formData.entries());
-
+    
     setIsLoading(true);
     const response = await await fetch ('/api/user', {
       method: 'POST',
@@ -38,25 +38,17 @@ const AuthSignUpPage = () => {
   };
 
   return (
-    <>
-      <div className="form-container">
-        <h1>Sign Up</h1>
-        <Form onSubmit={onSubmit}>
-          <TextField label="Username" name="username" type="text" required />
-          <TextField label="Email" name="email" type="email" required />
-          <TextField label="Password" name="password" type="password" required />
-          <div className="btn-container">
-            <Button type="submit" className="submit-button" defaultDisabled={isLoading}>
-              Sign Up
-            </Button>
-          </div>
-        </Form>
+    <Form onSubmit={onSubmit}>
+      <TextField label="Username" name="username" type="text" required />
+      <TextField label="Email" name="email" type="email" required />
+      <TextField label="Password" name="password" type="password" required />
+      <div className="btn-container">
+        <Button type="submit" className="submit-button" defaultDisabled={isLoading}>
+          Sign Up
+        </Button>
       </div>
-      <div className="center-content">
-        <p>Already have an account? <a href="/login">Login</a></p>
-      </div>
-    </>
-  );
-}
+    </Form>
+  )
+};
 
-export default AuthSignUpPage;
+export default SignUpForm;
