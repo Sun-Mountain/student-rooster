@@ -14,19 +14,100 @@ enum Role {
   SUPER
 }
 
+model Enrollment {
+  id        String   @id @default(cuid()) @unique
+  studentId String   @map(name: "student_id")
+  sessionId String   @map(name: "session_id")
+  lessonId  String   @map(name: "lesson_id")
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  lesson    Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@unique([studentId, sessionId])
+  @@map(name: "enrollments")
+}
+
+model Lesson {
+  id          String   @id @default(cuid()) @unique
+  title       String
+  description String?
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @updatedAt @map(name: "updated_at")
+  orgId       String   @map(name: "org_id")
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  sessions    Session[] @relation("LessonSessions")
+  enrollments Enrollment[]
+
+  @@map(name: "lessons")
+}
+
+model Organization {
+  id        String   @id @default(cuid()) @unique
+  name      String   
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  lessons   Lesson[]
+  ownedBy   OwnedOrgs[]
+  sessions  Session[]
+
+  @@map(name: "organizations")
+}
+
+model OwnedOrgs {
+  id             String        @id @default(cuid()) @unique
+  profileId      String        @map(name: "profile_id")
+  organizationId String        @map(name: "organization_id")
+  profile        Profile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  organization   Organization  @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdAt      DateTime      @default(now()) @map(name: "created_at")
+  updatedAt      DateTime      @updatedAt @map(name: "updated_at")
+
+  @@unique([profileId, organizationId])
+  @@map(name: "owned_orgs")
+}
+
 model Profile {
-  id        String   @id @default(cuid())
+  id        String   @id @default(cuid()) @unique
   bio       String?
   userId    String   @unique @map(name: "user_id")
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ownedOrgs OwnedOrgs[]
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @updatedAt @map(name: "updated_at")
 
   @@map(name: "profiles")
 }
 
+model Session {
+  id          String   @id @default(cuid()) @unique
+  orgId       String   @map(name: "org_id")
+  org         Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  startDate   DateTime @map(name: "start_date")
+  endDate     DateTime @map(name: "end_date")
+  lessons     Lesson[] @relation("LessonSessions")
+  enrollments Enrollment[]
+
+  @@map(name: "sessions")
+}
+
+model Student {
+  id          String   @id @default(cuid()) @unique
+  firstName   String   @map(name: "first_name")
+  lastName    String   @map(name: "last_name")
+  email       String?  @unique
+  phone       String?  @unique
+  enrollments Enrollment[]
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "students")
+}
+
 model User {
-  id          String    @id @default(cuid())
+  id          String    @id @default(cuid()) @unique
   username    String    @unique
   email       String    @unique
   password    String
