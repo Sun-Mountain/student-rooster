@@ -13,7 +13,7 @@ export const AccountLinks = ({
     <>
       {showSignUp && (
         <p>
-          Don't have an account? <Link href="/signup">Sign Up Here</Link>
+          Don't have an account? <Link href="/sign-up">Sign Up Here</Link>
         </p>
       )}
       {showLogin && (
@@ -21,6 +21,12 @@ export const AccountLinks = ({
           Already have an account? <Link href="/login">Login Here</Link>
         </p>
       )}
+      <p>
+        <Link href="/forgot-password">Forgot your password?</Link>
+      </p>
+      <p>
+        <Link href="/verify-email">Didn't receive a verification email?</Link>
+      </p>
     </>
   )
 };

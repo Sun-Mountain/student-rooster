@@ -2,4 +2,6 @@ export const ROOT = '/';
 export const PUBLIC_ROUTES = ['/',
                               '/about',
                               '/login',
-                              '/signup'];
+                              '/sign-up',
+                              '/forgot-password',
+                              '/verify-email'];

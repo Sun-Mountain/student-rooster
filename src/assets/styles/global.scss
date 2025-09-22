@@ -50,10 +50,13 @@ a, a:visited {
 }
 
 .center-content {
-  display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100%;
+
+  p {
+    text-align: center;
+  }
 }
 
 // Headers
