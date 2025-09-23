@@ -13,6 +13,12 @@ export async function getUserByIdentifier(userId?: string, email?: string, usern
   });
 }
 
+export async function createUser(data: Prisma.UserCreateInput): Promise<User> {
+  return db.user.create({
+    data
+  });
+}
+
 export async function getUserById(userId: string): Promise<User | null> {
   return db.user.findUnique({
     where: { id: userId },

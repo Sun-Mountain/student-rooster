@@ -34,6 +34,14 @@ button {
     justify-content: center;
   }
 
+  &.danger {
+    background-color: colors.$button-danger-bg;
+
+    &:hover {
+      background-color: colors.$button-danger-bg-hover;
+    }
+  }
+
   // &.primary {
   //   background-color: $violet-blue;
   //   color: $white;

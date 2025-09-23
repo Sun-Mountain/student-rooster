@@ -1,8 +1,10 @@
-import { db } from "@db/lib";
 import { NextResponse } from "next/server";
-import { getUserByIdentifier } from "@db/lib/user";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@lib/authOptions";
+import { createUser, deleteUserById, getUserByIdentifier } from "@db/lib/user";
 
 import { hash } from "bcrypt";
+import { requireAuth } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
@@ -22,12 +24,10 @@ export async function POST(req: Request) {
     // Create new user
     const hashedPassword = await hash(password, 15);
 
-    const newUser = await db.user.create({
-      data: {
-        email,
-        username,
-        password: hashedPassword,
-      },
+    const newUser = await createUser({
+      email,
+      username,
+      password: hashedPassword,
     });
 
     const { password: _, ...userWithoutPassword } = newUser;
@@ -45,3 +45,64 @@ export async function POST(req: Request) {
     );
   }
 };
+
+export async function DELETE(req: Request) {
+  return requireAuth("deleteOwn", "user") || (async () => {
+    try {
+      const session = await getServerSession(authOptions);
+      const userId = session?.user?.id;
+      if (!userId) {
+        return NextResponse.json(
+          { message: "User ID not found in session" },
+          { status: 400 }
+        );
+      }
+
+      await deleteUserById(userId);
+
+      return NextResponse.json(
+        { message: "User deleted successfully" },
+        { status: 200 }
+      );
+    }
+    catch (err) {
+      console.log(err);
+      return NextResponse.json(
+        { message: "Internal server error" },
+        { status: 500 }
+      );
+    }
+  })();
+}
+
+// export async function DELETE(req: Request) {
+//   return withAuth({
+//     resource: "user",
+//     action: "deleteOwn",
+//     authErrorMessage: "You do not have permission to delete this account"
+//   })(async (permission: Permission, session) => {
+//     try {
+//       const userId = session?.user?.id;
+//       if (!userId) {
+//         return NextResponse.json(
+//           { message: "User ID not found in session" },
+//           { status: 400 }
+//         );
+//       }
+
+//       await deleteUserById(userId);
+
+//       return NextResponse.json(
+//         { message: "User deleted successfully" },
+//         { status: 200 }
+//       );
+//     }
+//     catch (err) {
+//       console.log(err);
+//       return NextResponse.json(
+//         { message: "Internal server error" },
+//         { status: 500 }
+//       );
+//     }
+//   });
+// }

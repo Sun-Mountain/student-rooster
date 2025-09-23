@@ -38,6 +38,11 @@ $button-bg-hover: color.adjust($paynes-gray, $lightness: 25%);
 $button-bg-disabled: color.adjust($paynes-gray, $lightness: -25%);
 $button-text-disabled: $seasalt;
 
+$button-danger-bg: $cornell-red;
+$button-danger-bg-hover: color.adjust($cornell-red, $lightness: -15%);
+$button-danger-bg-disabled: color.adjust($folly, $lightness: -25%);
+$button-danger-text-disabled: $seasalt;
+
 $divider-color: $french-gray-2;
 
 $form-container-bg: $white;
