@@ -31,6 +31,16 @@ jobs:
         node-version: lts/*
     - name: Install dependencies
       run: npm install -g pnpm && pnpm install
+    - name: Wait for Postgres
+      run: |
+        until pg_isready -h localhost -p 5432 -U ${{ vars.POSTGRES_USER }}; do
+          echo "Waiting for Postgres..."
+          sleep 2
+        done
+    - name: Run database migrations
+      env:
+        DATABASE_URL: postgres://${{ vars.POSTGRES_USER }}:${{ vars.POSTGRES_PASSWORD }}@localhost:5432/${{ vars.DB_NAME }}
+      run: pnpm exec prisma migrate deploy
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
     - name: Run Playwright tests
