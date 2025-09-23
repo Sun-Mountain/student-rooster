@@ -1,5 +1,5 @@
-import Link from "next/link";
 import SignInForm from "@/components/Forms/SignInForm";
+import { AccountLinks } from "@/content/Navigation/AccountLinks";
 
 const AuthLoginPage = () => {
 
@@ -9,9 +9,7 @@ const AuthLoginPage = () => {
         <h1>Sign In</h1>
         <SignInForm />
       </div>
-      <div className="center-content">
-        <p>Don't have an account? <Link href="/sign-up">Sign Up</Link></p>
-      </div>
+      <AccountLinks showSignUpLink />
     </>
   );
 }

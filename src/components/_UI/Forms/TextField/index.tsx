@@ -3,6 +3,7 @@ import { Field } from '@base-ui-components/react/field';
 interface TextFieldProps {
   label: string;
   name: string;
+  defaultDisabled?: boolean;
   type?: string;
   placeholder?: string;
   required?: boolean;
@@ -18,6 +19,7 @@ const TextField = ({
   required = false,
   value,
   onChange,
+  defaultDisabled = false,
 }: TextFieldProps) => {
   return (
     <Field.Root>
@@ -30,6 +32,7 @@ const TextField = ({
         required={required}
         value={value}
         onChange={onChange}
+        disabled={defaultDisabled}
       />
     </Field.Root>
   );

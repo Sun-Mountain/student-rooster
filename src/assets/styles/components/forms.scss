@@ -23,6 +23,12 @@
     font-size: 1rem;
     padding: 0.5rem;
     width: 95%;
+
+    &:disabled {
+      background-color: colors.$form-input-bg-disabled;
+      color: colors.$form-input-text-disabled;
+      cursor: not-allowed;
+    }
   }
 
   label {

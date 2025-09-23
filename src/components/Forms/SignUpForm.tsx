@@ -1,0 +1,56 @@
+'use client';
+
+import { FC, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Form } from "@base-ui-components/react/form";
+import TextField from "@/components/_UI/Forms/TextField";
+import Button from "@/components/_UI/Button";
+
+const SignUpForm: FC = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const onSubmit = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const values = Object.fromEntries(formData.entries());
+
+    setIsLoading(true);
+    const response = await await fetch ('/api/user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      setError(errorData.message || 'An error occurred. Please try again.');
+      console.log('Error:', errorData);
+      console.log({error})
+      setIsLoading(false);
+      return;
+    } else {
+      router.push('/sign-in');
+    }
+  };
+
+  return (
+    <>
+      <Form onSubmit={onSubmit}>
+        <TextField defaultDisabled={isLoading} label="Username" name="username" type="text" required />
+        <TextField defaultDisabled={isLoading} label="Email" name="email" type="email" required />
+        <TextField defaultDisabled={isLoading} label="Password" name="password" type="password" required />
+        <div className="btn-container">
+          <Button type="submit" className="submit-button" defaultDisabled={isLoading}>
+            Sign Up
+          </Button>
+        </div>
+      </Form>
+    </>
+  );
+}
+
+export default SignUpForm;
