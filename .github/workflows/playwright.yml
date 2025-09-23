@@ -5,8 +5,8 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  playwright-tests:
-    name: Playwright E2E Tests
+  setup-database:
+    name: Setup Database
     environment: test
     runs-on: ubuntu-latest
     services:
@@ -25,29 +25,54 @@ jobs:
           --health-retries=5
     timeout-minutes: 5
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Wait for Postgres
-      run: |
-        until pg_isready -h localhost -p 5432 -U ${{ vars.POSTGRES_USER }}; do
-          echo "Waiting for Postgres..."
-          sleep 2
-        done
-    - name: Install dependencies
-      run: npm install -g pnpm && pnpm install
-    - name: Run database migrations
-      env:
-        DATABASE_URL: postgres://${{ vars.POSTGRES_USER }}:${{ vars.POSTGRES_PASSWORD }}@localhost:5432/${{ vars.DB_NAME }}
-      run: pnpm exec prisma migrate deploy
-    - name: Install Playwright Browsers
-      run: pnpm exec playwright install --with-deps
-    - name: Run Playwright tests
-      run: pnpm exec playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - name: Wait for Postgres to be ready
+        run: |
+          until pg_isready -h localhost -p 5432 -U ${{ vars.POSTGRES_USER }}; do
+            echo "Waiting for Postgres..."
+            sleep 2
+          done
+      - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install npm packages
+        run: npm install
+      - name: Generate Prisma Client
+        run: npx prisma generate
+      - name: Run migrations
+        env:
+          DATABASE_URL: postgres://${{ vars.POSTGRES_USER }}:${{ vars.POSTGRES_PASSWORD }}@localhost:5432/${{ vars.DB_NAME }}
+        run: |
+          npx prisma migrate deploy
+  playwright-tests:
+    name: Playwright Tests
+    needs: setup-database
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install
+      - name: Run Playwright tests
+        env:
+          DATABASE_URL: postgres://${{ vars.POSTGRES_USER }}:${{ vars.POSTGRES_PASSWORD }}@localhost:5432/${{ vars.DB_NAME }}
+          NEXT_PUBLIC_BASE_URL: http://localhost:3000
+        run: |
+          npx playwright install --with-deps
+          npx playwright test --reporter=list
+      - name: Upload Playwright Test Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-test-artifacts
+          path: |
+            test-results/
+            screenshots/
+            videos/
