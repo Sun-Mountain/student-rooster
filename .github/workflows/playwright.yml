@@ -31,6 +31,12 @@ jobs:
             echo "Waiting for Postgres..."
             sleep 2
           done
+  install-and-migrate:
+    name: Install and Migrate
+    needs: setup-database
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
       - name: Install dependencies
         uses: actions/setup-node@v3
         with:
@@ -48,7 +54,7 @@ jobs:
           npx prisma migrate deploy
   playwright-tests:
     name: Playwright Tests
-    needs: setup-database
+    needs: [  setup-database, install-and-migrate ]
     runs-on: ubuntu-latest
     environment: test
     steps:
