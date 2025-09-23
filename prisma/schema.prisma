@@ -14,12 +14,36 @@ enum Role {
   SUPER
 }
 
+model Organization {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  ownerId   String
+  profile   Profile? @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@map(name: "ownedOrgs")
+}
+
+model Profile {
+  id              String   @id @default(cuid())
+  bio             String?
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ownedOrgs       Organization[]
+  createdAt       DateTime @default(now()) @map(name: "created_at")
+  updatedAt       DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "profiles")
+}
+
 model User {
   id        String    @id @default(cuid())
   username  String    @unique
   email     String    @unique
   password  String
   role      Role      @default(USER)
+  profile   Profile?
   createdAt DateTime  @default(now()) @map(name: "created_at")
   updatedAt DateTime  @updatedAt @map(name: "updated_at")
 
