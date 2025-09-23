@@ -2,7 +2,7 @@ import { NextAuthOptions, User as NextAuthUser } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { compare } from "bcrypt";
-import db from "@db/lib";
+import { db } from "@db/lib";
 
 // Extend the User type to include 'role'
 declare module "next-auth" {
@@ -34,7 +34,7 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: '/login',
+    signIn: '/sign-in',
     signOut: '/sign-out',
     // error: '/login', // Error code passed in query string as ?error=
     // newUser: '/sign-up' // New users will be directed here on first sign in (leave the property out if not of interest)

@@ -1,5 +1,6 @@
-import db from "@db/lib";
+import { db } from "@db/lib";
 import { NextResponse } from "next/server";
+import { getUserByIdentifier } from "@db/lib/user";
 
 import { hash } from "bcrypt";
 
@@ -9,11 +10,7 @@ export async function POST(req: Request) {
     const { email, username, password } = body;
 
     // Check if email or username already exists
-    const existingUser = await db.user.findFirst({
-      where: {
-        OR: [{ email }, { username }],
-      },
-    });
+    const existingUser = await getUserByIdentifier(undefined, email, username);
 
     if (existingUser) {
       return NextResponse.json(

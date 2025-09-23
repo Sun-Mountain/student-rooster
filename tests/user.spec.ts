@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {
-  logIn,
+  signIn,
   signUp,
   signOut,
   testContext
@@ -10,6 +10,6 @@ const ctx = testContext();
 
 test('smoke', async ({ page }) => {
   await signUp(page, ctx);
-  await logIn(page, ctx);
+  await signIn(page, ctx);
   await signOut(page);
 });

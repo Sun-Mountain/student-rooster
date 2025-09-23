@@ -8,7 +8,7 @@ import { Form } from "@base-ui-components/react/form";
 import TextField from "@/components/_UI/Forms/TextField";
 import Button from "@/components/_UI/Button";
 
-const LoginForm: FC = () => {
+const SignInForm: FC = () => {
   const router = useRouter();
 
   const onSubmit = async (event: { preventDefault: () => void; currentTarget: HTMLFormElement | undefined; }) => {
@@ -23,7 +23,7 @@ const LoginForm: FC = () => {
     });
 
     if (result?.error) {
-      console.log("Failed to login:", result.error);
+      console.log("Failed to sign in:", result.error);
       // Optionally, set error state here to display error message to user
     } else {
       router.push(result?.url || '/dashboard');
@@ -36,11 +36,11 @@ const LoginForm: FC = () => {
       <TextField label="Password" name="password" type="password" required />
       <div className="btn-container">
         <Button type="submit" className="submit-button">
-          Login
+          Sign In
         </Button>
       </div>
     </Form>
   );
 }
 
-export default LoginForm;
+export default SignInForm;

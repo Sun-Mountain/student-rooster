@@ -25,7 +25,7 @@ export const MainNav = ({ isAuthenticated, handleSignOut }: MainNavProps) => {
         </li>
       ) : (
         <li>
-          <Link href="/login">Login</Link>
+          <Link href="/sign-in">Sign In</Link>
         </li>
       )}
     </ul>

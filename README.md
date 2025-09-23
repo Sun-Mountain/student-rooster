@@ -3,7 +3,7 @@
 Short description of what the project does and why it exists.
 
 ## 🚀 Features
-- User Login/Logout *coming soon*
+- User Create Account
 - Manage Students, Classes, & Sessions in Organization *coming soon*
 
 ## 🛠️ Getting Started

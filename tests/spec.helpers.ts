@@ -42,12 +42,12 @@ export async function signUp(page: Page, ctx: TestContext) {
   await expect(page.getByRole("heading", { name: "Login" })).toBeVisible();
 };
 
-export async function logIn(page: Page, ctx: TestContext) {
+export async function signIn(page: Page, ctx: TestContext) {
   await page.getByLabel("Email").click();
   await page.getByLabel("Email").fill(ctx.email);
   await page.getByRole("textbox", { name: "Password" }).click();
   await page.getByRole("textbox", { name: "Password" }).fill(ctx.password);
-  await page.getByRole("button", { name: "Login", exact: true }).click();
+  await page.getByRole("button", { name: "Sign In", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Dashboard" })).toBeVisible();
 };
 

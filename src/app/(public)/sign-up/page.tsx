@@ -33,7 +33,7 @@ const AuthSignUpPage = () => {
       setIsLoading(false);
       return;
     } else {
-      router.push('/login');
+      router.push('/sign-in');
     }
   };
 
@@ -53,7 +53,7 @@ const AuthSignUpPage = () => {
         </Form>
       </div>
       <div className="center-content">
-        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Already have an account? <a href="/sign-in">Sign In Here</a></p>
       </div>
     </>
   );

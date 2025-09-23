@@ -1,5 +1,5 @@
 export const ROOT = '/';
 export const PUBLIC_ROUTES = ['/',
                               '/about',
-                              '/login',
+                              '/sign-in',
                               '/sign-up'];
